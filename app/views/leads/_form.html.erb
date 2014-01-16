@@ -14,6 +14,13 @@
   <table class="table">
     <tr>
       <td>
+        <%= f.label :client_id %>
+      </td>
+      <td>
+        <%=select_tag "clients",options_from_collection_for_select(@clients,"id", "company_name"),:class=>"form-control"%>
+    </tr>
+    <tr>
+      <td>
          <%= f.label :title %>
       </td>
       <td>
@@ -28,17 +35,12 @@
          <%= f.text_area :description,:class=>"form-control"  %>
       </td>
     </tr>
-    <tr>
-      <td>
-         <%= f.label :client_id %>
-      </td>
-      <td>
-        <%=select_tag "people", options_from_collection_for_select(@clients, "id", "name")%>
-    </tr>
+
     <td>
     </td>
     <td>
-         <%= f.submit %>
+         <%= f.submit :Save,:class=>"btn btn-default" %>
+         <%= link_to 'Back', leads_path,:class=>"btn btn-default" %>
     </td>
   </div>
   </table>

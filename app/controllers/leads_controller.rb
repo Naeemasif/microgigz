@@ -26,7 +26,10 @@ class LeadsController < ApplicationController
   def new
     @lead = Lead.new
 
-    @clients= Client.all
+    @clients = Client.where(:status=>true).all
+    logger.debug("*****************")
+    logger.debug(@clients)
+    logger.debug("*****************")
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +46,7 @@ class LeadsController < ApplicationController
   # POST /leads.json
   def create
     @lead = Lead.new(params[:lead])
-
+    @lead.update_attributes(client_id:params[:clients])
     respond_to do |format|
       if @lead.save
         format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
