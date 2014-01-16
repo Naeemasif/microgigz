@@ -1,7 +1,4 @@
 Microgigz::Application.routes.draw do
-  resources :controllers
-
-
   resources :projects
 
 
@@ -10,7 +7,7 @@ Microgigz::Application.routes.draw do
 
   resources :profiles
 
-
+  resources :clients
   devise_for :users
 
   # The priority is based upon order of creation:

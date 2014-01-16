@@ -1,0 +1,24 @@
+<%= form_for(@client) do   %>
+
+    <div class="field">name:  <br>
+       <%= text_field_tag :name, "#{@profile.name}" %>
+    </div>
+
+    <div class="field">email:<br>
+      <%= text_field_tag :email,"#{@profile.email}"  %>
+    </div>
+
+
+    <div class="field">telephone: <br>
+      <%= text_field_tag :telephone  ,"#{@profile.telephone}" %>
+    </div>
+
+    <div class="field">
+      company:  <br>
+      <%= text_field_tag :company_name  ,"#{@client.company_name}" %>
+
+    </div>
+    <div class="actions">
+      <%=  submit_tag("Update", :class => 'button big') %>
+    </div>
+<% end %>
