@@ -1,0 +1,45 @@
+<br>
+<%= form_for(@lead) do |f| %>
+  <% if @lead.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
+
+      <ul>
+      <% @lead.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <table class="table">
+    <tr>
+      <td>
+         <%= f.label :title %>
+      </td>
+      <td>
+         <%= f.text_field :title,:class=>"form-control" %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+         <%= f.label :description %>
+      </td>
+      <td>
+         <%= f.text_area :description,:class=>"form-control"  %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+         <%= f.label :client_id %>
+      </td>
+      <td>
+        <%=select_tag "people", options_from_collection_for_select(@clients, "id", "name")%>
+    </tr>
+    <td>
+    </td>
+    <td>
+         <%= f.submit %>
+    </td>
+  </div>
+  </table>
+<% end %>

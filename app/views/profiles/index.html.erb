@@ -1,0 +1,70 @@
+<div class="row align_center">
+  <div class="col-lg-12">
+    <%=image_tag("/images/nextbridge.png" ,:size => "150x150", :alt => "Edit Entry")%>
+    <div class="align_right float_padding">
+        <%=link_to "Log in", new_user_session_path,:class=>"btn btn-default"%>
+    </div>
+    <div class="clear_both"></div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+
+    <h1>Listing profiles</h1>
+
+    <table class="table padding_4">
+      <caption class="margin_4"></caption>
+      <tr class="background_color">
+        <th class="color">Name</th>
+        <th class="color">Email</th>
+        <th class="color">Telephone</th>
+        <th class="color">Profileable type</th>
+        <th class="color">Profileable</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+
+      <% @profiles.each do |profile| %>
+          <tr>
+            <td><%= profile.name %></td>
+            <td><%= profile.email %></td>
+            <td><%= profile.telephone %></td>
+            <td><%= profile.profileable_type %></td>
+            <td><%= profile.profileable_id %></td>
+            <td><%= link_to 'Show', profile ,:class=>"btn btn-default"%></td>
+            <td><%= link_to 'Edit', edit_profile_path(profile) ,:class=>"btn btn-default" %></td>
+            <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>"btn btn-default" %></td>
+          </tr>
+      <% end %>
+    </table>
+
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="col-lg-12">
+
+    <table>
+      <tr>
+        <td>
+          <%= link_to 'New Lead', new_lead_path,:class=>"btn btn-default" %>
+        </td>
+        <td>
+          <%= link_to 'Profiles', profiles_path,:class=>"btn btn-default" %>
+        </td>
+        <td>
+          <%= link_to 'Projects', projects_path,:class=>"btn btn-default" %>
+        </td>
+        <td>
+          <%= link_to 'Leads', leads_path,:class=>"btn btn-default" %>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+</div>

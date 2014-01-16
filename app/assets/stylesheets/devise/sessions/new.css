@@ -1,0 +1,21 @@
+/*for centered alignment*/
+
+.align_center
+{
+    text-align: center;
+}
+/*for right alignment*/
+.align_right
+{
+    text-align: right;
+}
+/*for left alignment*/
+.align_left
+{
+    text-align: left;
+}
+/*padding left */
+.padding_left
+{
+    padding: 0 0 0 5%; /*top right bottom left*/
+}

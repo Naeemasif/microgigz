@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  status: false
+  company_name: MyString
+
+two:
+  status: false
+  company_name: MyString
