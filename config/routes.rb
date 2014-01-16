@@ -1,4 +1,7 @@
 Microgigz::Application.routes.draw do
+  resources :controllers
+
+
   resources :projects
 
 
