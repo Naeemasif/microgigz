@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @project.title %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @project.start_date %>
+</p>
+
+<p>
+  <b>Pm name:</b>
+  <%= @project.pm_name %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @project.status %>
+</p>
+
+<p>
+  <b>Lead:</b>
+  <%= @project.lead_id %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @project.client_id %>
+</p>
+
+<p>
+  <b>Resource:</b>
+  <%= @project.resource_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

@@ -1,4 +1,13 @@
 Microgigz::Application.routes.draw do
+  resources :projects
+
+
+  resources :leads
+
+
+  resources :profiles
+
+
   devise_for :users
 
   # The priority is based upon order of creation:

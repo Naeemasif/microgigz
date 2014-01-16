@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @lead.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @lead.description %>
+</p>
+
+<p>
+  <b>Client:</b>
+  <%= @lead.client_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_lead_path(@lead) %> |
+<%= link_to 'Back', leads_path %>

@@ -11,7 +11,57 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115123347) do
+ActiveRecord::Schema.define(:version => 20140116072918) do
+
+  create_table "clients", :force => true do |t|
+    t.boolean  "status"
+    t.string   "company_name"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "leads", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "client_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "telephone"
+    t.string   "profileable_type"
+    t.integer  "profileable_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "projects", :force => true do |t|
+    t.string   "title"
+    t.datetime "start_date"
+    t.string   "pm_name"
+    t.boolean  "status"
+    t.integer  "lead_id"
+    t.integer  "client_id"
+    t.integer  "resource_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "quotes", :force => true do |t|
+    t.text     "description"
+    t.integer  "lead_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "resources", :force => true do |t|
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "login",               :default => "", :null => false
