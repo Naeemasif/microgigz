@@ -25,7 +25,8 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
-
+    @project_manager = Profile.find_by_sql("select r.id, p.name from resources r, profiles p where r.id=p.profileable_id and p.profileable_type='pm'")
+    @lead = Lead.where(status:"Active")
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
@@ -40,8 +41,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(params[:project])
-
+    @project = Project.create(title:params[:project][:title],start_date:params[:bdaytime],status:true,lead_id:params[:lid],client_id:params[:client_id],pm_id:params[:pm])
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -79,5 +79,16 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url }
       format.json { head :no_content }
     end
+  end
+
+  def get_client_name
+
+  @lead    = Lead.find_by_id(params[:lead_id])
+  @profile = Profile.find_by_profileable_id(@lead.client_id)
+
+  end
+
+  def display_resources
+
   end
 end

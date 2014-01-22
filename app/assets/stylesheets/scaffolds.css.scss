@@ -1,69 +1,80 @@
-body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+
+/**************************************application.html.erb************************************************************/
+
+/*for main container*/
+.container
+{
+  height: 100%;
+  width: 100%;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+/*nav bar brand color*/
+.navbar_brandcolor
+{
+  color: #ffffff;
 }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+/*nav bar links margins*/
+.margin_navlinks
+{
+  margin:0.3% 0 0 0; /*top right bottom left*/
 }
 
-a {
-  color: #000;
-  &:visited {
-    color: #666;
-  }
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+/*setting the border to 0px in nav bars*/
+.border_0px
+{
+  border: 0px;       /*all four borders to 0px*/
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+/*nav bar login header style in which login link is displayed*/
+.navlogin_header
+{
+  text-align: right;
+  width: 100%;
+  background: #000000;
+  color: #ffffff;
+  padding: 0 1% 0 0;   /*top right bottom left*/
 }
 
-#notice {
-  color: green;
+/*login link color */
+.login_link_color
+{
+  color: #ffffff;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+/*log in link hover color*/
+a.login_link_color:hover
+{
+  color: #808080;
 }
 
-#error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-  }
-  ul li {
-    font-size: 12px;
-    list-style: square;
-  }
+/*log bar link colors*/
+.nav_bar_links
+{
+  background: transparent;
+  border: 0px;       /*all four borders to 0px*/
+  color: #ffffff;
 }
+
+/*style for side bar in application.html.erb*/
+.sidebar
+{
+  margin-left: 7.5%;
+  border: 1px solid #000000;
+  background:#202020;
+}
+/*float left for home link in the header*/
+.float_left
+{
+  float: left;
+}
+/*margin left on home link*/
+.margin_left
+{
+  margin: 0 0 0 1%;  /*top right bottom left*/
+}
+/**************************************application.html.erb************************************************************/
+
+
+
+

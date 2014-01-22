@@ -1,22 +1,44 @@
-<h1>Listing clients</h1>
+<div class="row align_center">
+  <div class="col-lg-12">
+    <%=image_tag("/images/nextbridge.png" ,:size => "150x150", :alt => "Edit Entry")%>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+       <h1>Listing clients</h1>
+  </div>
+</div>
+
+<br/>
+
+<div class="row">
+  <div class="col-lg-12">
+
+    <table class="table">
+        <tr>
+            <th>company name</th>
+            <th></th>
+            <th colspan="2"></th>
+        </tr>
+        <% @clients.each do |client| %>
+        <tr>
+            <td><%= client.company_name %></td>
+            <td><%= link_to 'Show', client,:class=>"btn btn-default" %></td>
+            <td><%= link_to 'Edit', edit_client_path(client),:class=>"btn btn-default" %></td>
+            <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-default" %></td>
+        </tr>
+        <% end %>
+    </table>
+  </div>
+</div>
+
+<br/>
 
 <table>
   <tr>
-    <th>company name</th>
-    <th></th>
-    <th></th>
+    <td>
+        <%= link_to 'New Client', new_client_path,:class=>"btn btn-default" %>
+    </td>
   </tr>
-
-<% @clients.each do |client| %>
-  <tr>
-    <td><%= client.company_name %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Client', new_client_path %>

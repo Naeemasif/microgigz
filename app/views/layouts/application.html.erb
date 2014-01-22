@@ -5,13 +5,38 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
-<body>
+
+<body onload="change_nav_tabs_background('<%=controller.controller_name%>');">
+
 
 <div class="container">
 
-  <%= yield %>
+  <div class="row">
+    <div class="col-lg-12">
+      <%=image_tag("/images/nextbridge.png" ,:size => "100x100", :alt => "Edit Entry")%>
+      <div class="clear_both"></div>
+    </div>
+  </div>
 
+  <br/>
+
+  <div class="row">
+   <div class="col-lg-12">
+     <%= render "layouts/navbar" %>
+   </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <%= yield %>
+    </div>
+    <br/>
+    <div class="col-lg-3 sidebar">
+      <%= render "layouts/sidebar" %>
+    </div>
+  </div>
 
 </div>
 

@@ -25,11 +25,8 @@ class LeadsController < ApplicationController
   # GET /leads/new.json
   def new
     @lead = Lead.new
-
     @clients = Client.where(:status=>true).all
-    logger.debug("*****************")
-    logger.debug(@clients)
-    logger.debug("*****************")
+
 
     respond_to do |format|
       format.html # new.html.erb

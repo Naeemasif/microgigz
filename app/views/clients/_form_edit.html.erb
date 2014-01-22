@@ -1,24 +1,56 @@
 <%= form_for(@client) do   %>
+<table class="table">
+  <tr>
+    <td class="align_left">
+      name:
+    </td>
+    <td>
+      <%= text_field_tag :name, "#{@profile.name}",:class=>"form-control" %>
+    </td>
+  </tr>
+  <tr>
+    <td class="align_left">
+      email:
+    </td>
+    <td>
+      <%= text_field_tag :email,"#{@profile.email}",:class=>"form-control"  %>
+    </td>
+  </tr>
+  <tr>
+    <td class="align_left">
+      telephone:
+    </td>
+    <td>
+      <%= text_field_tag :telephone  ,"#{@profile.telephone}",:class=>"form-control" %>
+    </td>
+  </tr>
+  <tr>
+    <td class="align_left">
+      company:
+    </td>
+    <td>
+      <%= text_field_tag :company_name  ,"#{@client.company_name}",:class=>"form-control" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+    </td>
+    <td>
+     <table>
+       <tr>
+         <td>
+           <%=  submit_tag("Update", :class => 'btn btn-default') %>
+         </td>
+         <td>
+           <%= link_to 'Show', @client,:class=>"btn btn-default" %>
+         </td>
+         <td>
+           <%= link_to 'Back', clients_path,:class=>"btn btn-default" %>
+         </td>
+       </tr>
+     </table>
+    </td>
+  </tr>
 
-    <div class="field">name:  <br>
-       <%= text_field_tag :name, "#{@profile.name}" %>
-    </div>
-
-    <div class="field">email:<br>
-      <%= text_field_tag :email,"#{@profile.email}"  %>
-    </div>
-
-
-    <div class="field">telephone: <br>
-      <%= text_field_tag :telephone  ,"#{@profile.telephone}" %>
-    </div>
-
-    <div class="field">
-      company:  <br>
-      <%= text_field_tag :company_name  ,"#{@client.company_name}" %>
-
-    </div>
-    <div class="actions">
-      <%=  submit_tag("Update", :class => 'button big') %>
-    </div>
+</table>
 <% end %>

@@ -1,6 +1,23 @@
-<h1>Editing client</h1>
+<div class="row align_center">
+  <div class="col-lg-12">
+    <%=image_tag("/images/nextbridge.png" ,:size => "150x150", :alt => "Edit Entry")%>
+  </div>
+</div>
 
-<%= render 'form_edit' %>
+<br/>
 
-<%= link_to 'Show', @client %> |
-<%= link_to 'Back', clients_path %>
+<div class="row">
+  <div class="col-lg-12">
+    <h1>Editing client</h1>
+  </div>
+</div>
+
+<br/>
+
+<div class="row align_center">
+  <div class="col-lg-12">
+      <%= render 'form_edit' %>
+  </div>
+</div>
+
+

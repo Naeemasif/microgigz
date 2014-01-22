@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116072918) do
+ActiveRecord::Schema.define(:version => 20140120104135) do
 
   create_table "clients", :force => true do |t|
     t.boolean  "status"
@@ -20,12 +20,19 @@ ActiveRecord::Schema.define(:version => 20140116072918) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "controllers", :force => true do |t|
+    t.string   "client"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "leads", :force => true do |t|
     t.string   "title"
     t.text     "description"
     t.integer  "client_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "status"
   end
 
   create_table "profiles", :force => true do |t|
@@ -41,13 +48,12 @@ ActiveRecord::Schema.define(:version => 20140116072918) do
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.datetime "start_date"
-    t.string   "pm_name"
     t.boolean  "status"
     t.integer  "lead_id"
     t.integer  "client_id"
-    t.integer  "resource_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "pm_id"
   end
 
   create_table "quotes", :force => true do |t|
@@ -57,10 +63,17 @@ ActiveRecord::Schema.define(:version => 20140116072918) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "resources", :force => true do |t|
+  create_table "resource_project_allocations", :force => true do |t|
+    t.integer  "resource_id"
     t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "resources", :force => true do |t|
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "availability"
   end
 
   create_table "users", :force => true do |t|

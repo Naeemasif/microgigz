@@ -1,12 +1,8 @@
-<div class="row align_center">
-  <div class="col-lg-12">
-    <%=image_tag("/images/nextbridge.png" ,:size => "150x150", :alt => "Edit Entry")%>
-  </div>
-</div>
+
 
 <div class="row">
   <div class="col-lg-12">
-     <h1>Listing projects</h1>
+
     <br>
 
        <table class="table">
@@ -27,14 +23,15 @@
           <tr>
             <td><%= project.title %></td>
             <td><%= project.start_date %></td>
-            <td><%= project.pm_name %></td>
+            <%@profile = Profile.find_by_profileable_id(project.id)%>
+            <td><%= @profile.name %></td>
             <td><%= project.status %></td>
             <td><%= project.lead_id %></td>
             <td><%= project.client_id %></td>
-            <td><%= project.resource_id %></td>
-            <td><%= link_to 'Show', project %></td>
-            <td><%= link_to 'Edit', edit_project_path(project) %></td>
-            <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%#= project.resource_id %></td>
+            <td><%= link_to 'Show', project ,:class=>"btn btn-default"%></td>
+            <td><%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-default" %></td>
+            <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-default" %></td>
           </tr>
         <% end %>
     </table>
@@ -53,6 +50,9 @@
         </td>
         <td>
           <%= link_to 'Leads', leads_path,:class=>"btn btn-default" %>
+        </td>
+        <td>
+          <%= link_to 'New Project', new_project_path,:class=>"btn btn-default" %>
         </td>
       </tr>
     </table>

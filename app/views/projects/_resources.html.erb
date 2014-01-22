@@ -1,0 +1,40 @@
+<div class="container" style="height: auto;width: 70%;background: #ffffff;position: absolute;top: 10%;left: 15%;box-shadow: 5px 5px 15px #888888">
+  <div class="row align_center">
+    <div class="col-lg-12">
+      <%=image_tag("/images/nextbridge.png" ,:size => "150x150", :alt => "Edit Entry")%>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+       <h3>Listing Resources</h3>
+       <br>
+       <table class="table">
+         <tr>
+           <td>
+             <h6>Resources</h6>
+           </td>
+           <td>
+             <input type="text" class="form-control">
+           </td>
+         </tr>
+       </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div id="list">
+        <%=render :partial =>"resource_list"%>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
