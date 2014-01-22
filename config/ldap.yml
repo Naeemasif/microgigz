@@ -24,9 +24,9 @@ development:
   host: 10.28.82.2
   port: 389
   attribute: cn
-  base: ou=people,dc=esc
-  admin_user: cn=admin,dc=esc
-  admin_password: admin_password
+  base: ou=Users, dc=nxb,dc=com,dc=pk
+  #admin_user: dc=admin,dc=com,dc=pk
+  #admin_password: admin_password
   ssl: false
   # <<: *AUTHORIZATIONS
 
