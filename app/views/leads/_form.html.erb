@@ -1,3 +1,4 @@
+<br>
 <%= form_for(@lead) do |f| %>
   <% if @lead.errors.any? %>
     <div id="error_explanation">
@@ -10,20 +11,37 @@
       </ul>
     </div>
   <% end %>
+  <table class="table">
+    <tr>
+      <td>
+        <%= f.label :client_id %>
+      </td>
+      <td>
+        <%#=select_tag "clients",options_from_collection_for_select(@clients,"id", "company_name"),:class=>"form-control"%>
+    </tr>
+    <tr>
+      <td>
+         <%= f.label :title %>
+      </td>
+      <td>
+         <%= f.text_field :title,:class=>"form-control" %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+         <%= f.label :description %>
+      </td>
+      <td>
+         <%= f.text_area :description,:class=>"form-control"  %>
+      </td>
+    </tr>
 
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <td>
+    </td>
+    <td>
+         <%= f.submit :Save,:class=>"btn btn-default" %>
+         <%= link_to 'Back', leads_path,:class=>"btn btn-default" %>
+    </td>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :client_id %><br />
-    <%= f.number_field :client_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </table>
 <% end %>

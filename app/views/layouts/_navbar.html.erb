@@ -1,0 +1,28 @@
+<div class="navlogin_header">
+  <span class="float_left margin_left">
+     <%=link_to "Home", root_path,:class=>"login_link_color"%>
+  </span>
+  <span>
+     <%=link_to "Log in", new_user_session_path,:class=>"login_link_color"%>
+  </span>
+</div>
+
+<nav class="navbar navbar navbar-inverse" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#"><span class="navbar_brandcolor">Kantoor</span></a>
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse margin_navlinks" id="bs-example-navbar-collapse-1">
+    <ul class="nav nav-tabs border_0px" >
+      <li><%=link_to :Leads,leads_path,:class=>"listerner",:id=>"leads",:style=>"background: transparent;border: 0px;color: #ffffff"%></li>
+      <li><%=link_to :Projects,projects_path,:class=>"listerner",:id=>"projects",:style=>"background: transparent;border: 0px;color: #ffffff"%></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>

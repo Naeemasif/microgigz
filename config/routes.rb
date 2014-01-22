@@ -1,14 +1,13 @@
 Microgigz::Application.routes.draw do
+  root :to => 'profiles#index'
+  get '/projects/get_client_name'=>'projects#get_client_name'
+  get '/projects/display_resources'=>'projects#display_resources'
   resources :projects
-
-
   resources :leads
-
-
   resources :profiles
-
   resources :clients
   devise_for :users
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -59,7 +58,7 @@ Microgigz::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+
 
   # See how all your routes lay out with "rake routes"
 

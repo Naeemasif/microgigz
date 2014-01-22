@@ -1,23 +1,56 @@
+<br/>
+<table class="table">
+
 <%= form_tag :action => :create, :method => :post do   %>
 
-    <div class="field">name:  <br>
-        <%= text_field_tag :name %>
-      </div>
-      <div class="field">email:<br>
-        <%= text_field_tag :email %>
-      </div>
-
-
-        <div class="field">telephone: <br>
-         <%= text_field_tag :telephone %>
-        </div>
-
-        <div class="field">
-        company:  <br>
-         <%= text_field_tag :company_name %>
-
-          </div>
-    <div class="actions">
-    <%=  submit_tag("Save", :class => 'button big') %>
-    </div>
+   <tr>
+     <td class="align_left">
+       name:
+     </td>
+     <td>
+       <%= text_field_tag :name,nil,:class=>"form-control" %>
+     </td>
+   </tr>
+   <tr>
+     <td class="align_left">
+       email:
+     </td>
+     <td>
+       <%= text_field_tag :email,nil,:class=>"form-control"%>
+     </td>
+   </tr>
+   <tr>
+      <td class="align_left">
+        telephone:
+      </td>
+      <td>
+        <%= text_field_tag :telephone,nil,:class=>"form-control" %>
+      </td>
+   </tr>
+   <tr>
+     <td class="align_left">
+       company:
+     </td>
+     <td>
+       <%= text_field_tag :company_name,nil,:class=>"form-control" %>
+     </td>
+   </tr>
+   <tr>
+     <td>
+       <table>
+         <tr>
+           <td>
+             <%=  submit_tag("Save", :class => 'btn btn-default') %>
+           </td>
+           <td>
+             <%= link_to 'Back', clients_path,:class=>"btn btn-default" %>
+           </td>
+         </tr>
+       </table>
+     </td>
+     <td>
+     </td>
+   </tr>
+</table>
 <% end %>
+

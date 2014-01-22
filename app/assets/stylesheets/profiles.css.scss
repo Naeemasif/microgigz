@@ -1,3 +1,55 @@
 // Place all the styles related to the Profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+/**********************************************Profile/index.html.erb**************************************************/
+
+/*setting alignment and padding here*/
+.align_padding
+{
+  text-align: right;
+  padding: 5% 0 0 0;   /*top right bottom left*/
+
+}
+
+/*setting float and padding*/
+.float_padding
+{
+  float: right;
+  padding: 50px 0 0 0; /*top right bottom left*/
+}
+
+/*clearing the floats*/
+.clear_both
+{
+  clear: both;        /*clear floats if any*/
+}
+/*seting all four paddings*/
+.padding_4
+{
+  padding: 1%; /*top right botom left*/
+}
+
+/*setting all four margins*/
+.margin_4
+{
+  margin: 2%;    /*top right bottom left*/
+}
+
+/*setting the background color*/
+.background_color
+{
+  background: #202020 ; /*grey shades*/
+}
+/*seting the text color*/
+.color
+{
+  color: #ffffff;   /*text color is white*/
+}
+
+/**********************************************Profile/index.html.erb**************************************************/
+
+

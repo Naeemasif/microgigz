@@ -1,9 +1,59 @@
-<p id="notice"><%= notice %></p>
+<div class="row align_center">
+  <div class="col-lg-12">
+    <%=image_tag("/images/nextbridge.png" ,:size => "150x150", :alt => "Edit Entry")%>
+  </div>
+</div>
 
-<p>
-  <b>company name:</b>
-  <%= @client.company_name %>
-</p>
+<br/>
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<div class="row">
+  <div class="col-lg-12">
+    <p id="notice"><%= notice %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+     <table class="table">
+        <tr>
+          <td class="align_right">
+            <b>company name:</b>
+          </td>
+          <td class="align_left">
+            <%= @client.company_name %>
+          </td>
+        </tr>
+       <tr>
+         <td class="align_right">
+           <b>email:</b>
+         </td>
+         <td class="align_left">
+           <%= @profile.email %>
+         </td>
+       </tr>
+       <tr>
+         <td class="align_right">
+           <b>telephone:</b>
+         </td>
+         <td class="align_left">
+           <%= @profile.telephone %>
+         </td>
+       </tr>
+     </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+   <table>
+     <tr>
+       <td>
+         <%= link_to 'Edit', edit_client_path(@client),:class=>"btn btn-default" %>
+       </td>
+       <td>
+         <%= link_to 'Back', clients_path,:class=>"btn btn-default" %>
+       </td>
+     </tr>
+   </table>
+  </div>
+</div>

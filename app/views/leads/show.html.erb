@@ -1,20 +1,45 @@
-<p id="notice"><%= notice %></p>
+<br>
+<div class="row">
+  <div class="col-lg-12">
+    <%if !notice.blank?%>
+       <div class="alert alert-success"><p id="notice"><%= notice %></p></div>
+    <%end%>
+    <% notice = "" %>
+    <br>
+    <table class="table">
+      <tr>
+        <td>
+          <b>Title:</b>
+        </td>
+        <td>
+          <p><%= @lead.title %></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Description:</b>
+        </td>
+        <td>
+          <p><%= @lead.description %></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <b>Client:</b>
+        </td>
+        <td>
+          <p><%= @lead.client_id %></p>
+        </td>
+      </tr>
+    </table>
+   </div>
+</div>
 
-<p>
-  <b>Title:</b>
-  <%= @lead.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @lead.description %>
-</p>
-
-<p>
-  <b>Client:</b>
-  <%= @lead.client_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_lead_path(@lead) %> |
-<%= link_to 'Back', leads_path %>
+<table class="table">
+  <tr>
+    <td>
+      <%= link_to 'Edit', edit_lead_path(@lead),:class=>"btn btn-default" %>
+      <%= link_to 'Back', leads_path,:class=>"btn btn-default" %>
+    </td>
+  </tr>
+</table>

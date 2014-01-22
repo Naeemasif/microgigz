@@ -40,7 +40,10 @@ class ProfilesController < ApplicationController
   # POST /profiles
   # POST /profiles.json
   def create
+
+    @resource = Resource.create()
     @profile = Profile.new(params[:profile])
+    @profile.update_attributes(profileable_id:@resource.id,profileable_type:'Resource')
 
     respond_to do |format|
       if @profile.save

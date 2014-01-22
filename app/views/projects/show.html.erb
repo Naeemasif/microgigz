@@ -1,40 +1,70 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @project.title %>
-</p>
-
-<p>
-  <b>Start date:</b>
-  <%= @project.start_date %>
-</p>
-
-<p>
-  <b>Pm name:</b>
-  <%= @project.pm_name %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @project.status %>
-</p>
-
-<p>
-  <b>Lead:</b>
-  <%= @project.lead_id %>
-</p>
-
-<p>
-  <b>Client:</b>
-  <%= @project.client_id %>
-</p>
-
-<p>
-  <b>Resource:</b>
-  <%= @project.resource_id %>
-</p>
 
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="row">
+  <div class="col-lg-12">
+   <h1>Project</h1>
+    <br>
+   <p id="notice"><%= notice %></p>
+   <table class="table">
+     <tr>
+       <td>
+         <b>Title:</b>
+       </td>
+       <td>
+         <%= @project.title %>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <b>Start date:</b>
+       </td>
+       <td>
+         <%= @project.start_date %>
+       </td>
+     </tr>
+     <%@project = Project.find_by_id(params[:id])%>
+     <%@pm_id   = Profile.find_by_profileable_id(@project.pm_id)%>
+     <tr>
+       <td>
+         <b>Pm name:</b>
+       </td>
+       <td>
+         <%= @pm_id.name %>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <b>Status:</b>
+       </td>
+       <td>
+         <%= @project.status %>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <b>Lead:</b>
+       </td>
+       <td>
+         <%= @project.lead_id %>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <b>Client:</b>
+       </td>
+       <td>
+         <%= @project.client_id %>
+       </td>
+     </tr>
+     <tr>
+       <td>
+         <%= link_to 'Edit', edit_project_path(@project),:class=>"btn btn-default" %>
+         <%= link_to 'Back', projects_path,:class=>"btn btn-default" %>
+       </td>
+       <td></td>
+     </tr>
+   </table>
+  </div>
+</div>
+
+
