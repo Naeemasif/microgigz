@@ -1,12 +1,6 @@
-<div class="row align_center">
-  <div class="col-lg-12">
-    <%=image_tag("/images/nextbridge.png" ,:size => "150x150", :alt => "Edit Entry")%>
-  </div>
-</div>
-
 <div class="row">
   <div class="col-lg-12">
-       <h1>Listing clients</h1>
+       <h2>Clients</h2>
   </div>
 </div>
 
@@ -14,19 +8,10 @@
 
 <div class="row">
   <div class="col-lg-12">
-
     <table class="table">
+        <% @profile.each do |profiles| %>
         <tr>
-            <th>company name</th>
-            <th></th>
-            <th colspan="2"></th>
-        </tr>
-        <% @clients.each do |client| %>
-        <tr>
-            <td><%= client.company_name %></td>
-            <td><%= link_to 'Show', client,:class=>"btn btn-default" %></td>
-            <td><%= link_to 'Edit', edit_client_path(client),:class=>"btn btn-default" %></td>
-            <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-default" %></td>
+            <td><%= link_to profiles.name,profile_path(id:profiles.id)%></td>
         </tr>
         <% end %>
     </table>
@@ -42,3 +27,8 @@
     </td>
   </tr>
 </table>
+
+
+
+<%#= link_to 'Edit', edit_client_path(client),:class=>"btn btn-default" %>
+<%#= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-default" %>

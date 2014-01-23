@@ -20,4 +20,9 @@ function change_nav_tabs_background(x)
       $("li>a.listerner").css("background","transparent");
       $("#projects").css("background","black");
   }
+  else if(x == "clients")
+  {
+      $("li>a.listerner").css("background","transparent");
+      $("#clients").css("background","black");
+  }
 }

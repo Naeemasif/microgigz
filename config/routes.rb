@@ -1,5 +1,5 @@
 Microgigz::Application.routes.draw do
-  root :to => 'profiles#index'
+  root :to => 'leads#index'
   get '/projects/get_client_name'=>'projects#get_client_name'
   get '/projects/display_resources'=>'projects#display_resources'
   resources :projects
@@ -7,7 +7,6 @@ Microgigz::Application.routes.draw do
   resources :profiles
   resources :clients
   devise_for :users
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

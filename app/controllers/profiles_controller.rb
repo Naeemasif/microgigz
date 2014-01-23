@@ -13,7 +13,10 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @profile = Profile.find(params[:id])
+    @profile =  Profile.find_by_profileable_id(params[:id])
+    @client  =  Client.find_by_id(params[:id])
+    @leads   =  Lead.where(client_id:params[:id])
+
 
     respond_to do |format|
       format.html # show.html.erb

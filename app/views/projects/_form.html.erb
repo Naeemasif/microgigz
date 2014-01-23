@@ -32,9 +32,7 @@
         <%= f.label :pm_name %>
       </td>
       <td>
-        <%if !@project_manager.blank?%>
         <%=select_tag "pm", options_from_collection_for_select(@project_manager, "id", "name"),:class=>"form-control" ,include_blank: true%>
-        <%end%>
       </td>
     </tr>
     <tr>
@@ -42,9 +40,7 @@
         <%= f.label :lead_id %>
       </td>
       <td>
-        <%if !@lead.blank?%>
         <%=select_tag "lid", options_from_collection_for_select(@lead, "id", "title"),:onchange=>"find_client_name(this);",:class=>"form-control",include_blank: true%>
-        <%end%>
       </td>
     </tr>
     <tr>
@@ -52,7 +48,6 @@
         <%= f.label "Client Name" %>
       </td>
       <td>
-
        <div class="float_left">
          <%= text_field_tag :client_name,nil,:class=>"form-control",:readonly=>true%></div>
         <div class="float_left visibility_hidden">
