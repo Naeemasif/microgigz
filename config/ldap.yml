@@ -23,9 +23,9 @@ authorizations: &AUTHORIZATIONS
 development:
   host: 10.28.82.2
   port: 389
-  attribute: sAMAccountName
-  base: ou=VTEAMS,dc=nextbridge,dc=org
-  #admin_user: dc=admin,dc=nextbridge,dc=org
+  attribute: "userPrincipalName"
+  base: "dc=nextbridge,dc=org"
+  #admin_user: cn=admin,dc=test,dc=com
   #admin_password: admin_password
   ssl: false
   # <<: *AUTHORIZATIONS
