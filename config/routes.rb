@@ -1,9 +1,12 @@
 Microgigz::Application.routes.draw do
-  devise_for :users
+  #devise_for :users
 
   root :to => 'profiles#index'
   get '/projects/get_client_name'=>'projects#get_client_name'
   get '/projects/display_resources'=>'projects#display_resources'
+  get '/login/new'=>'login#new'
+  post '/login/auth'=>'login#auth'
+  get   '/login/logout'=>'login#logout'
   resources :projects
   resources :leads
   resources :profiles
