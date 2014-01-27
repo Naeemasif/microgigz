@@ -2,8 +2,8 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
 
+    @profile = Profile.find_by_sql("select c.id,p.name from clients c,profiles p where c.id=p.profileable_id")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clients }
@@ -41,13 +41,13 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(:company_name => params[:company_name], :status => true)
+    @client = Client.new(:company_name => params[:company_name], :status =>"Active")
 
     respond_to do |format|
       if @client.save
         @profile = Profile.new(:name =>params[:name], :email => params[:email], :telephone => params[:telephone])
         @profile.profileable_id = @client.id
-        @profile.profileable_type = "client"
+        @profile.profileable_type = "Client"
         @profile.save
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }

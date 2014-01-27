@@ -1,15 +1,11 @@
-
-
 <div class="row">
   <div class="col-lg-12">
-
     <br>
-
-       <table class="table">
+    <table class="table">
          <tr class="color background_color">
            <th >Title</th>
            <th>Start date</th>
-           <th>Pm name</th>
+           <th>PM name</th>
            <th>Status</th>
            <th>Lead</th>
            <th>Client</th>
@@ -18,12 +14,11 @@
            <th></th>
            <th></th>
          </tr>
-
         <% @projects.each do |project| %>
           <tr>
             <td><%= project.title %></td>
             <td><%= project.start_date %></td>
-            <%@profile = Profile.find_by_profileable_id(project.id)%>
+            <%@profile = Profile.find_by_profileable_id(project.client_id)%>
             <td><%= @profile.name %></td>
             <td><%= project.status %></td>
             <td><%= project.lead_id %></td>
@@ -45,9 +40,6 @@
 
     <table>
       <tr>
-        <td>
-          <%= link_to 'Profiles', profiles_path,:class=>"btn btn-default" %>
-        </td>
         <td>
           <%= link_to 'Leads', leads_path,:class=>"btn btn-default" %>
         </td>

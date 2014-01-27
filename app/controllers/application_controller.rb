@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate
 protected
   def authenticate
-    unless session[:username]
+
+    if !session[:username].blank? and !session[:return_to].blank?
       session[:return_to] = @request.request_uri
       redirect_to :controller => "login"
       return false

@@ -29,11 +29,10 @@ class LoginController < ApplicationController
 
   # logout
   # clears the session
-  def logout
-
+  def abc
     session[:username] = nil
     flash[:notice] = "Logged out"
-    redirect_to :action => "index"
+    redirect_to :controller=>"leads",:action=>"index"
   end
 
 end

@@ -1,3 +1,4 @@
+/*sending ajax request for client name*/
 function find_client_name(x)
 {
     document.getElementById("progress").style.visibility = "visible";
@@ -7,3 +8,4 @@ function find_client_name(x)
         type: 'GET'
     });
 }
+

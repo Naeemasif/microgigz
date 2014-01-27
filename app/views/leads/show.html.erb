@@ -1,3 +1,4 @@
+
 <br>
 <div class="row">
   <div class="col-lg-12">
@@ -27,14 +28,16 @@
         <td>
           <b>Client:</b>
         </td>
+        <%@lead = Lead.find_by_id(params[:id]).client_id%>
+        <%@client_name = Profile.where(profileable_id:@lead,profileable_type:"Client")%>
         <td>
-          <p><%= @lead.client_id %></p>
+          <p><%=link_to "#{@client_name[0].name}",client_path(id:@lead)%></p>
         </td>
       </tr>
     </table>
    </div>
 </div>
-
+<br/>
 <table class="table">
   <tr>
     <td>

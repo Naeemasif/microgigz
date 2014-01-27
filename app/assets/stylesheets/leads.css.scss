@@ -7,13 +7,24 @@
 /*seting the text color*/
 .color
 {
-  color: #ffffff;   /*text color is white*/
+  color: #ffffff;       /*text color is white*/
 }
 
 /*setting the background color*/
 .background_color
 {
   background: #202020 ; /*grey shades*/
+}
+
+/*setting the margins of horizontal row in leads index.html.erb*/
+.margin
+{
+  margin: 0 -3% 0 -3%; /*top right bottom left*/
+}
+/*setting the color of the pae title*/
+.page_title_color
+{
+  color: #0096C8;      /*setting the page title color*/
 }
 
 /************************************************Leads/index.html.erb**************************************************/
