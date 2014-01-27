@@ -1,79 +1,232 @@
 
-/**************************************application.html.erb************************************************************/
 
-/*for main container*/
+
+
+/**************************************application.html.erb************************************************************/
+/*extending the main container bootstrap class*/
 .container
+{
+  margin: 0%;   /*top right bottom left*/
+  padding: 0%;  /*top right bottom left*/
+  width: 100%;
+  height: 100%;
+}
+/*extending the bootstrap row class*/
+.row
+{
+  margin: 0%;    /*top right bottom left*/
+}
+/*extending the bootstrap col-lg-12 class*/
+.col-lg-12
+{
+  margin: 0%;    /*top right bottom left*/
+  padding: 0%;   /*top right bottom left*/
+}
+/*extending the bootstrap navbar-inverse class*/
+.navbar-inverse
+{
+  background: none;
+  margin: 0%;     /*top right bottom left*/
+  padding: 0%;    /*top right bottom left*/
+}
+/*extending the bootstrap navbar*/
+.navbar
+{
+  margin: 0%;             /*top right bottom left*/
+}
+/*setting the padding border and margin of yielded page container*/
+.padding_margin_border
+{
+  padding: 0% 2% 2% 2%;  /*top right bottom left*/
+  border: 1px solid #A1A1A1;
+  margin: 1%;            /*top right bottom left*/
+
+}
+/*setting the padding of he copy right*/
+.padding_left_copyright
+{
+  padding: 0 0 0 1%;    /*top right bottom left*/
+}
+/*setting the text-color of copy-right*/
+.text_color_copyright
+{
+  color: #2a2a2a;
+}
+/*setting the margins of the side bar*/
+.side_bar
+{
+  border: 1px solid #A1A1A1;
+  margin: 1% 0 0 3%;   /*top right bottom left*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*main contaainer height and width*/
+.container_deimensions
 {
   height: 100%;
   width: 100%;
+  padding: 0px;
+
+
 }
 
-/*nav bar brand color*/
-.navbar_brandcolor
+/*navbar stylings*/
+.navbar_diemensions
 {
-  color: #ffffff;
+  height: 100%;
+  background: none;
+  background: #F5F5F5;
+  border: 0px;
+  border-bottom: 1px solid #A1A1A1;
+
+
 }
 
-/*nav bar links margins*/
-.margin_navlinks
+/*main company logo*/
+.main_logo
 {
-  margin:0.3% 0 0 0; /*top right bottom left*/
+  height:59px;
+  width:59px;
+  margin:5%;
 }
-
-/*setting the border to 0px in nav bars*/
-.border_0px
-{
-  border: 0px;       /*all four borders to 0px*/
-}
-
-/*nav bar login header style in which login link is displayed*/
-.navlogin_header
-{
-  text-align: right;
-  width: 100%;
-  background: #000000;
-  color: #ffffff;
-  padding: 0 1% 0 0;   /*top right bottom left*/
-}
-
-/*login link color */
-.login_link_color
-{
-  color: #ffffff;
-}
-
-/*log in link hover color*/
-a.login_link_color:hover
-{
-  color: #808080;
-}
-
-/*log bar link colors*/
-.nav_bar_links
-{
-  background: transparent;
-  border: 0px;       /*all four borders to 0px*/
-  color: #ffffff;
-}
-
-/*style for side bar in application.html.erb*/
-.sidebar
-{
-  margin-left: 7.5%;
-  border: 1px solid #000000;
-  background:#202020;
-}
-/*float left for home link in the header*/
+/*left floats */
 .float_left
 {
   float: left;
 }
-/*margin left on home link*/
+
+/*float right*/
+.float_right
+{
+  float: right;
+}
+
+/*margin left*/
 .margin_left
 {
-  margin: 0 0 0 1%;  /*top right bottom left*/
+  margin:0 0 0 100%;
 }
+
+/*setting the text color to black */
+.text_color
+{
+  color: #000000;
+}
+
+/*setting the margin to the left of menu links */
+.navlink_margin_bacground
+{
+  margin: -2% 0 0 5%;
+}
+
+/*setting the border to 0px*/
+.border_0px
+{
+  border: 0px;
+}
+
+/*setting the back ground color and border for nav bar minimize links*/
+.navbar_expandbutton
+{
+  background: transparent;
+  border:1px solid #A1A1A1;
+
+}
+
+/*setting the text color to the black */
+.text_color
+{
+  color: #000000;
+
+}
+/*line height for menu links */
+.nav-tabs > li > a
+{
+  line-height: 85%;
+  border: 1px solid transparent;
+  border-radius: 0px;
+}
+/*side bar*/
+.side_bar_border_margin
+{
+  border: 1px solid #A1A1A1;
+  margin: 0 0 0 7.5%;
+}
+/*extending the navbar-collapse class from bootstrap*/
+.navbar-collapse
+{
+  margin: -2% 0 0 4%; /*top right bottom left*/
+}
+
+/*main page border*/
+.border_main_page
+{
+  border:1px solid #A1A1A1;
+}
+
+
+
+
+
+
+@media (max-width: 768px)
+{
+  .navbar-collapse
+  {
+    margin: 2% 0 0 5%; /*top right bottom left*/
+  }
+}
+
+
+
+
 /**************************************application.html.erb************************************************************/
+
+
+
+
+
+
 
 
 

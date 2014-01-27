@@ -1,29 +1,45 @@
-<div class="navlogin_header">
-  <span class="float_left margin_left">
-     <%=link_to "Home", root_path,:class=>"login_link_color"%>
-  </span>
-  <span>
-     <%=link_to "Log in", new_user_session_path,:class=>"login_link_color"%>
-  </span>
-</div>
-
-<nav class="navbar navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-inverse"  role="navigation" style="border: none;border-bottom: 1px solid #A1A1A1">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
       <span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="#"><span class="navbar_brandcolor">Kantoor</span></a>
+
+    <div class="float_left">
+      <a class="navbar-brand" href="#"><%=image_tag("/images/nextbridge.png",:class=>"float_left main_logo",:alt => "Edit Entry")%></a>
+    </div>
+    <div class="float_left text_color">
+      <span> <h3>Kantoor</h3></span>
+    </div>
   </div>
+
+  <div class="float_right">
+    <div class="float_right">
+      <span><a href="#" class="text_color">&nbsp;SignOut&nbsp;</a></span>
+    </div>
+    <div class="float_right">
+      <span><a href="#" class="text_color">&nbsp; Configuration |</a></span>
+    </div>
+    <div class="float_right">
+      <span><a href="#" class="text_color">&nbsp; Ayaz Khan |</a></span>
+    </div>
+  </div>
+  <div class="clear_both"></div>
+
   <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse margin_navlinks" id="bs-example-navbar-collapse-1">
-    <ul class="nav nav-tabs border_0px" >
-      <li><%=link_to :Leads,leads_path,:class=>"listerner",:id=>"leads",:style=>"background: transparent;border: 0px;color: #ffffff"%></li>
-      <li><%=link_to :Projects,projects_path,:class=>"listerner",:id=>"projects",:style=>"background: transparent;border: 0px;color: #ffffff"%></li>
-      <li><%=link_to :Clients,clients_path,:class=>"listerner",:id=>"clients",:style=>"background: transparent;border: 0px;color: #ffffff"%></li>
+  <div class="collapse navbar-collapse navlink_margin border_0px" id="bs-example-navbar-collapse-1">
+    <ul class="nav nav-tabs border_0px">
+      <li><%=link_to :Leads,leads_path,:class=>"listerner text_color",:id=>"leads"%></li>
+      <li><%=link_to :Projects,projects_path,:class=>"listerner text_color",:id=>"projects"%></li>
+      <li><%=link_to :Clients,clients_path,:class=>"listerner text_color",:id=>"clients"%></li>
+      <li><%=link_to :Resources,clients_path,:class=>"listerner text_color",:id=>"clients"%></li>
+      <li><%=link_to :Directory,clients_path,:class=>"listerner text_color",:id=>"clients"%></li>
     </ul>
   </div><!-- /.navbar-collapse -->
+  <div class="clear_both"></div>
 </nav>
+
+
