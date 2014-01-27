@@ -3,20 +3,19 @@
 Devise.setup do |config|
   # ==> LDAP Configuration 
   # config.ldap_logger = true
-  # config.ldap_create_user = false
+  config.ldap_create_user = false
   # config.ldap_update_password = true
   # config.ldap_config = "#{Rails.root}/config/ldap.yml"
   # config.ldap_check_group_membership = false
   # config.ldap_check_attributes = false
   # config.ldap_use_admin_to_bind = false
-   config.ldap_ad_group_check = false
+  # config.ldap_ad_group_check = false
   config.ldap_create_user = true
   config.ldap_update_password = false
-  config.authentication_keys = [ :login ]
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  config.secret_key = 'e0c27ea5205d32b2441bfe6db1e0fdc67f66fd15a31172d56728dfd38ff3c14b9b26f8c8b053e2d7e2ec7764fa3f9bf102aea052ed25254987b6a3e85fa33812'
+  config.secret_key = '7e45fd05c20d0b70faee9e37bdc72256909e7ab31db82f7d0c688293efb8af11ed24e0b5f61332da3e96ce5af4a7b78308b6a7c7db55d67b99d03b2acce7826d'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -107,7 +106,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '41b58e8b958bc4eb957c8d57620ba508463e0b02c9dab617477c6017198c86063de7d2986bc22cfbae44f4b488dbf77c1291a2cb040472db776d1b0638466f5e'
+  # config.pepper = 'b1937a84713a5615f2044b70d0707d91969f20e4245de8e0caf13225b88e9b0d1ecf968e1d5edf286b65a2b07d422665017e86ad80aedd3f4f7b5c9e9babb175'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

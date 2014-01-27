@@ -1,4 +1,5 @@
-<nav class="navbar navbar-inverse"  role="navigation" style="border: none;border-bottom: 1px solid #A1A1A1">
+<nav class="navbar navbar navbar-inverse" role="navigation">
+
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
     <button type="button"  class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -18,14 +19,21 @@
 
   <div class="float_right">
     <div class="float_right">
-      <span><a href="#" class="text_color">&nbsp;SignOut&nbsp;</a></span>
+      <%if !session[:username].blank?%>
+          <span><%=link_to :Signout ,login_abc_path%></span>
+      <%else%>
+          <span><%=link_to :Login ,login_new_path%></span>
+      <%end%>
+
     </div>
     <div class="float_right">
       <span><a href="#" class="text_color">&nbsp; Configuration |</a></span>
     </div>
+    <%if !session[:username].blank?%>
     <div class="float_right">
-      <span><a href="#" class="text_color">&nbsp; Ayaz Khan |</a></span>
+      <span><a href="#" class="text_color">&nbsp; <%=session[:username]%>|</a></span>
     </div>
+    <%end%>
   </div>
   <div class="clear_both"></div>
 
