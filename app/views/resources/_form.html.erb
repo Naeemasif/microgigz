@@ -1,0 +1,51 @@
+<br/>
+<table class="table">
+
+  <%= form_tag :action => :create, :method => :post do   %>
+
+      <tr>
+        <td class="align_left">
+          name:
+        </td>
+        <td>
+          <%= text_field_tag :name,nil,:class=>"form-control" %>
+        </td>
+      </tr>
+      <tr>
+        <td class="align_left">
+          email:
+        </td>
+        <td>
+          <%= text_field_tag :email,nil,:class=>"form-control"%>
+        </td>
+      </tr>
+      <tr>
+        <td class="align_left">
+          telephone:
+        </td>
+        <td>
+          <%= text_field_tag :telephone,nil,:class=>"form-control" %>
+        </td>
+      </tr>
+      <tr>
+
+      </tr>
+      <tr>
+        <td>
+          <table>
+            <tr>
+              <td>
+                <%=  submit_tag("Save", :class => 'btn btn-default') %>
+              </td>
+              <td>
+                <%= link_to 'Back', clients_path,:class=>"btn btn-default" %>
+              </td>
+            </tr>
+          </table>
+        </td>
+        <td>
+        </td>
+      </tr>
+      </table>
+  <% end %>
+

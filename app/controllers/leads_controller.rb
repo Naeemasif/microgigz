@@ -46,6 +46,7 @@ class LeadsController < ApplicationController
     @lead.update_attributes(client_id:params[:clients])
     respond_to do |format|
       if @lead.save
+        @lead.status = "Active"
         format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
         format.json { render json: @lead, status: :created, location: @lead }
       else

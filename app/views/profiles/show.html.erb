@@ -27,6 +27,7 @@
   </tr>
   <tr>
     <td>
+      <% if @profile.profileable_type == "Client" %>
       <b>Company Name</b>
     </td>
     <td>
@@ -37,27 +38,7 @@
 </table>
 
 <br>
-<h3><b>Leads</b></h3>
-<br>
 
-<table class="table">
-  <tr>
-    <th>
-      <b>Title</b>
-    </th>
-  </tr>
-  <%for i in 0..@leads.length-1 %>
-  <tr>
-    <td>
-      <%=link_to @leads[i].title,lead_path(id:@leads[i].id)%>
-    </td>
-  </tr>
-  <%end%>
-  <tr><td></td></tr>
-</table>
-
-<br>
-<table>
   <tr>
     <td>
       <%= link_to 'Edit', edit_profile_path(@profile),:class=>"btn btn-default" %>
@@ -65,3 +46,4 @@
     </td>
   </tr>
 </table>
+<% end %>

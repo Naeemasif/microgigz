@@ -20,7 +20,7 @@
   <div class="float_right">
     <div class="float_right">
       <%if !session[:username].blank?%>
-          <span><%=link_to :Signout ,login_abc_path%></span>
+          <span><%=link_to :Signout ,login_signout_path%></span>
       <%else%>
           <span><%=link_to :Login ,login_new_path%></span>
       <%end%>
@@ -31,7 +31,7 @@
     </div>
     <%if !session[:username].blank?%>
     <div class="float_right">
-      <span><a href="#" class="text_color">&nbsp; <%=session[:username]%>|</a></span>
+      <span><%=link_to session[:username],profile_path(session[:current_resource_id])%></span>
     </div>
     <%end%>
   </div>

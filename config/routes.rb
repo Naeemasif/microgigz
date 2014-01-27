@@ -4,14 +4,14 @@ Microgigz::Application.routes.draw do
   get  '/projects/get_client_name'=>'projects#get_client_name'
   get  '/projects/display_resources'=>'projects#display_resources'
   get  '/login/new'=>'login#new'
-  get  '/login/abc'=>'login#abc'
+  get  '/login/signout'=>'login#signout'
 
   post '/login/auth'=>'login#auth'
   resources :projects
   resources :leads
   resources :profiles
   resources :clients
-
+  resources :resources
 
 
   # The priority is based upon order of creation:
