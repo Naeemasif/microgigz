@@ -10,17 +10,34 @@
       <div class="float_left">
         <h2 class="page_title_color">Leads</h2>
       </div>
-      <div class="float_right" style="margin: 4% -2% 0 0">
-       <span><%=link_to :Search%></span>
-      </div>
-      <hr class="margin"/>
-      <br/>
-        <%i = 0%>
-        <% @leads.each do |lead| %>
-            <div class="row" style="padding: 0 0 0 1%">
 
-              <div>
-                 <span style="color: #808080">Lead :</span>
+     <div class="float_right lead_sidebar_button">
+       <span>
+         <button type="button" id="show_sidebar"  class="btn btn-default btn-lg hidden-lg">
+           <span class="glyphicon glyphicon-align-justify"></span>
+         </button>
+       </span>
+     </div>
+
+     <div class="float_right margin_search_button">
+       <span><%=link_to :Search%></span>
+       <div id="leads_sidebar" class="leads_sidebar hidden-lg hidden-md hidden-sm hidden-xs">
+         <%=render "leads/sidebar"%>
+       </div>
+     </div>
+
+     <hr class="margin"/>
+     <div class="clear_both"></div>
+     <br/>
+
+
+
+
+    <%i = 0%>
+     <% @leads.each do |lead| %>
+       <div class="row">
+          <div>
+            <span style="color: #808080">Lead :</span>
                  <span><%=link_to "#{lead.title}",lead_path(id:lead.id)%>
                  </span>
                </div>
@@ -58,6 +75,10 @@
         <% end %>
   </div>
 </div>
+
+
+
+
 
 <br />
 <div class="row">

@@ -1,7 +1,3 @@
-
-
-
-
 /**************************************application.html.erb************************************************************/
 /*extending the main container bootstrap class*/
 .container
@@ -28,6 +24,8 @@
   background: none;
   margin: 0%;     /*top right bottom left*/
   padding: 0%;    /*top right bottom left*/
+  border: none;
+  border-bottom: 1px solid #A1A1A1;
 }
 /*extending the bootstrap navbar*/
 .navbar
@@ -40,12 +38,11 @@
   padding: 0% 2% 2% 2%;  /*top right bottom left*/
   border: 1px solid #A1A1A1;
   margin: 1%;            /*top right bottom left*/
-
 }
 /*setting the padding of he copy right*/
 .padding_left_copyright
 {
-  padding: 0 0 0 1%;    /*top right bottom left*/
+  padding: 0 0 1% 1%;    /*top right bottom left*/
 }
 /*setting the text-color of copy-right*/
 .text_color_copyright
@@ -56,73 +53,33 @@
 .side_bar
 {
   border: 1px solid #A1A1A1;
-  margin: 1% 0 0 3%;   /*top right bottom left*/
+  margin: 1% 0 0 3%;    /*top right bottom left*/
+  padding: 0%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*main contaainer height and width*/
-.container_deimensions
+/*setting the margins 4 for configuration - signin/out - logged in margin*/
+.margin_4
 {
-  height: 100%;
-  width: 100%;
-  padding: 0px;
-
-
+  margin: 1% 1% 0 0;    /*top right bottom left*/
 }
-
-/*navbar stylings*/
-.navbar_diemensions
+/*extending the button group class*/
+.btn-group
 {
-  height: 100%;
-  background: none;
-  background: #F5F5F5;
-  border: 0px;
-  border-bottom: 1px solid #A1A1A1;
-
-
+  margin: -2% 0 5% 30%;  /*top right bottom left*/
+  padding: 0 0 2% 0;     /*top right bottom left*/
 }
-
-/*main company logo*/
+/*exteding the btn-group class */
+.dropdown-toggle
+{
+  width: 50%;
+}
+/*extending the dropdown-menu class */
+.dropdown-menu
+{
+  width: 70%;
+  position: absolute;
+  top:45px;
+}
+/*main company logo goes here*/
 .main_logo
 {
   height:59px;
@@ -198,29 +155,37 @@
   margin: -2% 0 0 4%; /*top right bottom left*/
 }
 
-/*main page border*/
+/*main container border*/
 .border_main_page
 {
   border:1px solid #A1A1A1;
 }
+/*setting the border to none*/
+.border_none
+{
+  border: none;
+}
+/**************************************application.html.erb************************************************************/
 
 
-
-
-
-
+/**************************************Media Queries width<=768px******************************************************/
 @media (max-width: 768px)
 {
   .navbar-collapse
   {
     margin: 2% 0 0 5%; /*top right bottom left*/
   }
+  .margin_4
+  {
+    margin: -12% 1% 0 0;    /*top right bottom left*/
+  }
+  .btn-group
+  {
+     margin: 0 0 15% 30%;
+  }
+
 }
-
-
-
-
-/**************************************application.html.erb************************************************************/
+/**************************************Media Queries width<=768px******************************************************/
 
 
 
