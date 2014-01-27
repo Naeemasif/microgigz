@@ -1,7 +1,7 @@
 require 'ldap_connect'
 
 class LoginController < ApplicationController
-
+  skip_before_filter :authenticate
   def index
 
   end
@@ -14,7 +14,12 @@ class LoginController < ApplicationController
     if @ldap
       session[:username] = params[:login][:name]
       flash[:notice] = "Login is scuessful!"
-
+      if session[:return_to]
+        redirect_to_path(session[:return_to])
+        session[:return_to] = nil
+      else
+        redirect_to :controller => "leads"
+      end
     else
       flash[:notice] = "Login failed!"
       redirect_to :action => "new"
