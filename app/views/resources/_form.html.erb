@@ -13,6 +13,21 @@
       </tr>
       <tr>
         <td class="align_left">
+          Login id:
+        </td>
+        <% @x = User.find_by_login_id(session[:username]) %>
+        <% if @x.nil? %>
+        <td>
+          <%= text_field_tag :login_id,"#{session[:username]}",:readonly=>true,:class=>"form-control" %>
+        </td>
+          <% else %>
+            <td>
+              <%= text_field_tag :login_id,nil,:class=>"form-control" %>
+            </td>
+            <% end %>
+      </tr>
+      <tr>
+        <td class="align_left">
           email:
         </td>
         <td>
@@ -27,6 +42,9 @@
           <%= text_field_tag :telephone,nil,:class=>"form-control" %>
         </td>
       </tr>
+
+
+
       <tr>
 
       </tr>

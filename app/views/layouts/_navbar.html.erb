@@ -20,7 +20,9 @@
   <div class="float_right">
     <div class="float_right">
       <%if !session[:username].blank?%>
-          <span><%=link_to :Signout ,login_signout_path%></span>
+          <span><%=link_to :Logout ,login_signout_path%></span>
+          <% elsif user_signed_in? %>
+          <span> <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %></span>
       <%else%>
           <span><%=link_to :Login ,login_new_path%></span>
       <%end%>
@@ -29,10 +31,14 @@
     <div class="float_right">
       <span><a href="#" class="text_color">&nbsp; Configuration |</a></span>
     </div>
-    <%if !session[:username].blank?%>
+    <%if !session[:username].blank? and !session[:current_resource_id].nil?%>
     <div class="float_right">
-      <span><%=link_to session[:username],profile_path(session[:current_resource_id])%></span>
+      <span><%=link_to session[:username],resource_path(:id => session[:current_resource_id])%></span>
     </div>
+        <% elsif user_signed_in? %>
+        <div class="float_right">
+          <span><%=link_to current_user.login_id, resource_path(current_user.userable_id)%></span>
+        </div>
     <%end%>
   </div>
   <div class="clear_both"></div>
@@ -43,7 +49,7 @@
       <li><%=link_to :Leads,leads_path,:class=>"listerner text_color",:id=>"leads"%></li>
       <li><%=link_to :Projects,projects_path,:class=>"listerner text_color",:id=>"projects"%></li>
       <li><%=link_to :Clients,clients_path,:class=>"listerner text_color",:id=>"clients"%></li>
-      <li><%=link_to :Resources,clients_path,:class=>"listerner text_color",:id=>"clients"%></li>
+      <li><%=link_to :Resources,resources_path,:class=>"listerner text_color",:id=>"clients"%></li>
       <li><%=link_to :Directory,clients_path,:class=>"listerner text_color",:id=>"clients"%></li>
     </ul>
   </div><!-- /.navbar-collapse -->

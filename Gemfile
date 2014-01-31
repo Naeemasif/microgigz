@@ -9,7 +9,6 @@ gem 'sqlite3'
 gem  'therubyracer'
 
 gem 'devise'
-gem 'devise_ldap_authenticatable'
 gem 'net-ldap'
 
 # Gems used only for assets and not required

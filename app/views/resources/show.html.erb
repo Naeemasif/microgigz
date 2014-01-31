@@ -1,5 +1,49 @@
 <p id="notice"><%= notice %></p>
 
+<table class="table">
+  <tr>
+    <td>
+      <b>Name</b>
+    </td>
+    <td>
+      <%= @user.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Email</b>
+    </td>
+    <td>
+      <%= @user.email %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <b>Telephone</b>
+    </td>
+    <td>
+      <%= @user.telephone %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%# if @profile.profileable_type == "Client" %>
+          <b>Company Name</b>
+          </td>
+          <td>
+            <%#=@client.company_name%>
+          </td>
+          </tr>
+          <tr><td></td><td></td></tr>
+          </table>
 
-<%= link_to 'Edit', edit_resource_path(@resource) %> |
-<%= link_to 'Back', resources_path %>
+          <br>
+
+          <tr>
+            <td>
+              <%= link_to 'Edit', edit_resource_path(@user),:class=>"btn btn-default" %>
+              <%= link_to 'Back', resources_path,:class=>"btn btn-default"%>
+            </td>
+          </tr>
+          </table>
+      <%# end %>
