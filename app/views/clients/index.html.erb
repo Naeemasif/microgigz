@@ -11,7 +11,7 @@
     <table class="table">
         <% @profile.each do |profiles| %>
         <tr>
-            <td><%= link_to profiles.name,profile_path(id:profiles.id)%></td>
+            <td><%= link_to profiles.name,client_path(id:profiles.id)%></td>
         </tr>
         <% end %>
     </table>

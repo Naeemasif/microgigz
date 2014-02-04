@@ -4,6 +4,7 @@ class ClientsController < ApplicationController
   def index
 
     @profile = Profile.find_by_sql("select c.id,p.name from clients c,profiles p where c.id=p.profileable_id")
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clients }
@@ -14,7 +15,8 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     @client = Client.find(params[:id])
-    @profile = Profile.where(profileable_id:@client.id).first
+    @profile = Profile.where(profileable_id:@client.id, :profileable_type => "Client").first
+    @leads   =  Lead.where(@client.id)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @client }
