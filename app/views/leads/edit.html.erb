@@ -1,4 +1,14 @@
-<h1>Editing lead</h1>
+
+<div class="float-left">
+  <h2>Edit Lead</h2>
+</div>
+<div  id="search-link" class="float-right">
+  <span><%=link_to :Search%></span>
+</div>
+<div class="clear-both"></div>
+<hr>
+
+
 <%= render 'form' %>
 <%= link_to 'Show', @lead %> |
 <%= link_to 'Back', leads_path %>
