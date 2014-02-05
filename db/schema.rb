@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140130051300) do
+ActiveRecord::Schema.define(:version => 20140205044547) do
 
   create_table "clients", :force => true do |t|
     t.string   "company_name"
@@ -27,16 +27,6 @@ ActiveRecord::Schema.define(:version => 20140130051300) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "status"
-  end
-
-  create_table "profiles", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "telephone"
-    t.string   "profileable_type"
-    t.integer  "profileable_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
   end
 
   create_table "projects", :force => true do |t|
@@ -72,18 +62,26 @@ ActiveRecord::Schema.define(:version => 20140130051300) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",               :default => "", :null => false
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",       :default => 0
+    t.integer  "sign_in_count",          :default => 0,  :null => false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
-
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "login_id"
+    t.integer  "userable_id"
+    t.string   "userable_type"
+    t.string   "telephone"
+    t.string   "name"
   end
 
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
