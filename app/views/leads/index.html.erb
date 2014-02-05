@@ -1,54 +1,55 @@
 <script>
-
   function  show_menu(x)
   {
       $("#menu"+ x.id).toggle(500);
   }
 </script>
 
-
-<div class="float-left" >
-    <h2>Leads</h2>
+<header id="leads-head">
+    <section id="page-title" class="float-left" >
+        <h2>Leads</h2>
+    </section>
+    <section  id="search-link" class="float-right">
+        <span><%=link_to :Search%></span>
+    </section>
+</header>
+<div class="clear-both">
 </div>
-<div  id="search-link" class="float-right">
-  <span><%=link_to :Search%></span>
-</div>
-<div class="clear-both"></div>
-<hr>
 
-    <%i = 0%>
-    <% @leads.each do |lead| %>
-    <div class="row" id="lead-record"   onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background='white'">
-     <div  class="float-left">
-         <%=link_to "#{lead.title}",lead_path(id:lead.id)%>
-         <br>
-         <%= lead.description %>
-         <br>
-         <%@client = Profile.where(profileable_id:lead.client_id)%>
-         <%=@client[0].name%>
-     </div>
+<hr/>
 
-     <div id="edit-destroy-link" class="float-right" style="margin: 0 -50px 0 0">
-       <div>
-         <a href="#" onclick="return false;">
-           <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25">
-         </a>
+<%i = 0%>
+<% @leads.each do |lead| %>
+<div id="leads" class="row" onmouseover="this.style.background='#FAFAFA'" onmouseout="this.style.background='white'">
+  <section id="lead-data" class="float-left">
+      <%=link_to "#{lead.title}",lead_path(id:lead.id)%>
+      <br/>
+      <%= lead.description %>
+      <br/>
+      <%@client = Profile.where(profileable_id:lead.client_id)%>
+      <%=@client[0].name%>
+  </section>
+  <section id="edit-destroy-link" class="float-right" >
+    <section id="edit-destroy-image">
+       <a href="#" onclick="return false;">
+         <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25"/>
+       </a>
+    </section>
+    <div id="menu<%=i%>" class="menu-position">
+       <div class="list-group">
+         <%= link_to 'Edit', edit_lead_path(lead),:class=>"list-group-item"%>
+         <%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item"%>
        </div>
-       <div id="menu<%=i%>" class="menu-position">
-           <div class="list-group">
-             <%= link_to 'Edit', edit_lead_path(lead),:class=>"list-group-item"%>
-             <%= link_to 'Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item"%>
-           </div>
-       </div>
-     </div>
-     <div class="clear_both"></div>
     </div>
-    <hr>
-    <%i = i+1%>
-    <%end%>
+  </section>
+  <div class="clear_both"></div>
+</div>
+<hr/>
+<%i = i+1%>
+<%end%>
 
 
-<br />
+
 
 
 
