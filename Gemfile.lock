@@ -47,9 +47,6 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise_ldap_authenticatable (0.8.1)
-      devise (>= 3.0)
-      net-ldap (>= 0.3.1, < 0.6.0)
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
@@ -129,7 +126,6 @@ DEPENDENCIES
   bootstrap-sass (~> 3.1.0)
   coffee-rails (~> 3.2.1)
   devise
-  devise_ldap_authenticatable
   jquery-rails
   net-ldap
   rails (= 3.2.14)

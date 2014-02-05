@@ -17,9 +17,23 @@
     </div>
     <div id="nav-top-links" class="float-right">
       <ul>
-        <li><a href="#">Name |</a></li>
+        <%if !session[:username].blank? and !session[:current_resource_id].nil?%>
+
+              <li><%=link_to session[:username],resource_path(:id => session[:current_resource_id])%></li>
+
+        <% elsif user_signed_in? %>
+
+              <li><%=link_to current_user.login_id, resource_path(current_user.userable_id)%></li>
+
+        <%end%>
         <li><a href="#">Configuration |</a></li>
-        <li><a href="#">Sign In</a></li>
+        <%if !session[:username].blank?%>
+           <li><%=link_to :Logout ,login_signout_path%></li>
+        <% elsif user_signed_in? %>
+             <li><%= link_to('Logout', destroy_user_session_path, :method=>'delete') %></li>
+        <%else%>
+            <li><%=link_to :Login ,login_new_path%></li>
+        <%end%>
       </ul>
     </div>
     <div class="clear-both"></div>
@@ -35,4 +49,5 @@
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+
 </nav>

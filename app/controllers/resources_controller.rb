@@ -13,8 +13,8 @@ class ResourcesController < ApplicationController
   # GET /resources/1
   # GET /resources/1.json
   def show
-    @resource = Resource.find(params[:id])
-
+    #@resource = Resource.find(params[:id])
+    @user  = User.find_all_by_userable_id(params[:id]).first
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @resource }
@@ -41,13 +41,14 @@ class ResourcesController < ApplicationController
   # POST /resources.json
   def create
     @resource = Resource.new()
-    @resource.nxb_id= session[:username]
+   # @resource.nxb_id= session[:username]
     respond_to do |format|
       if @resource.save
-        @profile = Profile.new(:name =>params[:name], :email => params[:email], :telephone => params[:telephone])
-        @profile.profileable_id = @resource.id
-        @profile.profileable_type = "Resource"
-        @profile.save
+        @user = User.new( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
+        @user.userable_id = @resource.id
+        session[:current_resource_id] = @user.userable_id
+        @user.userable_type = "Resource"
+        @user.save!
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
         format.json { render json: @resource, status: :created, location: @resource }
       else

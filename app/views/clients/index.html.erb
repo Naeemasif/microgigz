@@ -9,9 +9,9 @@
 <div class="row">
   <div class="col-lg-12">
     <table class="table">
-        <% @profile.each do |profiles| %>
+        <% @client.each do |client| %>
         <tr>
-            <td><%= link_to profiles.name,client_path(id:profiles.id)%></td>
+            <td><%= link_to client.company_name%></td>
         </tr>
         <% end %>
     </table>

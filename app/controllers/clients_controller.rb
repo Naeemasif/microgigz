@@ -3,8 +3,8 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
 
-    @profile = Profile.find_by_sql("select c.id,p.name from clients c,profiles p where c.id=p.profileable_id")
-
+    #@user = User.find_by_sql("select c.id,p.name from clients c,profiles p where c.id=p.profileable_id")
+     @client = Client.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clients }
@@ -15,7 +15,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     @client = Client.find(params[:id])
-    @profile = Profile.where(profileable_id:@client.id, :profileable_type => "Client").first
+    @user = User.where(:userable_id => @client.id, :userable_type => "Client").first
     @leads   =  Lead.where(@client.id)
     respond_to do |format|
       format.html # show.html.erb
@@ -37,7 +37,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
-    @profile = Profile.find_all_by_profileable_id(@client.id).first
+    @user = User.find_all_by_userable_id(@client.id).first
   end
 
   # POST /clients
@@ -47,10 +47,10 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        @profile = Profile.new(:name =>params[:name], :email => params[:email], :telephone => params[:telephone])
-        @profile.profileable_id = @client.id
-        @profile.profileable_type = "Client"
-        @profile.save
+        @user = User.new( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
+        @user.userable_id = @client.id
+        @user.userable_type = "Client"
+        @user.save
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }
       else

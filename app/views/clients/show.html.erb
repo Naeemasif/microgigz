@@ -22,7 +22,7 @@
            <b>email:</b>
          </td>
          <td class="align_left">
-           <%= @profile.email %>
+           <%= @user.email %>
          </td>
        </tr>
        <tr>
@@ -30,7 +30,15 @@
            <b>telephone:</b>
          </td>
          <td class="align_left">
-           <%= @profile.telephone %>
+           <%= @user.telephone %>
+         </td>
+       </tr>
+       <tr>
+         <td class="align_right">
+           <b>login:</b>
+         </td>
+         <td class="align_left">
+           <%= @user.login_id %>
          </td>
        </tr>
      </table>

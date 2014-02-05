@@ -1,4 +1,6 @@
 Microgigz::Application.routes.draw do
+  devise_for :users
+
   root :to => 'leads#index'
 
   get  '/projects/get_client_name'=>'projects#get_client_name'
