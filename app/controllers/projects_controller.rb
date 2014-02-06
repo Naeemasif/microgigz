@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
-    @project_manager = Profile.find_by_sql("select r.id, p.name from resources r, profiles p where r.id=p.profileable_id and p.profileable_type='pm'")
+    @project_manager = User.find_by_sql("select r.id, u.name from resources r, users u where r.id=u.userable_id and u.userable_type='pm'")
     @lead = Lead.where(status:"Active")
     respond_to do |format|
       format.html # new.html.erb
@@ -84,11 +84,17 @@ class ProjectsController < ApplicationController
   def get_client_name
 
   @lead    = Lead.find_by_id(params[:lead_id])
-  @profile = Profile.find_by_profileable_id(@lead.client_id)
+  @user    = User.find_by_userable_id(@lead.client_id)
+
+    logger.debug("********************")
+    logger.debug(@user.name)
+    logger.debug("********************")
 
   end
 
   def display_resources
 
   end
+
+
 end

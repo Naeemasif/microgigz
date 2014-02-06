@@ -3,12 +3,16 @@ Microgigz::Application.routes.draw do
 
   root :to => 'leads#index'
 
-  get  '/projects/get_client_name'=>'projects#get_client_name'
+  post '/leads/convert_to_project'=>'leads#convert_to_project'
+  post '/leads/ajax_request'=>'leads#ajax_request'
+
   get  '/projects/display_resources'=>'projects#display_resources'
+  get  '/projects/get_client_name'=>'projects#get_client_name'
+
   get  '/login/new'=>'login#new'
   get  '/login/signout'=>'login#signout'
-
   post '/login/auth'=>'login#auth'
+
   resources :projects
   resources :leads
   resources :profiles

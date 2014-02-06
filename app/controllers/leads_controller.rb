@@ -15,6 +15,7 @@ class LeadsController < ApplicationController
   def show
     @lead = Lead.find(params[:id])
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @lead }
@@ -43,10 +44,10 @@ class LeadsController < ApplicationController
   # POST /leads.json
   def create
     @lead = Lead.new(params[:lead])
-    @lead.update_attributes(client_id:params[:clients])
+
     respond_to do |format|
       if @lead.save
-        @lead.status = "Active"
+        @lead.update_attributes(client_id:params[:clients],status:"Active")
         format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
         format.json { render json: @lead, status: :created, location: @lead }
       else
@@ -82,5 +83,16 @@ class LeadsController < ApplicationController
       format.html { redirect_to leads_url }
       format.json { head :no_content }
     end
+  end
+
+  def ajax_request
+    @lead = Lead.find_by_id(params[:lead_id])
+    @user = User.find_by_userable_id(@lead.client_id)
+
+  end
+
+  def convert_to_project
+   @project = Project.create(title:params[:title],start_date:params[:date],status:params[:status],lead_id:params[:lead_id],client_id:params[:client_id])
+   redirect_to  :controller=>"projects", :action=>"show",id:@project.id
   end
 end

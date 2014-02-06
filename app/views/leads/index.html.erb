@@ -26,8 +26,9 @@
       <br/>
       <%= lead.description %>
       <br/>
-      <%@client = Profile.where(profileable_id:lead.client_id)%>
-      <%=@client[0].name%>
+      <%@client = User.where(userable_id:lead.client_id,userable_type:"Client").first%>
+
+      <%=link_to "#{@client.name}",client_path(id:lead.client_id)%>
   </section>
   <section id="edit-destroy-link" class="float-right" >
     <section id="edit-destroy-image">
@@ -47,9 +48,3 @@
 <hr/>
 <%i = i+1%>
 <%end%>
-
-
-
-
-
-

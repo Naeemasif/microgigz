@@ -1,3 +1,19 @@
+<script>
+
+  function find_client_name(x)
+  {
+      $.ajax({
+          url: "/projects/get_client_name",
+          type: "get",
+          data: "lead_id="+ x.value
+      });
+
+  }
+
+</script>
+
+
+
 <br><br>
 <%= form_for(@project) do |f| %>
   <% if @project.errors.any? %>
@@ -49,11 +65,15 @@
       </td>
       <td>
        <div class="float_left">
+
          <%= text_field_tag :client_name,nil,:class=>"form-control",:readonly=>true%></div>
-        <div class="float_left visibility_hidden">
+        <!--<div class="float_left visibility_hidden">
            <img id="progress" src="/images/progress.gif" height="25" width="25">
-        </div>
+        </div> !-->
         <%=hidden_field_tag :client_id%>
+
+
+
        <div class="clear_both"></div>
       </td>
     </tr>

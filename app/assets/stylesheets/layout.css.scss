@@ -1,6 +1,6 @@
 @import 'bootstrap';
 
-$top-link-color:black;
+$top-link-color:black;   /*TOP NAV LINK COLORS*/
 
 /*GLOBAL STYLES*/
 body
@@ -94,13 +94,11 @@ hr
     margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
     padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
 
-
     .navbar-header
     {
       margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
       padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
       display: none;
-
     }
     .navbar-brand
     {
@@ -109,7 +107,6 @@ hr
 
       h3
       {
-
         padding: 0px 0px 0px 3px;    /*TOP RIGHT BOTTOM LEFT*/
       }
     }
@@ -139,15 +136,14 @@ hr
        {
          background: transparent;
        }
-
        a
        {
          color: black;
        }
-        a.active:hover
-        {
-          background: #ffffff;
-        }
+       a.active:hover
+       {
+         background: #ffffff;
+       }
       }
     }
     #nav-top-links
@@ -195,9 +191,7 @@ hr
     {
       margin: -13px 0px 0px 77px; /*TOP RIGHT BOTTOM LEFT*/
     }
-
   }
-
 }
 /*NAVIGATION GOES HERE*/
 
@@ -228,7 +222,6 @@ hr
 /*SOME LINKS ARE OUTSIDE OF NAVBAR STRUCTURE BECAUSE IT DOES NOT SUPPORT THIS STRUCTURE*/
 
 
-
 /*HELPER CLASSES*/
 .float-right
 {
@@ -243,8 +236,6 @@ hr
   clear: both;
 }
 /*HELPER CLASSES*/
-
-
 
 
 /*STYLES OVERRIDING AT <=768PX*/
@@ -333,7 +324,6 @@ hr
         margin: 8px 0 0 0;         /*TOP RIGHT BOTTOM LEFT*/
       }
     }
-
   }
 /*NAVIGATION GOES HERE*/
   .navbar-nav > li > a
@@ -341,7 +331,6 @@ hr
     line-height:30px;
     padding: 0px 0px 0px 0px;     /*TOP RIGHT BOTTOM LEFT*/
   }
-
 }
 /*STYLES OVERRIDING AT <=768PX*/
 

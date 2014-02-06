@@ -7,6 +7,16 @@
     <%end%>
     <% notice = "" %>
     <br>
+    <div style="float: right">
+      <form method="post" action="/leads/convert_to_project">
+        <input type="hidden" name="title" value="<%=@lead.title%>"/>
+        <input type="hidden" name="date" value="<%=DateTime.now%>"/>
+        <input type="hidden" name="status" value="<%=true%>"/>
+        <input type="hidden" name="lead_id" value="<%=@lead.id%>"/>
+        <input type="hidden" name="client_id" value="<%=@lead.client_id%>"/>
+       <input type="submit"  value="Convert To Project" class="form-control"/>
+      </form>
+    </div>
     <table class="table">
       <tr>
         <td>
@@ -29,7 +39,7 @@
           <b>Client:</b>
         </td>
         <%@lead = Lead.find_by_id(params[:id]).client_id%>
-        <%@client_name = Profile.where(profileable_id:@lead,profileable_type:"Client")%>
+        <%@client_name = User.where(userable_id:@lead,userable_type:"Client")%>
         <td>
           <p><%=link_to "#{@client_name[0].name}",client_path(id:@lead)%></p>
         </td>

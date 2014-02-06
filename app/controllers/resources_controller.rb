@@ -13,7 +13,7 @@ class ResourcesController < ApplicationController
   # GET /resources/1
   # GET /resources/1.json
   def show
-    #@resource = Resource.find(params[:id])
+    @resource = Resource.find(params[:id])
     @user  = User.find_all_by_userable_id(params[:id]).first
     respond_to do |format|
       format.html # show.html.erb
