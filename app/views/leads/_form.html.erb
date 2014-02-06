@@ -17,7 +17,7 @@
         <%= f.label :client_id %>
       </td>
       <td>
-        <%@profile = Profile.find_by_sql("select c.id, p.name from clients c, profiles p where c.id = p.profileable_id and p.profileable_type='Client' and c.status='Active'")%>
+        <%@profile = User.find_by_sql("select c.id, u.name from clients c, users u where c.id = u.userable_id and u.userable_type='Client' and c.status='Active'")%>
         <%=select_tag "clients",options_from_collection_for_select(@profile,"id", "name"),:class=>"form-control", :include_blank => 'None'%>
     </tr>
     <tr>

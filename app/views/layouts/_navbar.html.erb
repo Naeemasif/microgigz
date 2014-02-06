@@ -18,19 +18,15 @@
     <div id="nav-top-links" class="float-right">
       <ul>
         <%if !session[:username].blank? and !session[:current_resource_id].nil?%>
-
-              <li><%=link_to session[:username],resource_path(:id => session[:current_resource_id])%></li>
-
+              <li><%=link_to session[:username],resource_path(:id => session[:current_resource_id])%> |</li>
         <% elsif user_signed_in? %>
-
               <li><%=link_to current_user.login_id, resource_path(current_user.userable_id)%></li>
-
         <%end%>
         <li><a href="#">Configuration |</a></li>
         <%if !session[:username].blank?%>
            <li><%=link_to :Logout ,login_signout_path%></li>
         <% elsif user_signed_in? %>
-             <li><%= link_to('Logout', destroy_user_session_path, :method=>'delete') %></li>
+             <li><%= link_to('Logout', destroy_user_session_path, :method=>'delete') %> </li>
         <%else%>
             <li><%=link_to :Login ,login_new_path%></li>
         <%end%>
@@ -41,13 +37,12 @@
     <div  class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a class="active" href="#">Dash Board</a></li>
-        <li><a href="#">Leads</a></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Resources</a></li>
+        <li><%=link_to :Leads,leads_path%></li>
+        <li><%=link_to :Projects,projects_path%></li>
+        <li><%=link_to :Resources,resources_path%></li>
         <li><a href="#">Directory</a></li>
         <li><a href="#">Directory</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-
 </nav>

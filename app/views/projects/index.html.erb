@@ -18,8 +18,8 @@
           <tr>
             <td><%= project.title %></td>
             <td><%= project.start_date %></td>
-            <%@profile = Profile.find_by_profileable_id(project.client_id)%>
-            <td><%= @profile.name %></td>
+            <%#@profile = User.find_by_userable_id(project.client_id)%>
+            <td><%#= @profile.name %></td>
             <td><%= project.status %></td>
             <td><%= project.lead_id %></td>
             <td><%= project.client_id %></td>
