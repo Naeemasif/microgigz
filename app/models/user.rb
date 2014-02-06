@@ -9,4 +9,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   belongs_to :userable, :polymorphic => true
+
+  has_many :user_roles, :dependent => :destroy
+  has_many :roles, :through => :user_roles
 end
