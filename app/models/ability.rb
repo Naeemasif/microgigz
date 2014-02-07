@@ -11,7 +11,7 @@ class Ability
 
         # User is Normal User
       elsif user.has_role? :manager
-        can :read, [Lead, Project, Resource]
+        can :read, [Lead , Project]
 
       else
         #can :manage, Devise::Session

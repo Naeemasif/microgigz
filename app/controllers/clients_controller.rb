@@ -1,6 +1,8 @@
 class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
+  load_and_authorize_resource :except => [:index]
+
   def index
 
     #@user = User.find_by_sql("select c.id,p.name from clients c,profiles p where c.id=p.profileable_id")

@@ -11,10 +11,10 @@
             <span id="active">Active</span>
             <%=link_to("#{project.title}",project_path(id:project.id))%>
             -
-            <%=link_to("#{User.new.get_client_name(project.client_id)}",client_path(id:project.client_id))%>
+            <%=link_to("#{project.client.user.name}",client_path(id:project.client_id))%>
           </p>
           <p id="description">
-            <%="hi how r u"%>
+            <%=project.start_date.to_date%>
           </p>
         </section>
         <section id="edit-destroy-link" class="float-right">
