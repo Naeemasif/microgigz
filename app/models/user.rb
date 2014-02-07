@@ -5,11 +5,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :telephone, :login_id
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :telephone, :login_id , :userable_id , :userable_type
   # attr_accessible :title, :body
 
   belongs_to :userable, :polymorphic => true
 
   has_many :user_roles, :dependent => :destroy
   has_many :roles, :through => :user_roles
+
+
+
+  def has_role?(role_sym)
+    roles.any? { |r| r.name.underscore.to_sym == role_sym }
+  end
+
 end

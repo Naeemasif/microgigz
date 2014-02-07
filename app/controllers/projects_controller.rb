@@ -83,13 +83,7 @@ class ProjectsController < ApplicationController
 
   def get_client_name
 
-  @lead    = Lead.find_by_id(params[:lead_id])
-  @user    = User.find_by_userable_id(@lead.client_id)
-
-    logger.debug("********************")
-    logger.debug(@user.name)
-    logger.debug("********************")
-
+  @user    = Lead.find_by_id(params[:lead_id]).client.user
   end
 
   def display_resources
