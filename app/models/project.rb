@@ -3,4 +3,6 @@ class Project < ActiveRecord::Base
   belongs_to :lead
   belongs_to :client
   belongs_to :resource
+
+
 end

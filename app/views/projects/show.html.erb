@@ -22,7 +22,8 @@
          <%= @project.start_date %>
        </td>
      </tr>
-     <%@project = Project.find_by_id(params[:id])%>
+
+
      <%#@pm_id   = User.find_by_userable_id(@project.pm_id)%>
      <tr>
        <td>
@@ -45,10 +46,10 @@
        <td>
          <b>Lead:</b>
        </td>
-       <%@lead = Lead.find_by_id(@project.lead_id)%>
+
        <td>
 
-         <%= @lead.title %>
+         <%=@project.lead.title%>
        </td>
 
      </tr>
@@ -58,9 +59,9 @@
        <td>
          <b>Client:</b>
        </td>
-       <%@user = User.find_by_userable_id(@project.client_id)%>
+
        <td>
-         <%=@user.name%>
+         <%=@project.client.user.name%>
        </td>
      </tr>
      <tr>

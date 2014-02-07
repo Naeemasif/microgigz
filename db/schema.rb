@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20140206101901) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "availability"
-    t.string   "nxb_id"
   end
 
   create_table "roles", :force => true do |t|

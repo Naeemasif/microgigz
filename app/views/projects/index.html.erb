@@ -1,53 +1,73 @@
-<div class="row">
-  <div class="col-lg-12">
-    <br>
-    <table class="table">
-         <tr class="color background_color">
-           <th >Title</th>
-           <th>Start date</th>
-           <th>PM name</th>
-           <th>Status</th>
-           <th>Lead</th>
-           <th>Client</th>
-           <th>Resource</th>
-           <th></th>
-           <th></th>
-           <th></th>
-         </tr>
-        <% @projects.each do |project| %>
-          <tr>
-            <td><%= project.title %></td>
-            <td><%= project.start_date %></td>
-            <%#@profile = User.find_by_userable_id(project.client_id)%>
-            <td><%#= @profile.name %></td>
-            <td><%= project.status %></td>
-            <td><%= project.lead_id %></td>
-            <td><%= project.client_id %></td>
-            <td><%#= project.resource_id %></td>
-            <td><%= link_to 'Show', project ,:class=>"btn btn-default"%></td>
-            <td><%= link_to 'Edit', edit_project_path(project),:class=>"btn btn-default" %></td>
-            <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-default" %></td>
-          </tr>
-        <% end %>
-    </table>
-  </div>
+<%=pageHeader("Projects")%>
+
+
+
+<div id="page-container">
+  <%i = 0%>
+  <%@projects.each do |project|%>
+      <div id="leads" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);">
+        <section class="float-left">
+          <p id="lead-client">
+            <span id="active">Active</span>
+            <%=link_to("#{project.title}",project_path(id:project.id))%>
+            -
+            <%=link_to("#{project.client.user.name}",client_path(id:project.client_id))%>
+          </p>
+          <p id="description">
+            <%=project.start_date.to_date%>
+          </p>
+        </section>
+        <section id="edit-destroy-link" class="float-right">
+          <section id="<%=i%>" class="edit-destroy-image">
+            <a href="#" onclick="return false;">
+              <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25"/>
+            </a>
+          </section>
+          <div id="menu<%=i%>" class="menu-position menu" onmouseover="display_block(this);" onmouseout="hide_block(this);">
+            <div class="list-group">
+              <%=link_to('Edit', edit_project_path(project),:class=>'list-group-item')%>
+              <%=link_to('Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item")%>
+            </div>
+          </div>
+        </section>
+        <div class="clear-both">
+        </div>
+      </div>
+      <hr/>
+      <%i = i+1%>
+  <%end%>
+
 </div>
 
+
+
+
+
+
+
+
+
+<%# @projects.each do |project| %>
+
+
+
+            <%#= project.title %>
+            <%#= project.start_date %>
+            <%#@profile = User.find_by_userable_id(project.client_id)%>
+            <%#= @profile.name %>
+            <%#= project.status %>
+            <%#= project.lead_id %>
+            <%#= project.client_id %>
+            <%#= project.resource_id %>
+            <%#= link_to 'Show', project ,:class=>"btn btn-default"%>
+            <%#= link_to 'Edit', edit_project_path(project),:class=>"btn btn-default" %>
+            <%#= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-default" %>
+        <%# end %>
 
 <br />
 <div class="row">
   <div class="col-lg-12">
-
-    <table>
-      <tr>
-        <td>
-          <%= link_to 'Leads', leads_path,:class=>"btn btn-default" %>
-        </td>
-        <td>
-          <%= link_to 'New Project', new_project_path,:class=>"btn btn-default" %>
-        </td>
-      </tr>
-    </table>
-
+          <%#= link_to 'Leads', leads_path,:class=>"btn btn-default" %>
+          <%#= link_to 'New Project', new_project_path,:class=>"btn btn-default" %>
   </div>
 </div>

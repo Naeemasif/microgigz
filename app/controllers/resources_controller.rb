@@ -1,10 +1,11 @@
 class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
+  load_and_authorize_resource :except => [:show]
+
   def index
     @resources = Resource.all
-
-    respond_to do |format|
+        respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @resources }
     end
@@ -40,7 +41,7 @@ class ResourcesController < ApplicationController
   # POST /resources
   # POST /resources.json
   def create
-    @resource = Resource.new()
+    @resource = Resource.new(availability:'Available')
    # @resource.nxb_id= session[:username]
     respond_to do |format|
       if @resource.save

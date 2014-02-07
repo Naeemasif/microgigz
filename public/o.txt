@@ -1,0 +1,33 @@
+ i = 0
+    str = ""
+    leads.each do |lead|
+     str += "<div id='leads' lang="+i+"class='row leads' onmouseover='dsiplay_circle(this);' onmouseout='hide_circle(this);'>"
+     str += "<section class='float-left'>"
+     str += "<p id='lead-client'>"
+     str += "<span id='active'>Active</span>"
+     str += " "+link_to("#{lead.title}",lead_path(id:lead.id))
+     str += "-"
+     str += ""+link_to("#{lead.client.user.name}",client_path(id:lead.client.id))
+     str += "</p>"
+     str += "<p id='description'>"
+     str += "#{lead.description}"
+     str += "#</p>"
+     str += "</section>"
+     str += "<section id='edit-destroy-link' class='float-right'>"
+     str += "<section id="+i+" class='edit-destroy-image'>"
+     str += "<a href='#' onclick='return false;'>"
+     str += "<img src='/images/settings.png' height='25' id="+i+" onclick='show_menu(this);' width='25'/>"
+     str += "</a>"
+     str += "</section>"
+     str += "<div id='menu"+i+"' class='menu-position menu' onmouseover='this.style.display='block'' onmouseout='this.style.display='none'' style='padding: 0px;margin: 0px'>"
+     str += "<div class='list-group'>"
+     str += ""+link_to('Edit', edit_lead_path(lead),:class=>'list-group-item')
+     str += ""+link_to('Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item")
+     str += "</div>"
+     str += "</div>"
+     str += "</section>"
+     str += "<div class='clear-both'></div>"
+     str += "</div>"
+     str += "<hr/>"
+     i = i+1
+     str.html_safe

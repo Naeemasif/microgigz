@@ -10,6 +10,11 @@ class User < ActiveRecord::Base
 
   belongs_to :userable, :polymorphic => true
 
+
+  def get_client_name(id)
+      User.find_by_userable_id(id).name
+  end
+
   has_many :user_roles, :dependent => :destroy
   has_many :roles, :through => :user_roles
 
@@ -18,5 +23,6 @@ class User < ActiveRecord::Base
   def has_role?(role_sym)
     roles.any? { |r| r.name.underscore.to_sym == role_sym }
   end
+
 
 end

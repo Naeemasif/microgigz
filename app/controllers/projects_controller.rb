@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
+  load_and_authorize_resource :except => [:index]
+
   def index
     @projects = Project.where(:status=>true)
 
@@ -36,6 +38,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+
   end
 
   # POST /projects
