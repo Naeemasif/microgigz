@@ -36,7 +36,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
-
+    @project_manager = User.find_by_sql("select r.id, u.name from resources r, users u where r.id=u.userable_id and u.userable_type='pm'")
+    @lead = Lead.where(status:"Active")
   end
 
   # POST /projects
