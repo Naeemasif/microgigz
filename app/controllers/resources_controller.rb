@@ -12,8 +12,8 @@ class ResourcesController < ApplicationController
   # GET /resources/1
   # GET /resources/1.json
   def show
-    @resource = User.find(params[:id])
-    @user  = User.where(userable_id:@resource.id).first
+    @resource = Resource.find(params[:id])
+    @user  = @resource.user
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @resource }

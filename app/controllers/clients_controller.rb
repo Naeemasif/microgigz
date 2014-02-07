@@ -16,8 +16,8 @@ class ClientsController < ApplicationController
   # GET /clients/1.json
   def show
     @client = Client.find(params[:id])
-    @user = User.where(:userable_id => @client.id, :userable_type => "Client").first
-    @leads   =  Lead.where(client_id:params[:id])
+    @user = @client.user
+    @leads   =  @client.leads
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @client }

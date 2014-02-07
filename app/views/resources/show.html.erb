@@ -19,6 +19,15 @@
   </tr>
   <tr>
     <td>
+      <b>Login id</b>
+    </td>
+    <td>
+      <%= @user.login_id %>
+    </td>
+
+  </tr>
+  <tr>
+    <td>
       <b>Telephone</b>
     </td>
     <td>
@@ -26,15 +35,17 @@
     </td>
 
   </tr>
+  <% if @user.userable_type == "Client" %>
   <tr>
     <td>
-      <%if @user.userable_type == "Client" %>
+
           <b>Company Name</b>
           </td>
           <td>
             <%#=@client.company_name%>
           </td>
           </tr>
+          <% end %>
           <tr><td></td><td></td></tr>
           </table>
 
@@ -49,4 +60,3 @@
             </td>
           </tr>
           </table>
-      <% end %>
