@@ -9,4 +9,14 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   belongs_to :userable, :polymorphic => true
+
+
+  def get_client_name(id)
+      User.find_by_userable_id(id).name
+  end
+
+
+
+
+
 end

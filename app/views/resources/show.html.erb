@@ -24,10 +24,11 @@
     <td>
       <%= @user.telephone %>
     </td>
+
   </tr>
   <tr>
     <td>
-      <%# if @profile.profileable_type == "Client" %>
+      <%if @user.userable_type == "Client" %>
           <b>Company Name</b>
           </td>
           <td>
@@ -44,6 +45,8 @@
               <%= link_to 'Edit', edit_resource_path(@resource),:class=>"btn btn-default" %>
               <%= link_to 'Back', resources_path,:class=>"btn btn-default"%>
             </td>
+            <td>
+            </td>
           </tr>
           </table>
-      <%# end %>
+      <% end %>

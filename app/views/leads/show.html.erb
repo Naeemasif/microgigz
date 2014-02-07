@@ -38,10 +38,9 @@
         <td>
           <b>Client:</b>
         </td>
-        <%@lead = Lead.find_by_id(params[:id]).client_id%>
-        <%@client_name = User.where(userable_id:@lead,userable_type:"Client")%>
+
         <td>
-          <p><%=link_to "#{@client_name[0].name}",client_path(id:@lead)%></p>
+          <p><%=link_to "#{@lead.client.user.name}", client_path(@lead.client.id) %></p>
         </td>
       </tr>
     </table>

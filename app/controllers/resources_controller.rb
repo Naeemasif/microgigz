@@ -2,8 +2,7 @@ class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
   def index
-    @resources = Resource.all
-
+    @resources = User.find_by_sql("select r.id,u.name from resources r , users u where r.id=u.userable_id and u.userable_type='Resource' and r.availability='Available'")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @resources }
@@ -13,8 +12,8 @@ class ResourcesController < ApplicationController
   # GET /resources/1
   # GET /resources/1.json
   def show
-    @resource = Resource.find(params[:id])
-    @user  = User.find_all_by_userable_id(params[:id]).first
+    @resource = User.find(params[:id])
+    @user  = User.where(userable_id:@resource.id).first
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @resource }
@@ -40,7 +39,7 @@ class ResourcesController < ApplicationController
   # POST /resources
   # POST /resources.json
   def create
-    @resource = Resource.new()
+    @resource = Resource.new(availability:'Available')
    # @resource.nxb_id= session[:username]
     respond_to do |format|
       if @resource.save

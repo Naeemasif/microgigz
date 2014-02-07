@@ -1,4 +1,62 @@
-<h1>Listing resources</h1>
+
+
+<%=pageHeader("Resources")%>
+
+<div id="page-container">
+  <%i = 0%>
+  <%@resources.each do |resource|%>
+      <div id="leads" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);" style="">
+        <section class="float-left">
+          <p id="lead-client">
+            <span id="active">Active</span>
+            <%=link_to("#{resource.name}",resource_path(id:resource.id))%>
+          </p>
+          <p id="description">
+            <%="hello how r u "%>
+          </p>
+        </section>
+        <section id="edit-destroy-link" class="float-right">
+          <section id="<%=i%>" class="edit-destroy-image">
+            <a href="#" onclick="return false;">
+              <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25"/>
+            </a>
+          </section>
+          <div id="menu<%=i%>" class="menu-position menu" onmouseover="display_block(this);" onmouseout="hide_block(this);">
+            <div class="list-group">
+              <%=link_to('Edit', edit_resource_path(resource),:class=>'list-group-item')%>
+              <%#=link_to('Destroy',resource, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item")%>
+            </div>
+          </div>
+        </section>
+        <div class="clear-both">
+        </div>
+      </div>
+      <hr/>
+      <%i = i+1%>
+  <%end%>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<h1>Listing resources</h1>
 <table>
   <tr>
     <th></th>
@@ -6,15 +64,19 @@
     <th></th>
   </tr>
 
-<% @resources.each do |resource| %>
+<% #@resources.each do |resource| %>
   <tr>
-    <td><%= link_to 'Show', resource %></td>
-    <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
-    <td><%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%#=link_to "#{resource.name}",resource_path(resource.id)%></td>
+    <td></td>
+    <td><%#=resource.name%></td>
+    <td><%#= link_to 'Show',resource_path(id:resource.userable_id) %></td>
+    <td><%#= link_to 'Edit', edit_resource_path(resource) %></td>
+    <td><%#= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end %>
+<% #end %>
 </table>
 
 <br />
 
-<%= link_to 'New Resource', new_resource_path %>
+<%#= link_to 'New Resource', new_resource_path %>
+!-->

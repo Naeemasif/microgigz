@@ -4,7 +4,8 @@ class ClientsController < ApplicationController
   def index
 
     #@user = User.find_by_sql("select c.id,p.name from clients c,profiles p where c.id=p.profileable_id")
-     @client = Client.all
+    @clients = User.find_by_sql("select c.id,u.name from clients c , users u where c.id=u.userable_id and u.userable_type='Client'")
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @clients }
@@ -16,7 +17,7 @@ class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @user = User.where(:userable_id => @client.id, :userable_type => "Client").first
-    @leads   =  Lead.where(@client.id)
+    @leads   =  Lead.where(client_id:params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @client }
@@ -50,7 +51,7 @@ class ClientsController < ApplicationController
         @user = User.new( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
         @user.userable_id = @client.id
         @user.userable_type = "Client"
-        @user.save
+        @user.save!
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }
       else

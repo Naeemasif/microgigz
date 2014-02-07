@@ -4,7 +4,7 @@ class CreateProjects < ActiveRecord::Migration
       t.string :title
       t.datetime :start_date
       t.string :pm_name
-      t.boolean :status
+      t.string :status
       t.integer :lead_id
       t.integer :client_id
       t.integer :resource_id

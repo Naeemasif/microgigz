@@ -1,4 +1,44 @@
-<div class="row">
+<%=pageHeader("Clients")%>
+
+
+<div id="page-container">
+  <%i = 0%>
+  <%@clients.each do |client| %>
+      <div id="leads" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);" style="">
+        <section class="float-left">
+          <p id="lead-client">
+            <span id="active">Active</span>
+            <%=link_to("#{client.name}",client_path(id:client.id))%>
+          </p>
+          <p id="description">
+            <%="hello how r u "%>
+          </p>
+        </section>
+        <section id="edit-destroy-link" class="float-right">
+          <section id="<%=i%>" class="edit-destroy-image">
+            <a href="#" onclick="return false;">
+              <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25"/>
+            </a>
+          </section>
+          <div id="menu<%=i%>" class="menu-position menu" onmouseover="display_block(this);" onmouseout="hide_block(this);">
+            <div class="list-group">
+              <%=link_to('Edit', edit_client_path(id:client.id),:class=>'list-group-item')%>
+              <%#=link_to('Destroy',client, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item")%>
+            </div>
+          </div>
+        </section>
+        <div class="clear-both">
+        </div>
+      </div>
+      <hr/>
+      <%i = i+1%>
+  <%end%>
+</div>
+
+
+
+
+<!--<div class="row">
   <div class="col-lg-12">
        <h2>Clients</h2>
   </div>
@@ -9,11 +49,13 @@
 <div class="row">
   <div class="col-lg-12">
     <table class="table">
-        <% @client.each do |client| %>
+        <%# @clients.each do |client| %>
         <tr>
-            <td><%= link_to client.company_name%></td>
+          <td>
+            <%#=link_to "#{client.name}",client_path(client.id)%>
+          </td>
         </tr>
-        <% end %>
+        <% #end %>
     </table>
   </div>
 </div>
@@ -23,7 +65,7 @@
 <table>
   <tr>
     <td>
-        <%= link_to 'New Client', new_client_path,:class=>"btn btn-default" %>
+        <%#= link_to 'New Client', new_client_path,:class=>"btn btn-default" %>
     </td>
   </tr>
 </table>
@@ -32,3 +74,5 @@
 
 <%#= link_to 'Edit', edit_client_path(client),:class=>"btn btn-default" %>
 <%#= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-default" %>
+
+!-->
