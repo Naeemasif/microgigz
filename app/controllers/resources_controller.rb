@@ -34,6 +34,7 @@ class ResourcesController < ApplicationController
   # GET /resources/1/edit
   def edit
     @resource = Resource.find(params[:id])
+    @user = @resource.user.name
   end
 
   # POST /resources
@@ -60,10 +61,9 @@ class ResourcesController < ApplicationController
   # PUT /resources/1
   # PUT /resources/1.json
   def update
-    @resource = Resource.find(params[:id])
-
+    @resource = Resource.find_by_id(params[:id])
     respond_to do |format|
-      if @resource.update_attributes(params[:resource])
+      if @resource.user.update_attributes(name:params[:name],login_id:params[:login_id],email:params[:email],telephone:params[:telephone])
         format.html { redirect_to @resource, notice: 'Resource was successfully updated.' }
         format.json { head :no_content }
       else

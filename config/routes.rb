@@ -12,7 +12,7 @@ Microgigz::Application.routes.draw do
   get  '/login/new'=>'login#new'
   get  '/login/signout'=>'login#signout'
   post '/login/auth'=>'login#auth'
-
+ # post 'resources/update'=>'resources#update'
   resources :projects
   resources :leads
   resources :profiles

@@ -1,67 +1,52 @@
 <br/>
 <table class="table">
 
-  <%= form_for (@resource) do |f|   %>
-
-
-
-
-
-
-
-
+  <%= form_tag @resource,:method => :put do %>
 
       <tr>
         <td class="align_left">
-          <%= f.label :name %>
+          name:
         </td>
         <td>
-          <%= f.text_field :name %>
+          <%= text_field_tag :name,"#{@resource.user.name}",:class=>"form-control" %>
         </td>
       </tr>
       <tr>
         <td class="align_left">
-          <%= f.label :login_id %>
+          Login id:
         </td>
 
 
-            <td>
-              <%= f.text_field :login_id,current_user.login_id,:readonly=>true %>
-            </td>
+        <td>
+          <%= text_field_tag :login_id,"#{@resource.user.login_id}",:class=>"form-control" %>
+        </td>
 
       </tr>
       <tr>
         <td class="align_left">
-          <%= f.label :email %>
+          email:
         </td>
         <td>
 
-              <%= f.text_field :email,current_user.email,:readonly=>true%>
-
+          <%= text_field_tag :email,"#{@resource.user.email}",:class=>"form-control" %>
 
 
         </td>
       </tr>
       <tr>
         <td class="align_left">
-          <%= f.label :telephone %>
+          telephone:
         </td>
         <td>
-          <%= f.text_field :telephone %>
+          <%= text_field_tag :telephone,"#{@resource.user.telephone}",:class=>"form-control" %>
         </td>
-      </tr>
-
-
-
-      <tr>
-
       </tr>
       <tr>
         <td>
           <table>
             <tr>
               <td>
-                <%= f.submit %>
+                <%=  submit_tag("Save", :class => 'btn btn-default') %>
               </td>
               <td>
                 <%= link_to 'Back', clients_path,:class=>"btn btn-default" %>
