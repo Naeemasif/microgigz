@@ -1,9 +1,11 @@
 class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
+  load_and_authorize_resource :except => [:show]
+
   def index
-    @resources = User.find_by_sql("select r.id,u.name from resources r , users u where r.id=u.userable_id and u.userable_type='Resource' and r.availability='Available'")
-    respond_to do |format|
+    @resources = Resource.all
+        respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @resources }
     end

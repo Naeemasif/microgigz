@@ -9,10 +9,10 @@
         <section class="float-left">
           <p id="lead-client">
             <span id="active">Active</span>
-            <%=link_to("#{resource.name}",resource_path(id:resource.id))%>
+            <%=link_to("#{resource.user.name}",resource_path(id:resource.id))%>
           </p>
           <p id="description">
-            <%="hello how r u "%>
+            <%=resource.user.email%>
           </p>
         </section>
         <section id="edit-destroy-link" class="float-right">

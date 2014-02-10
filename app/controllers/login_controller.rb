@@ -1,7 +1,7 @@
 require 'ldap_connect'
 
 class LoginController < ApplicationController
-  #skip_before_filter :authenticate
+  skip_before_filter :custom_user_auth
   def index
   end
   def new
