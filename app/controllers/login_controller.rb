@@ -19,7 +19,7 @@ class LoginController < ApplicationController
            if @user.save
              sign_in(@user)
              flash[:notice] = "Login is scuessful!"
-             redirect_to :controller => "leads"
+             redirect_to edit_resource_path(@resource.id)
            end
        else
          sign_in(@user)

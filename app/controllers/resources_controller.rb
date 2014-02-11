@@ -1,7 +1,7 @@
 class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
-  load_and_authorize_resource :except => [:show]
+ # load_and_authorize_resource :except => [:show]
 
   def index
     @resources = Resource.all

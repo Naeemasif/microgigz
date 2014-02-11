@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
-  load_and_authorize_resource :except => [:index]
+ # load_and_authorize_resource :except => [:index]
 
   def index
     @projects = Project.where(:status=>true)

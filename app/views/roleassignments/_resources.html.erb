@@ -1,0 +1,66 @@
+<script>
+  function delete_role(x)
+  {
+       var status = confirm("Are you sure you want to delete ?");
+       if(status == true)
+       {
+           i = x.id.split(" ");
+           $.ajax({
+               url:'/roleassignments/delete_role',
+               type:'post',
+               data:'role_id='+i[1] +'&user_id='+i[0]
+           });
+       }
+  }
+  function assign_role(x)
+  {
+      var status = confirm("Are you sure to add");
+      if(status == true)
+      {
+          $.ajax({
+              url:'/roleassignments/assign_role',
+              type:'post',
+              data:'role_id='+x.options[x.selectedIndex].value +'&user_id='+x.id
+          });
+      }
+
+  }
+</script>
+
+<div id="page-container">
+  <%i = 0%>
+  <%@resources.each do |resource|%>
+      <div id="leads" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);">
+        <section class="float-left">
+          <p id="lead-client">
+            <span id="active">Active</span>
+            <%=link_to("#{resource.user.name}",resource_path(id:resource.id))%>
+          </p>
+          <p id="description">
+            <%@user_roles = resource.user.roles%>
+            <%@user_roles.each do |i| %>
+                <a href="#" onclick="return false;"><img src="/images/delete.png" onclick="delete_role(this);" height="10" width="10" alt="delete image" id="<%=resource.user.id%> <%=i.id%>"/></a> <span><%=i.name%></span>&nbsp;
+            <%end%>
+          </p>
+        </section>
+        <section id="edit-destroy-link" class="float-right">
+          <p>
+            <span class="color_grey">Roles : </span>
+            <select name="roles" class="roles" id="<%=resource.user.id%>" onchange="assign_role(this);">
+              <option value="none" selected="selected">None</option>
+              <%@roles.each do |role|%>
+                 <%@role_validity = resource.user.user_roles.where(user_id:resource.user.id,role_id:role.id)%>
+                 <%if @role_validity.length == 0%>
+                    <option value="<%=role.id%>"><%=role.name%></option>
+                 <%end%>
+              <%end%>
+            </select>
+          </p>
+        </section>
+        <div class="clear-both">
+        </div>
+      </div>
+      <hr/>
+      <% i = i + 1 %>
+  <%end%>
+</div>
