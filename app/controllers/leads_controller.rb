@@ -1,7 +1,7 @@
 class LeadsController < ApplicationController
   # GET /leads
   # GET /leads.json
-  load_and_authorize_resource :except => [:index]
+ #load_and_authorize_resource :except => [:index]
 
   def index
     @leads = Lead.all
@@ -96,5 +96,12 @@ class LeadsController < ApplicationController
   def convert_to_project
    @project = Project.create(title:params[:title],start_date:params[:date],status:params[:status],lead_id:params[:lead_id],client_id:params[:client_id])
    redirect_to  :controller=>"projects", :action=>"show",id:@project.id
+  end
+
+  def get_client_names
+
+   @user = User.find_by_sql("select c.id, u.name from clients c, users u where u.name like '#{params[:search]}%' and (c.id=u.userable_id and u.userable_type='Client')")
+
+
   end
 end

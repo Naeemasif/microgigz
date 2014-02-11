@@ -1,3 +1,28 @@
+<script type="text/javascript" language="javascript">
+  function find_client(x)
+  {
+      $.ajax({
+          url:'/leads/get_client_names',
+          type:'post',
+          data:'search='+ x.value
+      });
+  }
+
+        function get_client_name(x)
+        {
+            var list = document.getElementById("items");
+            for (var j = 0; j < list.options.length; j++)
+            {
+                if (x.value == list.options[j].value)
+                {
+                    alert(list.options[j].label);
+                    document.getElementById("item").value = list.options[j].label;
+                }
+            }
+        }
+</script>
+
+
 <br>
 <%= form_for(@lead) do |f| %>
   <% if @lead.errors.any? %>
@@ -11,38 +36,50 @@
       </ul>
     </div>
   <% end %>
-  <table class="table">
-    <tr>
-      <td>
-        <%= f.label :client_id %>
-      </td>
-      <td>
-        <%@profile = User.find_by_sql("select c.id, u.name from clients c, users u where c.id = u.userable_id and u.userable_type='Client' and c.status='Active'")%>
-        <%=select_tag "clients",options_from_collection_for_select(@profile,"id", "name"),:class=>"form-control", :include_blank => 'None'%>
-    </tr>
-    <tr>
-      <td>
-         <%= f.label :title %>
-      </td>
-      <td>
-         <%= f.text_field :title,:class=>"form-control" %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-         <%= f.label :description %>
-      </td>
-      <td>
-         <%= f.text_area :description,:class=>"form-control"  %>
-      </td>
-    </tr>
+      <table class="table">
+        <tr>
+          <td>
+            <%= f.label :client_id %>
+          </td>
+          <td>
+            <%#@profile = User.find_by_sql("select c.id, u.name from clients c, users u where c.id = u.userable_id and u.userable_type='Client' and c.status='Active'")%>
+            <%#=select_tag "clients",options_from_collection_for_select(@profile,"id", "name"),:class=>"form-control" ,:include_blank => 'None'%>
+            <input type="text" id="clients" name="names" list="names"  onkeyup="find_client(this);" class="form-control">
+           <!-- <input list="items" id="item" autocomplete="on" oninput="get_client_name(this);" >
+            <datalist id="items"  onkeyup="alert('hello');">
+              <option  value="A item"  label="ABC" >
+              <option value="aa item" label="ABC" >
+              <option value="C item"  label="ABC" >
+              <option value="D item"  label="ABC" >
+            </datalist>
+               !-->
 
-    <td>
-    </td>
-    <td>
-         <%= f.submit :Save,:class=>"btn btn-default" %>
-         <%= link_to 'Back', leads_path,:class=>"btn btn-default" %>
-    </td>
-  </div>
-  </table>
-<% end %>
+            <div id="client">
+
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+         <%= f.label :title %>
+           </td>
+           <td>
+         <%= f.text_field :title,:class=>"form-control" %>
+           </td>
+        </tr>
+        <tr>
+           <td>
+         <%= f.label :description %>
+           </td>
+           <td>
+         <%= f.text_area :description,:class=>"form-control" %>
+            </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <%= f.submit :Save,:class=>"form-control"%>
+          </td>
+        </tr>
+         <%#= link_to 'Back', leads_path %>
+      </table>
+ <% end %>
