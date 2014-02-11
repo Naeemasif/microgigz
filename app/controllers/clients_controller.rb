@@ -67,10 +67,8 @@ class ClientsController < ApplicationController
   # PUT /clients/1.json
   def update
     @client = Client.find(params[:id])
-    #@profile = Profile.find_all_by_profileable_id(:id)
     respond_to do |format|
       if @client.update_attributes(:company_name => params[:company_name], :status => true)
-        #  @profile.update_attributes(:name =>params[:name], :email => params[:email], :telephone => params[:telephone])
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { head :no_content }
       else

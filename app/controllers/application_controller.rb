@@ -10,4 +10,6 @@ class ApplicationController < ActionController::Base
                 render  'login/new'
               end
       end
+
+
 end
