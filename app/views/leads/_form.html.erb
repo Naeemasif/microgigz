@@ -1,25 +1,26 @@
 <script type="text/javascript" language="javascript">
-  function find_client(x)
-  {
+
+    function find_client(x)
+    {
       $.ajax({
           url:'/leads/get_client_names',
           type:'post',
           data:'search='+ x.value
       });
-  }
+    }
 
-        function get_client_name(x)
-        {
-            var list = document.getElementById("items");
-            for (var j = 0; j < list.options.length; j++)
-            {
-                if (x.value == list.options[j].value)
-                {
-                    alert(list.options[j].label);
-                    document.getElementById("item").value = list.options[j].label;
-                }
-            }
-        }
+   function get_client_name(x)
+   {
+      var list = document.getElementById("items");
+      for (var j = 0; j < list.options.length; j++)
+      {
+         if (x.value == list.options[j].value)
+         {
+            document.getElementById("client_id").value = list.options[j].label;
+         }
+      }
+   }
+
 </script>
 
 
@@ -28,7 +29,6 @@
   <% if @lead.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
-
       <ul>
       <% @lead.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -42,20 +42,9 @@
             <%= f.label :client_id %>
           </td>
           <td>
-            <%#@profile = User.find_by_sql("select c.id, u.name from clients c, users u where c.id = u.userable_id and u.userable_type='Client' and c.status='Active'")%>
-            <%#=select_tag "clients",options_from_collection_for_select(@profile,"id", "name"),:class=>"form-control" ,:include_blank => 'None'%>
-            <input type="text" id="clients" name="names" list="names"  onkeyup="find_client(this);" class="form-control">
-           <!-- <input list="items" id="item" autocomplete="on" oninput="get_client_name(this);" >
-            <datalist id="items"  onkeyup="alert('hello');">
-              <option  value="A item"  label="ABC" >
-              <option value="aa item" label="ABC" >
-              <option value="C item"  label="ABC" >
-              <option value="D item"  label="ABC" >
-            </datalist>
-               !-->
-
+            <input type="text" id="clients" name="names" list="items" oninput="get_client_name(this);"  onkeyup="find_client(this);" autocomplete="off" class="form-control"/>
+            <input type="hidden" name="names" id="client_id">
             <div id="client">
-
             </div>
           </td>
         </tr>
@@ -83,3 +72,6 @@
          <%#= link_to 'Back', leads_path %>
       </table>
  <% end %>
+<div style="position: absolute;top: 10%;z-index: 1000;background: #ffffff;border: 2px solid green;left: 50%" id="create_client">
+
+</div>

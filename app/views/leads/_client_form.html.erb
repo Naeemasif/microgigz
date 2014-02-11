@@ -1,0 +1,26 @@
+<h2>Create Client</h2>
+
+<%= form_tag :action => :create, :method => :post,:remote=>true do   %>
+<div>
+  <div>
+    <span>name:</span><span><%= text_field_tag :name,nil,:class=>"form-control" %></span>
+  </div>
+  <div>
+    <span>email:</span><span><%= text_field_tag :email,nil,:class=>"form-control" %></span>
+  </div>
+  <div>
+    <span>Login id:</span><span> <%= text_field_tag :login_id,nil,:class=>"form-control" %></span>
+  </div>
+  <div>
+    <span>telephone:</span><span> <%= text_field_tag :telephone,nil,:class=>"form-control" %></span>
+  </div>
+  <div>
+    <span>company:</span><span> <%= text_field_tag :company_name,nil,:class=>"form-control" %></span>
+  </div>
+  <div>
+    <span><%=submit_tag("Save", :class => 'btn btn-default') %></span><span><%=link_to 'Back', clients_path,:class=>"btn btn-default" %></span>
+  </div>
+
+</div>
+
+<%end%>

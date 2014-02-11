@@ -10,8 +10,7 @@
 <!--background: url('abc.png');opacity: 0.5;z-index:-1;background-repeat: no-repeat!-->
 
 <body>
-<% if user_signed_in? %>
-
+<%if user_signed_in?%>
     <div id="container" class="container">
        <header id="header" class="row">
          <div class="col-lg-12">
@@ -48,10 +47,9 @@
         </div>
       </footer>
     </div>
-<% else %>
-
-<%= yield %>
-<% end %>
+<%else%>
+    <%=yield%>
+<%end%>
 </body>
 
 
