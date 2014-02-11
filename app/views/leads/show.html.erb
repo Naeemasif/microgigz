@@ -7,7 +7,7 @@
     <%end%>
     <% notice = "" %>
     <br>
-    <% if can? %>
+
     <div style="float: right">
       <form method="post" action="/leads/convert_to_project">
         <input type="hidden" name="title" value="<%=@lead.title%>"/>
@@ -18,7 +18,7 @@
        <input type="submit"  value="Convert To Project" class="form-control"/>
       </form>
     </div>
-        <% end %>
+
     <table class="table">
       <tr>
         <td>

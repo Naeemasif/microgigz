@@ -1,7 +1,7 @@
 class LeadsController < ApplicationController
   # GET /leads
   # GET /leads.json
- #load_and_authorize_resource :except => [:index]
+ load_and_authorize_resource :except => [:index]
 
   def index
     @leads = Lead.all

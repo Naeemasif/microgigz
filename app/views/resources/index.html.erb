@@ -8,11 +8,15 @@
       <div id="leads" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);" style="">
         <section class="float-left">
           <p id="lead-client">
-            <span id="active">Active</span>
+            <span id="active"> Active
+             </span>
             <%=link_to("#{resource.user.name}",resource_path(id:resource.id))%>
           </p>
           <p id="description">
-            <%=resource.user.email%>
+            <%@user_roles = resource.user.roles%>
+            <%@user_roles.each do |i| %>
+                <%= link_to "#{i.name}" , roleassignments_path, :style => "color:#696969" %>
+            <%end%>
           </p>
         </section>
         <section id="edit-destroy-link" class="float-right">

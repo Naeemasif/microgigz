@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
-  #load_and_authorize_resource :except => [:index]
+  load_and_authorize_resource :except => [:show, :edit, :update]
 
   def index
 
