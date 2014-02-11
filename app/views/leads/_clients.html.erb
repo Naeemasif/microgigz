@@ -1,13 +1,28 @@
-<div class="list-group" style="background: greenyellow;width: 100%">
-  <%@user.each do |val|%>
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading"><%=val.name%></h4>
-        <p class="list-group-item-text"><%=val.id%></p>
-      </a>
-  <%end%>
-</div>
+<script>
+  function create_client()
+  {
+      alert("hello");
+      $.ajax({
+          url:'/leads/client_creation_form',
+          type:'post'
 
-<%i = 0%>
-<%for i in 0..@user.length-1%>
-    <%logger.debug(@user[0].name)%>
+      });
+  }
+</script>
+<%if @user.length != 0%>
+   <datalist id="items"  onkeyup="alert('hello');">
+      <%@user.each do |val|%>
+        <option  value="<%=val.name%>"  label="<%=val.id%>"/>
+      <%end%>
+   </datalist>
+<%else%>
+    <div class="list-group">
+      <a href="#" class="list-group-item" onclick="create_client();">
+        New...
+      </a>
+    </div>
 <%end%>
+
+
+
+

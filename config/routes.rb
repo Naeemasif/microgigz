@@ -18,6 +18,8 @@ Microgigz::Application.routes.draw do
   post '/login/auth'=>'login#auth'
 
 
+  post '/leads/client_creation_form'=> 'leads#client_creation_form'
+
 
 
 

@@ -24,7 +24,7 @@
           <div id="menu<%=i%>" class="menu-position menu" onmouseover="display_block(this);" onmouseout="hide_block(this);">
             <div class="list-group">
               <%=link_to('Edit', edit_resource_path(resource),:class=>'list-group-item')%>
-              <%#=link_to('Destroy',resource, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item")%>
+              <%=link_to('Destroy',resource, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item")%>
             </div>
           </div>
         </section>

@@ -49,7 +49,7 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
-        @lead.update_attributes(client_id:params[:clients],status:"Active")
+        @lead.update_attributes(client_id:params[:names],status:"Active")
         format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
         format.json { render json: @lead, status: :created, location: @lead }
       else
@@ -99,9 +99,10 @@ class LeadsController < ApplicationController
   end
 
   def get_client_names
-
    @user = User.find_by_sql("select c.id, u.name from clients c, users u where u.name like '#{params[:search]}%' and (c.id=u.userable_id and u.userable_type='Client')")
+  end
 
+  def client_creation_form
 
   end
 end
