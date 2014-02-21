@@ -1,0 +1,21 @@
+
+<%if @user.length != 0%>
+    <datalist id="items">
+      <%@user.each do |val|%>
+          <option  value="<%=User.new.get_user_name(val.id)%>"  label="<%=val.id%>"/>
+      <%end%>
+    </datalist>
+<%else%>
+    <div id="new_client" class="list-group width_100_percent">
+      <a href="#" class="list-group-item" style="border-radius: 0px" onclick="create_client('<%=@search%>');">
+        New...
+      </a>
+    </div>
+<%end%>
+
+
+
+
+
+
+

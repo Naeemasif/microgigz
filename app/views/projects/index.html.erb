@@ -1,34 +1,32 @@
 <%=pageHeader("Projects")%>
 
-
-
 <div id="page-container">
   <%i = 0%>
   <%@projects.each do |project|%>
-      <div id="leads" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);">
-        <section class="float-left">
-          <p id="lead-client">
+      <div id="record" lang="<%=i%>" class="row leads" style="padding-bottom: 50px" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);">
+        <section class="position_relative">
+          <p id="title">
             <span id="active">Active</span>
             <%=link_to("#{project.title}",project_path(id:project.id))%>
             -
             <%=link_to("#{project.client.user.name}",client_path(id:project.client_id))%>
           </p>
           <p id="description">
-            <%=project.start_date.to_date%>
+            <%="this is a project"%>
           </p>
-        </section>
-        <section id="edit-destroy-link" class="float-right">
-          <section id="<%=i%>" class="edit-destroy-image">
-            <a href="#" onclick="return false;">
-              <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25"/>
-            </a>
-          </section>
-          <div id="menu<%=i%>" class="menu-position menu" onmouseover="display_block(this);" onmouseout="hide_block(this);">
-            <div class="list-group">
-              <%=link_to('Edit', edit_project_path(project),:class=>'list-group-item')%>
-              <%=link_to('Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item")%>
+          <section id="edit-destroy-link">
+            <section id="<%=i%>" class="edit-destroy-image">
+              <a href="#" onclick="return false;">
+                <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25"/>
+              </a>
+            </section>
+            <div id="menu<%=i%>" class="menu-position menu" onmouseover="display_block(this);" onmouseout="hide_block(this);">
+              <div class="list-group">
+                <%=link_to('Edit', edit_project_path(project),:class=>'list-group-item')%>
+                <%=link_to('Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item")%>
+              </div>
             </div>
-          </div>
+          </section>
         </section>
         <div class="clear-both">
         </div>
@@ -36,8 +34,10 @@
       <hr/>
       <%i = i+1%>
   <%end%>
-
 </div>
+
+
+
 
 
 

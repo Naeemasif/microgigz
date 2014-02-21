@@ -3,4 +3,5 @@ class Lead < ActiveRecord::Base
   belongs_to :client
   has_one :quote
   has_one :project
+
 end

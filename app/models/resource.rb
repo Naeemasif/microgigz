@@ -3,4 +3,6 @@ class Resource < ActiveRecord::Base
   has_one :user, :as => :userable
   has_many :projects
 
+  has_many :skills
+
 end

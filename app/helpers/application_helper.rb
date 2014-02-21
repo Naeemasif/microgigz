@@ -1,20 +1,29 @@
 module ApplicationHelper
 
+
+  def is_active?(page_name)
+   if params[:controller] == page_name
+     "active"
+   end
+  end
+
+
   #TO DISPLAY PAGE HEADER
   def pageHeader(page_name)
-    str = "<header id='leads-head'>"
+    str = "<header id='page-header'>"
     str +="<section id='page-title' class='float-left'>"
     str +="<h2>"+page_name+"</h2>"
     str +="</section>"
     str +="<section  id='search-link' class='float-right'>"
-    str +="<span>"+link_to(:Search)+"</span>"
+    str +="<div>"+link_to(:Search)+"<button type='button' onclick='display_aside();' class='btn btn-default btn-sm margin-left hidden-lg'><span class='glyphicon glyphicon-align-justify'></span></button></div>"
     str +="</section>"
     str +="</header>"
     str +="<div class='clear-both'>"
     str +="</div>"
-    str +="<hr/>"
+    str +="<hr class='margin-top-25px'/>"
     str.html_safe
   end
+
 
   def index_page_body(leads)
     i = 0
@@ -50,6 +59,16 @@ module ApplicationHelper
       str += "<hr/>"
       i = i+1
     end
+    str.html_safe
+  end
+
+  def aside(related_links)
+    str  ="<div class='list-group'>"
+    @related_links = related_links
+    for i in 0..@related_links.length - 1
+      str  +="<a href='"+@related_links[i]["url"]+"' style='border-radius:0px' class='list-group-item' >"+@related_links[i]["text"]+"</a>"
+    end
+    str  +="</div>"
     str.html_safe
   end
 

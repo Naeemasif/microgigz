@@ -1,77 +1,65 @@
-<script type="text/javascript" language="javascript">
+<%@related_links =
+          [
+                  {"text"=>"Related Link 1","url"=>"www.google.com"},
+                  {"text"=>"Related Link 1","url"=>"www.google.com"},
+                  {"text"=>"Related Link 1","url"=>"www.google.com"},
+                  {"text"=>"Related Link 1","url"=>"www.google.com"},
+                  {"text"=>"Related Link 1","url"=>"www.google.com"}
+          ]
+%>
 
-    function find_client(x)
-    {
-      $.ajax({
-          url:'/leads/get_client_names',
-          type:'post',
-          data:'search='+ x.value
-      });
-    }
-
-   function get_client_name(x)
-   {
-      var list = document.getElementById("items");
-      for (var j = 0; j < list.options.length; j++)
-      {
-         if (x.value == list.options[j].value)
-         {
-            document.getElementById("client_id").value = list.options[j].label;
-         }
-      }
-   }
-
-</script>
-
-
-<br>
-<%= form_for(@lead) do |f| %>
-  <% if @lead.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
-      <ul>
-      <% @lead.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-      <table class="table">
-        <tr>
-          <td>
-            <%= f.label :client_id %>
-          </td>
-          <td>
-            <input type="text" id="clients" name="names" list="items" oninput="get_client_name(this);"  onkeyup="find_client(this);" autocomplete="off" class="form-control"/>
-            <input type="hidden" name="names" id="client_id">
-            <div id="client">
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-         <%= f.label :title %>
-           </td>
-           <td>
-         <%= f.text_field :title,:class=>"form-control" %>
-           </td>
-        </tr>
-        <tr>
-           <td>
-         <%= f.label :description %>
-           </td>
-           <td>
-         <%= f.text_area :description,:class=>"form-control" %>
-            </td>
-        </tr>
-        <tr>
-          <td colspan="2">
-            <%= f.submit :Save,:class=>"form-control"%>
-          </td>
-        </tr>
-         <%#= link_to 'Back', leads_path %>
-      </table>
- <% end %>
-<div style="position: absolute;top: 10%;z-index: 1000;background: #ffffff;border: 2px solid green;left: 50%" id="create_client">
-
+<div id="aside" class="aside hidden-lg" onmouseover="display_aside();" onmouseout="hide_aside();">
+  <h4>Related Links</h4>
+  <hr/>
+  <%=aside(@related_links)%>
 </div>
+
+<br/>
+
+<%= form_for(@lead) do |f| %>
+    <% if @lead.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@lead.errors.count, "error") %> prohibited this project from being saved:</h2>
+        <ul>
+          <% @lead.errors.full_messages.each do |msg| %>
+             <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+   <%end %>
+  <%if !@lead.id.nil?%>
+  <div class="display-block">
+    <%= f.label :client_name %>
+    <%=f.text_field :client_name,:name=>"clients",:id=>"clients",:value=>"#{@lead.client.user.name}",:list=>"items",:oninput=>"get_client_name(this);",:onkeyup=>"find_client(this);",:autocomplete=>"off",:class=>"form-control border-radius-0px"%>
+    <%=f.hidden_field :client_id,:id=>"client_id",:value=>"#{@lead.client.id}"%>
+    <div id="client">
+    </div>
+  </div>
+  <%else%>
+  <div class="display-block">
+    <%= f.label :client_name %>
+    <%=f.text_field :client_name,:name=>"clients",:value=>"",:list=>"items",:oninput=>"get_client_name(this);",:onkeyup=>"find_client(this);",:autocomplete=>"off",:class=>"form-control border-radius-0px"%>
+    <%=f.hidden_field :client_id,:id=>"client_id",:value=>""%>
+    <div id="client">
+    </div>
+  </div>
+  <%end%>
+  <div class="display-block">
+    <%= f.label :title %>
+    <%= f.text_field :title,:class=>"form-control border-radius-0px" %>
+  </div>
+  <div class="display-block">
+    <%= f.label :description %>
+    <%= f.text_area :description,:class=>"form-control border-radius-0px" %>
+  </div>
+  <br/>
+  <div class="display-block">
+    <%= f.submit :Save,:class=>"form-control border-radius-0px",:style=>"width:100px"%>
+  </div>
+  <br/>
+<% end %>
+<div class="new-client" id="create_client">
+</div>
+
+
+

@@ -3,7 +3,7 @@
 <head>
   <title>Microgigz</title>
   <%=stylesheet_link_tag "application",:media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
   <!--favicon!-->
 </head>
@@ -11,29 +11,31 @@
 
 <body>
 <%if user_signed_in?%>
-    <div id="container" class="container">
+    <main id="container" class="container">
        <header id="header" class="row">
          <div class="col-lg-12">
-              <%=render "layouts/navbar"%>
+            <%=render "layouts/navbar"%>
          </div>
        </header>
-       <main id="content" class="row">
+       <section id="content" class="row">
          <section class="col-lg-8">
              <%=yield%>
          </section>
-         <aside class="col-lg-3 visible-lg">
-           col 3
+         <aside id="related-links" class="col-lg-3 visible-lg">
+           <h4 class='color-blue'>Related Links</h4>
+           <br/>
+           <%@related_links = [{"text"=>"Related Link 1","url"=>"www.google.com"},{"text"=>"Related Link 1","url"=>"www.google.com"},{"text"=>"Related Link 1","url"=>"www.google.com"},{"text"=>"Related Link 1","url"=>"www.google.com"},{"text"=>"Related Link 1","url"=>"www.google.com"}]%>
+           <%=aside(@related_links)%>
          </aside>
-       </main>
+       </section>
       <footer id="footer" class="row">
-        <div class="col-lg-12">
+        <section class="col-lg-12">
           <p>Copyright 	&copy; 2014 :: Microgigz</p>
-        </div>
+        </section>
       </footer>
-    </div>
+    </main>
 <%else%>
     <%=yield%>
 <%end%>
 </body>
-
 </html>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  resource_id: 1
+  technology: MyString
+  rating: 1
+
+two:
+  resource_id: 1
+  technology: MyString
+  rating: 1

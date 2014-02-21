@@ -46,14 +46,25 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(:company_name => params[:company_name], :status =>"Active")
+
+
+
+      if !params[:request_page].nil?
+         @client = Client.create(company_name:params[:client][:company_name],status:"Active")
+         @user = @client.build_user(email:params[:client][:company_name][:email],login_id:params[:client][:user],telephone:params[:client][:user][:telephone],password:"temp/123")
+         @user.save!
+      end
+    # @client = Client.new(params[:client])
+     #@client.user.build(params[:client][:user])
+    #@client = Client.new(:company_name => params[:company_name], :status =>"Active")
 
     respond_to do |format|
       if @client.save
-        @user = User.new( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
-        @user.userable_id = @client.id
-        @user.userable_type = "Client"
-        @user.save!
+     #   @user = User.new( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
+      #  @user.userable_id = @client.id
+       # @user.userable_type = "Client"
+       # @user.save!
+        format.js
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }
       else
@@ -91,4 +102,44 @@ class ClientsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def get_client_names
+    @search = params[:search]
+    @user   = Client.select("clients.id").joins(:user).where("clients.id=users.userable_id and users.userable_type='Client' and clients.status='Active' and users.name like '#{params[:search]}%'")
+
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#*********************************************************************************************************************************************
+#@user   = User.find_by_sql("select c.id, u.name from clients c, users u where u.name like '#{params[:search]}%' and (c.id=u.userable_id and u.userable_type='Client')")
+#@user = User.where("name like 'p%' and userable_type='Client'").select("name , userable_id as id")
+
+# Client.joins("INNER JOIN users ON users.userable_id = clients.id and users.userable_type='Client' and clients.status='Active' and users.name like '#{params[:search]}%'")
+# User.joins(:account).where("account_users.role = 1 AND accounts.subscription_end_date BETWEEN (NOW() - INTERVAL 8 DAY) AND (NOW() + INTERVAL 4 DAY)
+#            AND accounts.account_type = '#{Account::TYPE_FREE}' AND accounts.payment_method = '#{Account::PAYMENT_TRIAL}'")
+#@user=Client.joins(:user).where("clients.id=users.userable_id and users.userable_type='Client' and clients.status='Active' and users.name like '#{params[:search]}%'")

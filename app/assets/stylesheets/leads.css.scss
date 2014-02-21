@@ -1,0 +1,53 @@
+/**********************************************************************************************************************/
+/*LEADS SHOW STYLE GOES HERE*/
+.border-margin-client-show
+{
+  margin: 0px -15px 0px -15px; /*TOP RIGHT BOTTOM LEFT*/
+  border-radius: 0px;
+}
+.margin-title
+{
+  margin: 10px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+}
+.convert-to-project
+{
+  border-radius: 0px;
+  background: #FAFAFA;
+  color: black;
+}
+.border-none
+{
+  border: none;
+}
+/*LEADS SHOW STYLE GOES HERE*/
+
+/**********************************************************************************************************************/
+/*FORM FOR NEW CLIENT CREATION ON LEADS NEW*/
+.new-client
+{
+  position: absolute;
+  z-index: 1000;
+  border: 1px solid black;
+  top:10%;
+  left:50%;
+  border: 1px solid #A1A1A1;
+  box-shadow: 0px 0px 20px grey;
+  background: #ffffff;
+  padding: 10px 10px 10px 10px; /*TOP RIGHT BOTTOM LEFT*/
+  display: none;
+}
+/*FORM FOR NEW CLIENT CREATION ON LEADS NEW*/
+/**********************************************************************************************************************/
+
+/**********************************************************************************************************************/
+/*STYLES OVERRIDING AT <=500PX*/
+@media (max-width: 768px)
+{
+  .new-client
+  {
+    left:30%;
+  }
+}
+/*STYLES OVERRIDING AT <=500PX*/
+/**********************************************************************************************************************/
+

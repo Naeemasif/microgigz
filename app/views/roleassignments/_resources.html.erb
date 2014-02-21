@@ -26,13 +26,12 @@
 
   }
 </script>
-
 <div id="page-container">
   <%i = 0%>
   <%@resources.each do |resource|%>
-      <div id="leads" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);">
-        <section class="float-left">
-          <p id="lead-client">
+      <div id="record" lang="<%=i%>" class="row" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);">
+        <section class="position_relative">
+          <p id="title">
             <span id="active">Active</span>
             <%=link_to("#{resource.user.name}",resource_path(id:resource.id))%>
           </p>
@@ -42,25 +41,23 @@
                 <a href="#" onclick="return false;"><img src="/images/delete.png" onclick="delete_role(this);" height="10" width="10" alt="delete image" id="<%=resource.user.id%> <%=i.id%>"/></a> <span><%=i.name%></span>&nbsp;
             <%end%>
           </p>
+          <section id="edit-destroy-link">
+            <p>
+              <span class="color_grey">Roles :&nbsp; </span>
+              <select name="roles" class="roles" id="<%=resource.user.id%>" onchange="assign_role(this);">
+                <option value="none" selected="selected">None</option>
+                <%@roles.each do |role|%>
+                    <%@role_validity = resource.user.user_roles.where(user_id:resource.user.id,role_id:role.id)%>
+                    <%if @role_validity.length == 0%>
+                        <option value="<%=role.id%>"><%=role.name%></option>
+                    <%end%>
+                <%end%>
+              </select>
+            </p>
+          </section>
         </section>
-        <section id="edit-destroy-link" class="float-right">
-          <p>
-            <span class="color_grey">Roles : </span>
-            <select name="roles" class="roles" id="<%=resource.user.id%>" onchange="assign_role(this);">
-              <option value="none" selected="selected">None</option>
-              <%@roles.each do |role|%>
-                 <%@role_validity = resource.user.user_roles.where(user_id:resource.user.id,role_id:role.id)%>
-                 <%if @role_validity.length == 0%>
-                    <option value="<%=role.id%>"><%=role.name%></option>
-                 <%end%>
-              <%end%>
-            </select>
-          </p>
-        </section>
-        <div class="clear-both">
-        </div>
       </div>
-      <hr/>
+      <hr style="margin: 6px 0px 0px 0px"/>
       <% i = i + 1 %>
   <%end%>
 </div>

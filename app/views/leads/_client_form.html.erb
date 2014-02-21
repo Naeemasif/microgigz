@@ -1,26 +1,38 @@
+<%= form_for @client,:id=>"create_client",:remote => true,:onSubmit=>"hide_panel();" do |f| %>
 <h2>Create Client</h2>
-
-<%= form_tag :action => :create, :method => :post,:remote=>true do   %>
-<div>
-  <div>
-    <span>name:</span><span><%= text_field_tag :name,nil,:class=>"form-control" %></span>
-  </div>
-  <div>
-    <span>email:</span><span><%= text_field_tag :email,nil,:class=>"form-control" %></span>
-  </div>
-  <div>
-    <span>Login id:</span><span> <%= text_field_tag :login_id,nil,:class=>"form-control" %></span>
-  </div>
-  <div>
-    <span>telephone:</span><span> <%= text_field_tag :telephone,nil,:class=>"form-control" %></span>
-  </div>
-  <div>
-    <span>company:</span><span> <%= text_field_tag :company_name,nil,:class=>"form-control" %></span>
-  </div>
-  <div>
-    <span><%=submit_tag("Save", :class => 'btn btn-default') %></span><span><%=link_to 'Back', clients_path,:class=>"btn btn-default" %></span>
-  </div>
-
+<div class="display-block">
+    <b>Name</b>
+    <br/>
+    <%=f.text_field :company_name,:class=>"form-control" %>
 </div>
-
+<%= f.fields_for @user do |builder| %>
+<div class="display-block">
+  <b>Email</b>
+  <br/>
+  <%=builder.text_field :email,:class=>"form-control" %>
+</div>
+<div class="display-block">
+  <b>Login id</b>
+  <br/>
+  <%=builder.text_field :login_id,:class=>"form-control" %>
+</div>
+<div class="display-block">
+  <b>Telephone</b>
+  <br/>
+  <%=builder.text_field :telephone,:class=>"form-control" %>
+</div>
+<%end%>
+<div class="display-block">
+  <b>Company</b>
+  <br/>
+  <%=f.text_field :company_name,:class=>"form-control" %>
+</div>
+<br/>
+<div class="display-block">
+  <b>
+    <%=submit_tag "Create client",:class=>"form-control"%>
+  </b>
+  <input type="button" value="Cancel" onclick="hide_panel();" class="form-control">
+   <%=hidden_field_tag :request_page,"leads"%>
+</div>
 <%end%>

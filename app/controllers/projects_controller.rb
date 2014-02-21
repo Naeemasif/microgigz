@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
  # load_and_authorize_resource :except => [:index]
 
   def index
-    @projects = Project.where(:status=>true)
+    @projects = Project.all
 
     respond_to do |format|
       format.html # index.html.erb

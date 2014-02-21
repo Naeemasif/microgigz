@@ -1,19 +1,27 @@
 <%= form_tag :action => :auth, :controller => :login, :method => :get do   %>
-
-<div class="container container-login">
-     <div class="row row-login">
-       <div class="col-lg-5 col-lg-5-login">
-         <h2 class="h2-login-form">Kantoor</h2>
-       </div>
-       <div class="col-lg-7">
-            <div class="login-form">
-              <br/>
-              <span><b>Login to system</b></span><br/>
-              <span><%= text_field 'login','name',:class=>"form-control border-radius-0px width-login",:placeholder=>"User Name" %></span><br/>
-              <span><%= password_field 'login', 'password' ,:class=>"form-control border-radius-0px width-login",:placeholder=>"Password" %></span> <br/>
-              <span><%= submit_tag :submit ,:class=>"border-radius-0px-width"%></span>
-            </div>
-       </div>
-     </div>
-</div>
-<% end %>
+<main class="container">
+  <div class="login-panel">
+        <section id="brand" class="float-left">
+          <div id="brand-name">
+          <h3 id="color-grey">Kantoor</h3>
+          </div>
+        </section>
+        <section id="login-form" class="float-right" style="">
+          <div class="display-block">
+            <p><b>Login to the system</b></p>
+          </div>
+          <div class="display-block">
+            <p><%= text_field 'login','name',:class=>"form-control border-height",:placeholder=>"User Name" %></p>
+          </div>
+          <div class="display-block">
+            <p><%= password_field 'login', 'password' ,:class=>"form-control border-height",:placeholder=>"Password" %></p>
+          </div>
+          <div class="display-block">
+            <p><%= submit_tag :Signin ,:class=>"border-radius-0px-width"%></p>
+          </div>
+        </section>
+        <div class="clear-both">
+        </div>
+  </div>
+</main>
+<%end %>
