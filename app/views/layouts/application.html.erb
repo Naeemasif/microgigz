@@ -18,14 +18,22 @@
          </div>
        </header>
        <section id="content" class="row">
+         <% if flash[:notice] %>
+             <div class="alert alert-success">
+               <p id="notice" ><%= flash[:notice] %></p>
+             </div>
+           <% elsif flash[:alert] %>
+             <div class="alert alert-danger">
+               <p id="alert" >
+               <%= flash[:alert] %>
+               </p>
+             </div>
+         <% end %>
          <section class="col-lg-8">
              <%=yield%>
          </section>
-         <aside id="related-links" class="col-lg-3 visible-lg">
-           <h4 class='color-blue'>Related Links</h4>
-           <br/>
-           <%@related_links = [{"text"=>"Related Link 1","url"=>"www.google.com"},{"text"=>"Related Link 1","url"=>"www.google.com"},{"text"=>"Related Link 1","url"=>"www.google.com"},{"text"=>"Related Link 1","url"=>"www.google.com"},{"text"=>"Related Link 1","url"=>"www.google.com"}]%>
-           <%=aside(@related_links)%>
+         <aside class="col-lg-3 visible-lg">
+          <%= render_related_links %>
          </aside>
        </section>
       <footer id="footer" class="row">
@@ -36,6 +44,6 @@
     </main>
 <%else%>
     <%=yield%>
-<%end%>
+<% end %>
 </body>
 </html>

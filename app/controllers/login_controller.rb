@@ -18,12 +18,12 @@ class LoginController < ApplicationController
          @user = User.new( :userable_id => @resource.id,:userable_type => "Resource",:email => "#{params[:login][:name]}@nxb.com.pk", :login_id => params[:login][:name],  :password=>"12345678", :password_confirmation=>"12345678")
            if @user.save
              sign_in(@user)
-             flash[:notice] = "Login is scuessful!"
+             flash[:notice] = "Signed in scuessfully"
              redirect_to edit_resource_path(@resource.id)
            end
        else
          sign_in(@user)
-         flash[:notice] = "Login is scuessful!"
+         flash[:notice] = "Signed in scuessfully"
          redirect_to :controller => "leads"
       end
 
@@ -45,11 +45,12 @@ class LoginController < ApplicationController
       #end
     else
       @user = User.find_all_by_login_id(params[:login][:name]).first
-      if @user
+
+      if @user.valid_password?(params[:login][:password])
           sign_in(@user)
           redirect_to :controller => "leads"
       else
-          flash[:notice] = "Login failed!"
+          flash[:alert] = "User name or password is not correct"
           redirect_to :action => "new"
       end
     end

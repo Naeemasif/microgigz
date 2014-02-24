@@ -1,11 +1,28 @@
 module ApplicationHelper
 
+  def resource_name
+    :user
+  end
+
+  def resource
+    @resource ||= User.new
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:user]
+  end
+
 
   def is_active?(page_name)
-   if params[:controller] == page_name
-     "active"
-   end
+    if params[:controller] == page_name
+        return "active"
+    end
   end
+
+  def render_related_links
+     render "#{params[:controller]}/related_links"
+
+   end
 
 
   #TO DISPLAY PAGE HEADER

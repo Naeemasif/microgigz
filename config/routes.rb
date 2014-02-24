@@ -21,7 +21,6 @@ Microgigz::Application.routes.draw do
   resources :roleassignments, :only => [:index,:assign_role]
   post '/roleassignments/assign_role'=>'roleassignments#assign_role'
   post '/roleassignments/delete_role'=>'roleassignments#delete_role'
-
   resources :profiles
   resources :resources
   resources :skills

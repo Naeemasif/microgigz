@@ -1,0 +1,34 @@
+
+<%i = 0%>
+<%@leads.each do |lead|%>
+    <div id="leads" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);" style="">
+      <section class="float-left">
+        <p id="lead-client">
+          <span id="active">Active</span>
+          <%=link_to("#{lead.title}",lead_path(id:lead.id))%>
+          -
+          <%=link_to("#{lead.client.user.name}",client_path(id:lead.client.id))%>
+        </p>
+        <p id="description">
+          <%=lead.description%>
+        </p>
+      </section>
+      <section id="edit-destroy-link" class="float-right">
+        <section id="<%=i%>" class="edit-destroy-image">
+          <a href="#" onclick="return false;">
+            <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25"/>
+          </a>
+        </section>
+        <div id="menu<%=i%>" class="menu-position menu" onmouseover="display_block(this);" onmouseout="hide_block(this);">
+          <div class="list-group">
+            <%=link_to('Edit', edit_lead_path(lead),:class=>'list-group-item')%>
+            <%=link_to('Destroy', lead, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item")%>
+          </div>
+        </div>
+      </section>
+      <div class="clear-both">
+      </div>
+    </div>
+    <hr/>
+    <%i = i+1%>
+<%end%>

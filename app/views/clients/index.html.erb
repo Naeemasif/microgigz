@@ -1,6 +1,7 @@
 <%=pageHeader("Clients")%>
 <div id="page-container">
   <%i = 0%>
+
   <%@clients.each do |client| %>
       <div id="record" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);" style="">
         <section class="position_relative">
@@ -9,7 +10,7 @@
             <%=link_to("#{client.user.name}",client_path(id:client.id))%>
           </p>
           <p id="description">
-            <%=Client.find(client.id).company_name%>
+            <%=Client.find_by_id(client.id).company_name%>
           </p>
           <section id="edit-destroy-link">
             <div class="dropdown">

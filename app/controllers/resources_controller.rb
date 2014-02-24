@@ -1,7 +1,7 @@
 class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
- # load_and_authorize_resource :except => [:show]
+ # load_and_authorize_resource :except => [:show, :edit, :update]
 
   def index
     @resources = Resource.all
@@ -17,7 +17,7 @@ class ResourcesController < ApplicationController
   def show
     @resource = Resource.find_by_id(params[:id])
     @user  = @resource.user
-
+    @notes = @resource.notes
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @resource }

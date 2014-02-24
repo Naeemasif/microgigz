@@ -1,0 +1,5 @@
+<h1>Related links of Roles</h1>
+
+
+<%= link_to "Admins (#{Role.where(:name => "admin").count})", leads_path  %> <br>
+<%= link_to "Managers (#{Role.where(:name => "manager").count})", leads_path  %>

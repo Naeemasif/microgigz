@@ -1,4 +1,6 @@
 class RoleassignmentsController < ApplicationController
+ # load_and_authorize_resource :except => [:index]
+
   def index
     @resources = Resource.all
     @roles = Role.all

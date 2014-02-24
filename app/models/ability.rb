@@ -11,10 +11,10 @@ class Ability
 
         # User is Normal User
       elsif user.has_role? :manager
-        can :read, [Lead , Project]
-
+        can :read, [Lead]
+        can :manage, [Role , UserRole, Project, Client ,Resource]
       else
-        #can :manage, Devise::Session
+        cannot :read, [Project, Client, Role , UserRole]
       end
     end
     # Define abilities for the passed in user here. For example:

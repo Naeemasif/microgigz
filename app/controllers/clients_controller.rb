@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
-  #load_and_authorize_resource :except => [:index]
+ # load_and_authorize_resource :except => [:show, :edit, :update]
 
   def index
     @clients = Client.where(status:"Active")
@@ -18,6 +18,7 @@ class ClientsController < ApplicationController
     @client = Client.find_by_id(params[:id])
     @user = @client.user
     @leads   =  @client.leads
+    @notes = @client.notes
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @client }
@@ -39,7 +40,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find_by_id(params[:id])
-    @user   = User.find_by_userable_id(@client)
+    @user = @client.user
   end
 
   # POST /clients
@@ -66,7 +67,6 @@ class ClientsController < ApplicationController
   # PUT /clients/1.json
   def update
     @client = Client.find_by_id(params[:id])
-
     respond_to do |format|
       if @client.update_attributes(:company_name => params[:client][:company_name])
          @user = @client.user.update_attributes(params[:client][:user])
