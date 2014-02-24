@@ -1,11 +1,20 @@
-<%= form_for @client,:id=>"create_client",:remote => true,:onSubmit=>"hide_panel();" do |f| %>
+<%= form_for @client,:id=>"create_client",:remote => true, :html => { :onsubmit => "hide_panel();" } do |f| %>
 <h2>Create Client</h2>
 <div class="display-block">
-    <b>Name</b>
-    <br/>
-    <%=f.text_field :company_name,:class=>"form-control" %>
+  <b>Company</b>
+  <%=f.text_field :company_name,:class=>"form-control" %>
 </div>
 <%= f.fields_for @user do |builder| %>
+<div class="display-block">
+   <b>Name</b>
+   <br/>
+   <%=builder.text_field :name,:class=>"form-control" %>
+</div>
+<div class="display-block">
+   <b>Password</b>
+   <br/>
+   <%=builder.password_field :password,:class=>"form-control" %>
+</div>
 <div class="display-block">
   <b>Email</b>
   <br/>
@@ -22,12 +31,10 @@
   <%=builder.text_field :telephone,:class=>"form-control" %>
 </div>
 <%end%>
-<div class="display-block">
-  <b>Company</b>
-  <br/>
-  <%=f.text_field :company_name,:class=>"form-control" %>
-</div>
 <br/>
+<div class="display-block">
+<%=f.hidden_field :status,:value=>"Active",:class=>"form-control" %>
+</div>
 <div class="display-block">
   <b>
     <%=submit_tag "Create client",:class=>"form-control"%>

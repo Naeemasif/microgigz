@@ -227,9 +227,24 @@ table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .ta
             right: 0px;
             background: #ffffff;
 
-            .edit-destroy-image
+            .dropdown
             {
-              display: none;
+              .dropdown-menu
+              {
+                border-radius: 0px;
+                min-width:120px;
+                border:1px solid #A1A1A1;
+                position: absolute;
+                left: -100px;
+                top: 23px;
+              }
+              a
+              {
+                img
+                {
+                  display: none;
+                }
+              }
             }
             .menu-position
             {
@@ -548,16 +563,13 @@ table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .ta
       .col-lg-8
       {
         margin: 0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
-        a
-        {
-        }
+
         #page-container
         {
           padding: 0px 0px 40px 0px;    /*TOP RIGHT BOTTOM LEFT*/
           #record
           {
             padding: 5px 0px 5px 0px;   /*TOP RIGHT BOTTOM LEFT*/
-
 
             p#title
             {
@@ -607,6 +619,7 @@ table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .ta
     width: 100px;
   }
 /*LOG IN PAGE DESIGN*/
+
 }
 /*STYLES OVERRIDING AT <=768PX*/
 /**********************************************************************************************************************/

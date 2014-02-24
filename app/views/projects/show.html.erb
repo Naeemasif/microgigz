@@ -1,78 +1,30 @@
+<%if !notice.blank?%>
+    <!--<div class="alert alert-success"><p id="notice"><%#= notice %></p></div> !-->
+<%end%>
+<% notice = "" %>
 
-
-<div class="row">
-  <div class="col-lg-12">
-   <h1>Project</h1>
-    <br>
-   <p id="notice"><%= notice %></p>
-   <table class="table">
-     <tr>
-       <td>
-         <b>Title:</b>
-       </td>
-       <td>
-         <%= @project.title %>
-       </td>
-     </tr>
-     <tr>
-       <td>
-         <b>Start date:</b>
-       </td>
-       <td>
-         <%= @project.start_date %>
-       </td>
-     </tr>
-
-
-     <%#@pm_id   = User.find_by_userable_id(@project.pm_id)%>
-     <tr>
-       <td>
-         <b>Pm name:</b>
-       </td>
-       <td>
-         <%#= @pm_id.name %>
-       </td>
-     </tr>
-     <tr>
-       <td>
-         <b>Status:</b>
-       </td>
-       <td>
-         <%= @project.status %>
-       </td>
-     </tr>
-     <%#=@project.id%>
-     <tr>
-       <td>
-         <b>Lead:</b>
-       </td>
-
-       <td>
-
-         <%=@project.lead.title%>
-       </td>
-
-     </tr>
-     <%#=@project.id%>
-     <%#=Project.find_by_id(@project.id)%>
-     <tr>
-       <td>
-         <b>Client:</b>
-       </td>
-
-       <td>
-         <%=@project.client.user.name%>
-       </td>
-     </tr>
-     <tr>
-       <td>
-         <%= link_to 'Edit', edit_project_path(@project),:class=>"btn btn-default" %>
-         <%= link_to 'Back', projects_path,:class=>"btn btn-default" %>
-       </td>
-       <td></td>
-     </tr>
-   </table>
-  </div>
+<br/><br/>
+<div class="list-group border-margin-client-show">
+  <li class="list-group-item border-none">
+    <h4 class="list-group-item-heading margin-title">Project</h4>
+    <p class="list-group-item-text"> <%= @project.title %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Description</h4>
+    <p class="list-group-item-text"> <%= @project.lead.description %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Start Date</h4>
+    <p class="list-group-item-text"> <%= @project.start_date %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Lead</h4>
+    <p class="list-group-item-text"><%=link_to "#{@project.lead.title}",lead_path(id:@project.lead.id)%></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Client</h4>
+    <p class="list-group-item-text"><%=link_to "#{@project.client.user.name}",client_path(id:@project.client.id)%></p>
+  </li>
 </div>
 
 

@@ -3,7 +3,7 @@
 <div id="page-container">
   <%i = 0%>
   <%@projects.each do |project|%>
-      <div id="record" lang="<%=i%>" class="row leads" style="padding-bottom: 50px" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);">
+      <div id="record" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);">
         <section class="position_relative">
           <p id="title">
             <span id="active">Active</span>
@@ -15,16 +15,14 @@
             <%="this is a project"%>
           </p>
           <section id="edit-destroy-link">
-            <section id="<%=i%>" class="edit-destroy-image">
-              <a href="#" onclick="return false;">
+            <div class="dropdown">
+              <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
                 <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25"/>
               </a>
-            </section>
-            <div id="menu<%=i%>" class="menu-position menu" onmouseover="display_block(this);" onmouseout="hide_block(this);">
-              <div class="list-group">
-                <%=link_to('Edit', edit_project_path(project),:class=>'list-group-item')%>
-                <%=link_to('Destroy', project, method: :delete, data: { confirm: 'Are you sure?' },:class=>"list-group-item")%>
-              </div>
+              <ul class="dropdown-menu" onmouseout="hide_block(this);" onmouseover="display_block(this);" id="menu<%=i%>"  role="menu" aria-labelledby="dLabel">
+                <li><%=link_to('Edit', edit_project_path(project))%></li>
+                <li><%=link_to('Destroy', project, method: :delete, data: { confirm: 'Are you sure?' })%></li>
+              </ul>
             </div>
           </section>
         </section>
@@ -35,6 +33,19 @@
       <%i = i+1%>
   <%end%>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

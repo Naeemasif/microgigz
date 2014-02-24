@@ -47,16 +47,19 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
 
-
-
       if !params[:request_page].nil?
-         @client = Client.create(company_name:params[:client][:company_name],status:"Active")
-         @user = @client.build_user(email:params[:client][:company_name][:email],login_id:params[:client][:user],telephone:params[:client][:user][:telephone],password:"temp/123")
+         @client = Client.create(company_name:params[:client][:company_name],status:params[:client][:status])
+         @user = @client.build_user(params[:client][:user])
          @user.save!
+      else
+
+
+        # @user = User.new( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
+        # @user.userable_id = @client.id
+        # @user.userable_type = "Client"
+        # @user.save!
+
       end
-    # @client = Client.new(params[:client])
-     #@client.user.build(params[:client][:user])
-    #@client = Client.new(:company_name => params[:company_name], :status =>"Active")
 
     respond_to do |format|
       if @client.save

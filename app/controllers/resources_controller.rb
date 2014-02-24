@@ -26,7 +26,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new.json
   def new
     @resource = Resource.new
-
+    @user = @resource.build_user
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @resource }
@@ -36,7 +36,7 @@ class ResourcesController < ApplicationController
   # GET /resources/1/edit
   def edit
     @resource = Resource.find(params[:id])
-    @user = @resource.user.name
+    @user = @resource.user
   end
 
   # POST /resources

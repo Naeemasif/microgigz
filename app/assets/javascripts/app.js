@@ -30,7 +30,7 @@ function hide_block(x)
 /*TOGGLE EDIT-DESTROY MENU*/
 function show_menu(x)
 {
-    $("#menu"+ x.id).toggle(500);
+    $("#menu"+ x.id).toggle();
 }
 /*TOGGLE EDIT-DESTROY MENU*/
 

@@ -1,62 +1,32 @@
 <p id="notice"><%= notice %></p>
-
-<table class="table">
-  <tr>
-    <td>
-      <b>Name</b>
-    </td>
-    <td>
-      <%= @user.name %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Email</b>
-    </td>
-    <td>
-      <%= @user.email %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <b>Login id</b>
-    </td>
-    <td>
-      <%= @user.login_id %>
-    </td>
-
-  </tr>
-  <tr>
-    <td>
-      <b>Telephone</b>
-    </td>
-    <td>
-      <%= @user.telephone %>
-    </td>
-
-  </tr>
+<br/><br/>
+<div class="list-group border-margin-client-show">
+  <li class="list-group-item border-none">
+    <h4 class="list-group-item-heading margin-title">Name</h4>
+    <p class="list-group-item-text"><%= @user.name %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Email</h4>
+    <p class="list-group-item-text"><%= @user.email %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Login id</h4>
+    <p class="list-group-item-text">  <%= @user.login_id %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Telephone</h4>
+    <p class="list-group-item-text"><%= @user.telephone %></p>
+  </li>
   <% if @user.userable_type == "Client" %>
-  <tr>
-    <td>
-
-          <b>Company Name</b>
-          </td>
-          <td>
-            <%#=@client.company_name%>
-          </td>
-          </tr>
-          <% end %>
-          <tr><td></td><td></td></tr>
-          </table>
-
-          <br>
-
-          <tr>
-            <td>
-              <%= link_to 'Edit', edit_resource_path(@resource),:class=>"btn btn-default" %>
-              <%= link_to 'Back', resources_path,:class=>"btn btn-default"%>
-            </td>
-            <td>
-            </td>
-          </tr>
-          </table>
+    <li class="list-group-item">
+        <h4 class="list-group-item-heading">Company Name</h4>
+        <p class="list-group-item-text"><%#=@client.company_name%></p>
+    </li>
+  <%end%>
+  <li class="list-group-item">
+    <p class="list-group-item-text">
+      <%= link_to 'Edit', edit_resource_path(@resource),:class=>"btn btn-default" %>
+      <%= link_to 'Back', resources_path,:class=>"btn btn-default"%>
+    </p>
+  </li>
+</div>

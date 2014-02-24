@@ -1,70 +1,36 @@
-<br/>
-<table class="table">
-
-  <%= form_tag :action => :create, :method => :post do   %>
-
-      <tr>
-        <td class="align_left">
-          name:
-        </td>
-        <td>
-          <%= text_field_tag :name,nil,:class=>"form-control" %>
-        </td>
-      </tr>
-      <tr>
-        <td class="align_left">
-          Login id:
-        </td>
-
-
-            <td>
-              <%= text_field_tag :login_id,nil,:class=>"form-control" %>
-            </td>
-
-      </tr>
-      <tr>
-        <td class="align_left">
-          email:
-        </td>
-        <td>
-
-              <%= text_field_tag :email,nil,:class=>"form-control" %>
-
-
-        </td>
-      </tr>
-      <tr>
-        <td class="align_left">
-          telephone:
-        </td>
-        <td>
-          <%= text_field_tag :telephone,nil,:class=>"form-control" %>
-        </td>
-      </tr>
-      <tr>
-        <td class="align_left">
-          Skills:
-        </td>
-        <td>
-          <%#= text_field_tag :telephone,nil,:class=>"form-control" %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <table>
-            <tr>
-              <td>
-                <%=  submit_tag("Save", :class => 'btn btn-default') %>
-              </td>
-              <td>
-                <%= link_to 'Back', clients_path,:class=>"btn btn-default" %>
-              </td>
-            </tr>
-          </table>
-        </td>
-        <td>
-        </td>
-      </tr>
-      </table>
-  <% end %>
-
+<%= form_for(@resource) do |f| %>
+    <% if @resource.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this project from being saved:</h2>
+          <ul>
+            <% @resource.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <%= f.fields_for @user do |builder| %>
+        <div class="display-block">
+            <%= builder.label :name %>
+            <%= builder.text_field :name,:class=>"form-control"%>
+        </div>
+        <div class="display-block">
+          <%= builder.label :login_id %>
+          <%= builder.text_field :login_id,:class=>"form-control"%>
+        </div>
+        <div class="display-block">
+          <%= builder.label :email %>
+          <%= builder.text_field :email,:class=>"form-control"%>
+        </div>
+        <div class="display-block">
+          <%= builder.label :telephone %>
+          <%= builder.text_field :telephone,:class=>"form-control"%>
+        </div>
+    <%end%>
+    <br/>
+    <div class="display-block">
+      <%=  submit_tag("Save", :class => 'btn btn-default') %>
+      <%= link_to 'Back', clients_path,:class=>"btn btn-default" %>
+    </div>
+    <br/>
+<%end%>

@@ -12,90 +12,38 @@
 
 </script>
 
-
-
-<br><br>
 <%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <% if @project.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+          <ul>
+            <% @project.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div class="display-block">
+      <%= f.label :title %>
+      <%= f.text_field :title,:class=>"form-control"%>
     </div>
-  <% end %>
-  <table class="table">
-    <tr>
-      <td>
-        <%= f.label :title %>
-      </td>
-      <td>
-        <%= f.text_field :title,:class=>"form-control"%>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :start_date %>
-      </td>
-      <td>
-        <input type="datetime-local" name="bdaytime" class="form-control">
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :pm_name %>
-      </td>
-      <td>
-        <%=select_tag "pm", options_from_collection_for_select(@project_manager, "id", "name"),:class=>"form-control" ,include_blank: true%>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :lead_id %>
-      </td>
-      <td>
-        <%=select_tag "lid", options_from_collection_for_select(@lead, "id", "title"),:onchange=>"find_client_name(this);",:class=>"form-control",include_blank: true%>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label "Client Name" %>
-      </td>
-      <td>
-       <div class="float_left">
-
-         <%= text_field_tag :client_name,nil,:class=>"form-control",:readonly=>true%></div>
-        <!--<div class="float_left visibility_hidden">
-           <img id="progress" src="/images/progress.gif" height="25" width="25">
-        </div> !-->
-        <%=hidden_field_tag :client_id%>
-
-
-
-       <div class="clear_both"></div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%#= f.label :Resources %>
-      </td>
-      <td>
-       <%#=link_to :resources,projects_display_resources_path,:class=>"btn btn-default",:remote=>true%>
-      </td>
-    </tr>
-    <tr>
-      <td>
-
-      </td>
-      <td>
-
-        <%= f.submit :Save,:class=>"btn btn-default" %>
-        <%= link_to 'Back', projects_path,:class=>"btn btn-default" %>
-      </td>
-    </tr>
-  </table>
-<% end %>
-<div class="clear_both"></div>
-<div id="ids"></div>
+    <div class="display-block">
+      <%= f.label :start_date %><br/>
+      <input type="datetime-local" name="bdaytime">
+    </div>
+    <div class="display-block">
+      <%= f.label :pm_name %>
+      <%=select_tag "pm", options_from_collection_for_select(@project_manager, "id", "name"),:class=>"form-control" ,include_blank: true%>
+    </div>
+    <div class="display-block">
+      <%= f.label "Client Name" %>
+      <%= text_field_tag :client_name,nil,:class=>"form-control",:readonly=>true%>
+      <%=hidden_field_tag :client_id%>
+    </div>
+    <br/>
+    <div class="display-block">
+      <%= f.submit :Save,:class=>"btn btn-default" %>
+      <%= link_to 'Back', projects_path,:class=>"btn btn-default" %>
+    </div>
+    <br/>
+<%end%>
