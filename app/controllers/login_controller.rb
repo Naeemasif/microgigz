@@ -50,7 +50,7 @@ class LoginController < ApplicationController
           sign_in(@user)
           redirect_to :controller => "leads"
       else
-          flash[:alert] = "Login failed!"
+          flash[:alert] = "User name or password is not correct"
           redirect_to :action => "new"
       end
     end

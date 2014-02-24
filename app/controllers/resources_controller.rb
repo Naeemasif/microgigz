@@ -16,6 +16,7 @@ class ResourcesController < ApplicationController
   def show
     @resource = Resource.find(params[:id])
     @user  = @resource.user
+    @notes = @resource.notes
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @resource }
@@ -46,11 +47,9 @@ class ResourcesController < ApplicationController
    # @resource.nxb_id= session[:username]
     respond_to do |format|
       if @resource.save
-        @user = User.new( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
-        @user.userable_id = @resource.id
-        session[:current_resource_id] = @user.userable_id
-        @user.userable_type = "Resource"
+        @user = @resource.build_user( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
         @user.save!
+        @resource.notes.create(:description => params[:note])
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
         format.json { render json: @resource, status: :created, location: @resource }
       else

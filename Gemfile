@@ -11,6 +11,8 @@ gem  'therubyracer'
 gem 'devise'
 gem 'net-ldap'
 gem 'cancan'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -27,6 +29,12 @@ gem 'jquery-rails'
 gem 'sass-rails', '>= 3.2'
 gem 'bootstrap-sass', '~> 3.1.0'
 
+group :development do
+  gem 'binding_of_caller'
+  gem 'pry'
+  gem 'debugger'
+  gem 'awesome_print'
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

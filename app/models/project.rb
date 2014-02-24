@@ -4,5 +4,5 @@ class Project < ActiveRecord::Base
   belongs_to :client
   belongs_to :resource
 
-
+  has_many :notes , :as => :noteable
 end

@@ -20,6 +20,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     @user = @client.user
     @leads   =  @client.leads
+    @notes = @client.notes
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @client }
@@ -40,7 +41,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
-    @user = User.find_all_by_userable_id(@client.id).first
+    @user = @client.user
   end
 
   # POST /clients
@@ -50,10 +51,9 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        @user = User.new( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
-        @user.userable_id = @client.id
-        @user.userable_type = "Client"
-        @user.save!
+        @user = @client.build_user( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
+         @user.save!
+        @client.notes.create(:description => params[:note])
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }
       else

@@ -41,6 +41,15 @@
            <%= @user.login_id %>
          </td>
        </tr>
+       <%if !@notes.nil? %>
+           <% @notes.each do |note| %>
+               <tr>
+                 <td>
+                   <%= note.description %>
+                 </td>
+               </tr>
+           <% end %>
+       <% end %>
      </table>
   </div>
 </div>

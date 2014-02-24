@@ -1,6 +1,9 @@
 Microgigz::Application.routes.draw do
 
 
+
+
+
   devise_for :users
   root :to => 'leads#index'
 
@@ -32,10 +35,9 @@ Microgigz::Application.routes.draw do
   post '/roleassignments/assign_role'=>'roleassignments#assign_role'
   post '/roleassignments/delete_role'=>'roleassignments#delete_role'
 
-  resources :profiles
   resources :clients
   resources :resources
-
+  resources :notes
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

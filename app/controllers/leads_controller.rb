@@ -4,7 +4,16 @@ class LeadsController < ApplicationController
  load_and_authorize_resource :except => [:index]
 
   def index
-    @leads = Lead.all
+    if !params[:search].blank?
+    @search = Lead.search do
+      fulltext params[:search]
+    end
+    @leads = @search.results
+    elsif !params[:start].blank? && !params[:end].blank?
+      @leads = Lead.where(:created_at => params[:start]..params[:end]).all
+    else
+      @leads = Lead.all
+    end
 
    # respond_to do |format|
     #  format.html # index.html.erb
