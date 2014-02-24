@@ -25,13 +25,21 @@
       <%= f.label :title %>
       <%= f.text_field :title,:class=>"form-control"%>
     </div>
+
     <div class="display-block">
       <%= f.label :start_date %><br/>
       <input type="datetime-local" name="bdaytime"/>
     </div>
     <div class="display-block">
-      <%= f.label :pm_name %>
-      <%=select_tag "pm", options_from_collection_for_select(@project_manager, "id", "name"),:class=>"form-control" ,include_blank: true%>
+      <%= f.label :pm_id %>
+      <select class="form-control">
+        <option value="name">name</option>
+        <option value="name">name</option>
+        <option value="name">name</option>
+        <option value="name">name</option>
+        <option value="name">name</option>
+      </select>
+      <%#=select_tag "pm", options_from_collection_for_select(@project_manager, "id", "name"),:class=>"form-control" ,include_blank: true%>
     </div>
     <div class="display-block">
       <%= f.label :lead_id %>
@@ -44,8 +52,11 @@
     </div>
     <br/>
     <div class="display-block">
-      <%= f.submit :Save,:class=>"btn btn-default",:style=>"width:150px" %>
-      <%= link_to 'Back', projects_path,:class=>"btn btn-default",:style=>"width:150px" %>
+       <%=f.hidden_field :status,:value=>"Active"%>
+    </div>
+    <div class="display-block">
+      <%= f.submit :Save,:class=>"btn btn-default",:style=>"width:100px" %>
+      <%= link_to 'Back', projects_path,:class=>"btn btn-default",:style=>"width:100px" %>
     </div>
     <br/>
 <%end%>

@@ -31,14 +31,14 @@ class LeadsController < ApplicationController
 
   # GET /leads/1/edit
   def edit
-    @lead = Lead.find(params[:id])
+    @lead = Lead.find_by_id(params[:id])
   end
 
   # POST /leads
   # POST /leads.json
   def create
       @lead = Lead.new(params[:lead])
-      @lead.status = "Active"
+
       respond_to do |format|
         if @lead.save
           format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
@@ -85,9 +85,7 @@ class LeadsController < ApplicationController
   end
 
   def client_creation_form
-      @name = params[:search]
       @client = Client.new
       @user = @client.build_user
   end
-
 end

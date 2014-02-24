@@ -6,7 +6,7 @@
         <section class="position_relative">
           <p id="title">
             <span id="active">Active</span>
-            <%=link_to("#{client.name}",client_path(id:client.id))%>
+            <%=link_to("#{client.user.name}",client_path(id:client.id))%>
           </p>
           <p id="description">
             <%=Client.find(client.id).company_name%>

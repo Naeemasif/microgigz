@@ -8,7 +8,7 @@
 <div class="display-block">
    <b>Name</b>
    <br/>
-   <%=builder.text_field :name,:class=>"form-control" %>
+   <%=builder.text_field :name,:value=>"#{params[:search]}",:class=>"form-control" %>
 </div>
 <div class="display-block">
    <b>Password</b>
@@ -29,6 +29,9 @@
   <b>Telephone</b>
   <br/>
   <%=builder.text_field :telephone,:class=>"form-control" %>
+</div>
+<div class="display-block">
+  <%=builder.hidden_field :userable_type,:value=>"Client",:class=>"form-control" %>
 </div>
 <%end%>
 <br/>

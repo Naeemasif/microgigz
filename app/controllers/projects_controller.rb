@@ -15,7 +15,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
-    @project = Project.find(params[:id])
+    @project = Project.find_by_id(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,8 +27,8 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
-    @project_manager = User.find_by_sql("select r.id, u.name from resources r, users u where r.id=u.userable_id and u.userable_type='pm'")
     @lead = Lead.where(status:"Active")
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
@@ -37,15 +37,15 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @project = Project.find(params[:id])
-    @project_manager = User.find_by_sql("select r.id, u.name from resources r, users u where r.id=u.userable_id and u.userable_type='pm'")
+    @project = Project.find_by_id(params[:id])
     @lead = Lead.where(status:"Active")
   end
 
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.create(title:params[:project][:title],start_date:params[:bdaytime],status:true,lead_id:params[:lid],client_id:params[:client_id],pm_id:params[:pm])
+   @project = Project.new
+
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -60,7 +60,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1
   # PUT /projects/1.json
   def update
-    @project = Project.find(params[:id])
+    @project = Project.find_by_id(params[:id])
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.json
   def destroy
-    @project = Project.find(params[:id])
+    @project = Project.find_by_id(params[:id])
     @project.destroy
 
     respond_to do |format|
@@ -86,13 +86,7 @@ class ProjectsController < ApplicationController
   end
 
   def get_client_name
-
-  @user    = Lead.find_by_id(params[:lead_id]).client.user
+  @user = Lead.find_by_id(params[:lead_id]).client.user
   end
-
-  def display_resources
-
-  end
-
 
 end

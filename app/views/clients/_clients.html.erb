@@ -1,7 +1,8 @@
-<%if @user.length != 0%>
+
+<%if @client.length != 0%>
     <datalist id="items">
-      <%@user.each do |val|%>
-          <option  value="<%=User.new.get_user_name(val.id)%>"  label="<%=val.id%>"/>
+      <%@client.each do |client|%>
+          <option  value="<%=client.user.name%>"  label="<%=client.id%>"/>
       <%end%>
     </datalist>
 <%else%>

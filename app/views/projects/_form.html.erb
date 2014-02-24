@@ -28,12 +28,27 @@
       <%= f.text_field :title,:class=>"form-control"%>
     </div>
     <div class="display-block">
+      <%= f.label :Lead %><br/>
+      <select class="form-control">
+        <option value="name">name</option>
+        <option value="name">name</option>
+        <option value="name">name</option>
+        <option value="name">name</option>
+      </select>
+    </div>
+    <div class="display-block">
       <%= f.label :start_date %><br/>
       <input type="datetime-local" name="bdaytime">
     </div>
     <div class="display-block">
       <%= f.label :pm_name %>
-      <%=select_tag "pm", options_from_collection_for_select(@project_manager, "id", "name"),:class=>"form-control" ,include_blank: true%>
+      <select class="form-control">
+        <option value="name">name</option>
+        <option value="name">name</option>
+        <option value="name">name</option>
+        <option value="name">name</option>
+      </select>
+      <%#=select_tag "pm", options_from_collection_for_select(@project_manager, "id", "name"),:class=>"form-control" ,include_blank: true%>
     </div>
     <div class="display-block">
       <%= f.label "Client Name" %>
