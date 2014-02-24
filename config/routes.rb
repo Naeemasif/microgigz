@@ -1,43 +1,32 @@
 Microgigz::Application.routes.draw do
 
-
-
-
-
-  devise_for :users
   root :to => 'leads#index'
 
   resources :leads
-  post '/leads/convert_to_project'=>'leads#convert_to_project'
+  post '/leads/convert_to_project'=>'leads#convert_lead_to_project'
   post '/leads/ajax_request'=>'leads#ajax_request'
-  post '/leads/get_client_names'=>'leads#get_client_names'
+  post '/leads/client_creation_form'=> 'leads#client_creation_form'
+
   resources :projects
   get  '/projects/display_resources'=>'projects#display_resources'
   post  '/projects/get_client_name'=>'projects#get_client_name'
 
+  resources :clients
+  post '/clients/client'=>'clients#get_client_names'
 
   get  '/login/new'=>'login#new'
   get  '/login/signout'=>'login#signout'
   post '/login/auth'=>'login#auth'
 
-
-  post '/leads/client_creation_form'=> 'leads#client_creation_form'
-
-
-
-
-
-
-
-
-
   resources :roleassignments, :only => [:index,:assign_role]
   post '/roleassignments/assign_role'=>'roleassignments#assign_role'
   post '/roleassignments/delete_role'=>'roleassignments#delete_role'
-
-  resources :clients
+  resources :profiles
   resources :resources
-  resources :notes
+  resources :skills
+  devise_for :users
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

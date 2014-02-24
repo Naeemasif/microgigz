@@ -25,4 +25,10 @@ class User < ActiveRecord::Base
   end
 
 
+  def get_user_name(id)
+      User.find_by_userable_id(id).name
+
+  end
+
+
 end

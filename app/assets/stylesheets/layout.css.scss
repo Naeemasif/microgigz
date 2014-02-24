@@ -2,6 +2,7 @@
 
 $top-link-color:black;   /*TOP NAV LINK COLORS*/
 
+/**********************************************************************************************************************/
 /*GLOBAL STYLES*/
 body
 {
@@ -38,16 +39,144 @@ hr
   padding: 0px;
 }
 
+table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td
+{
+  border-top-color:white;
+}
 /*GLOBAL STYLES*/
+/**********************************************************************************************************************/
 
+/**********************************************************************************************************************/
 /*CONTAINER GOES HERE*/
 #container
 {
   padding: 0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
   margin:  0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
   width: 100%;
-  min-width: 390px;
-  /*CONTENT GOES HERE*/
+  min-width: 420px;
+  /*HEADER FOR NAVIGATION*/
+  #header
+  {
+    .col-lg-12
+    {
+      /*NAVIGAION GOES HERE*/
+      #navigation
+      {
+        margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+        padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+        border:1px solid #A1A1A1;
+        border-radius: 0px;
+        background: #F5F5F5;
+
+        .container-fluid
+        {
+          margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+          padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+
+          .navbar-header
+          {
+            margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+            padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+            display: none;
+          }
+          .navbar-brand
+          {
+            margin: 5px 0px 0px 5px;    /*TOP RIGHT BOTTOM LEFT*/
+            padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+
+            h3
+            {
+              padding: 0px 0px 0px 3px;    /*TOP RIGHT BOTTOM LEFT*/
+            }
+          }
+          div
+          {
+            ul
+            {
+              margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+              padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+              list-style: none;
+
+              li
+              {
+                display: inline;
+              }
+            }
+          }
+
+          .navbar-collapse
+          {
+            margin: 0px 0px 0px 53px;  /*TOP RIGHT BOTTOM LEFT*/
+            padding:0px 0px 0px 0px ;  /*TOP RIGHT BOTTOM LEFT*/
+
+            .navbar-nav
+            {
+              li:hover
+              {
+                background: transparent;
+              }
+              a
+              {
+                color: black;
+              }
+              a.active:hover
+              {
+                background: #ffffff;
+              }
+            }
+          }
+          #nav-top-links
+          {
+            margin: 3px 10px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
+            padding: 0px;              /*TOP RIGHT BOTTOM LEFT*/
+
+            a
+            {
+              color: $top-link-color;
+            }
+          }
+          #logo
+          {
+            margin: 5px 0px 0px 8px;  /*TOP RIGHT BOTTOM LEFT*/
+
+            img
+            {
+              height: 59px;
+              width: 59px;
+            }
+          }
+          #company-name
+          {
+            margin:10px 0px 0px 12px; /*TOP RIGHT BOTTOM LEFT*/
+
+            h3
+            {
+              margin: 0px;           /*TOP RIGHT BOTTOM LEFT*/
+              padding: 0px;          /*TOP RIGHT BOTTOM LEFT*/
+            }
+          }
+
+          #nav-top-links
+          {
+            margin: 10px 10px 0px 0px;   /*TOP RIGHT BOTTOM LEFT*/
+            ul
+            {
+              margin: 0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
+              padding:0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
+              line-height: 10px;
+            }
+          }
+          #bs-example-navbar-collapse-1
+          {
+            margin: -13px 0px 0px 77px; /*TOP RIGHT BOTTOM LEFT*/
+          }
+        }
+      }
+      /*NAVIGATION GOES HERE*/
+    }
+  }
+  /*HEADER ENDS HERE*/
+  /*PAGE CONTENT GOES HERE*/
   #content
   {
     margin: 0px 0px 0px 0px;       /*TOP RIGHT BOTTOM LEFT*/
@@ -59,16 +188,133 @@ hr
       margin: 0px 20px 0px 0px;
       background: #ffffff;
 
+      #page-header
+      {
+        margin: 0px 0px 70px 0px; /*TOP RIGHT BOTTOM LEFT*/
+      }
+      #page-container
+      {
+        padding: 0px 0px 40px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+        #record
+        {
+          padding: 5px 0px 5px 0px;   /*TOP RIGHT BOTTOM LEFT*/
+
+          p#title
+          {
+            margin: 0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
+            padding:0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
+
+            span#active
+            {
+              color: #696969;
+              padding: 2px 10px;
+            }
+          }
+          p#description
+          {
+            padding: 0px 0px 0px 60px;/*TOP RIGHT BOTTOM LEFT*/
+            margin:  0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
+            color: #696969;
+            font-size: 10px;
+            width: 95%;
+          }
+
+          #edit-destroy-link
+          {
+            margin: 0px 0px 0px 0px;      /*TOP RIGHT BOTTOM LEFT*/
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background: #ffffff;
+
+            .dropdown
+            {
+              .dropdown-menu
+              {
+                border-radius: 0px;
+                min-width:120px;
+                border:1px solid #A1A1A1;
+                position: absolute;
+                left: -100px;
+                top: 23px;
+              }
+              a
+              {
+                img
+                {
+                  display: none;
+                }
+              }
+            }
+            .menu-position
+            {
+              width: 100px;
+              display: none;
+              position: absolute;
+              right: 10px;
+              padding: 0px;     /*TOP RIGHT BOTTOM LEFT*/
+              margin: 0px;      /*TOP RIGHT BOTTOM LEFT*/
+            }
+          }
+        }
+        .aside
+        {
+          border: 1px solid #A1A1A1;
+          h4
+          { padding: 0px 0px 0px 10px;
+            color: #0096C8;
+          }
+          div
+          {
+            a
+            {
+              color: black;
+            }
+          }
+        }
+      }
       a
       {
         color: #0096C8;
       }
     }
-
     .col-lg-3
     {
       border: 1px solid #a1a1a1;
       background: #ffffff;
+      padding: 0px 0px 0px 0px;
+
+      div
+      {
+        a
+        {
+          color: black;
+        }
+      }
+      h4
+      {
+        padding: 0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
+        margin:  10px 0px 0px 5px;/*TOP RIGHT BOTTOM LEFT*/
+        color: #0096C8;
+      }
+      ul
+      {
+        padding: 0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
+        margin:  10px 0px 0px 30px;/*TOP RIGHT BOTTOM LEFT*/
+        list-style: none;
+        list-style-type: square;
+        li
+        {
+          padding: 0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
+          margin:  0px 0px 0px 0px;/*TOP RIGHT BOTTOM LEFT*/
+          a
+          {
+            padding: 0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
+            margin:  0px 0px 0px 0px;/*TOP RIGHT BOTTOM LEFT*/
+            color: black;
+          }
+        }
+      }
     }
   }
   /*FOOTER GOES HERE*/
@@ -78,125 +324,9 @@ hr
   }
 }
 /*CONTAINER GOES HERE*/
+/**********************************************************************************************************************/
 
-
-/*NAVIGAION GOES HERE*/
-#navigation
-{
-   margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-  padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-  border:1px solid #A1A1A1;
-  border-radius: 0px;
-  background: #F5F5F5;
-
-  .container-fluid
-  {
-    margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-    padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-
-    .navbar-header
-    {
-      margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-      padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-      display: none;
-    }
-    .navbar-brand
-    {
-      margin: 5px 0px 0px 5px;    /*TOP RIGHT BOTTOM LEFT*/
-      padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-
-      h3
-      {
-        padding: 0px 0px 0px 3px;    /*TOP RIGHT BOTTOM LEFT*/
-      }
-    }
-    div
-    {
-      ul
-      {
-        margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-        padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-        list-style: none;
-
-        li
-        {
-          display: inline;
-        }
-      }
-    }
-
-    .navbar-collapse
-    {
-      margin: 0px 0px 0px 53px;  /*TOP RIGHT BOTTOM LEFT*/
-      padding: 0px;              /*TOP RIGHT BOTTOM LEFT*/
-
-      .navbar-nav
-      {
-       li:hover
-       {
-         background: transparent;
-       }
-       a
-       {
-         color: black;
-       }
-       a.active:hover
-       {
-         background: #ffffff;
-       }
-      }
-    }
-    #nav-top-links
-    {
-      margin: 3px 10px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
-      padding: 0px;              /*TOP RIGHT BOTTOM LEFT*/
-
-      a
-      {
-        color: $top-link-color;
-      }
-    }
-    #logo
-    {
-      margin: 5px 0px 0px 8px;  /*TOP RIGHT BOTTOM LEFT*/
-
-      img
-      {
-        height: 59px;
-        width: 59px;
-      }
-    }
-    #company-name
-    {
-      margin:10px 0px 0px 12px; /*TOP RIGHT BOTTOM LEFT*/
-
-      h3
-      {
-        margin: 0px;           /*TOP RIGHT BOTTOM LEFT*/
-        padding: 0px;          /*TOP RIGHT BOTTOM LEFT*/
-      }
-    }
-
-    #nav-top-links
-    {
-      margin: 10px 10px 0px 0px;   /*TOP RIGHT BOTTOM LEFT*/
-      ul
-      {
-        margin: 0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
-        padding:0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
-        line-height: 10px;
-      }
-    }
-    #bs-example-navbar-collapse-1
-    {
-      margin: -13px 0px 0px 77px; /*TOP RIGHT BOTTOM LEFT*/
-    }
-  }
-}
-/*NAVIGATION GOES HERE*/
-
-
-
+/**********************************************************************************************************************/
 /*SOME LINKS ARE OUTSIDE OF NAVBAR STRUCTURE BECAUSE IT DOES NOT SUPPORT THIS STRUCTURE*/
 .navbar-nav > li > a {
   line-height:0px;
@@ -220,9 +350,23 @@ hr
   background-color: #ffffff;
 }
 /*SOME LINKS ARE OUTSIDE OF NAVBAR STRUCTURE BECAUSE IT DOES NOT SUPPORT THIS STRUCTURE*/
+/**********************************************************************************************************************/
 
-
+/**********************************************************************************************************************/
 /*HELPER CLASSES*/
+
+.position_relative
+{
+  position: relative;
+}
+.display-inline-block
+{
+  display: block;
+}
+.margin-top-25px
+{
+  margin:-18px 0px 0px 0px;        /*TOP RIGHT BOTTOM LEFT*/
+}
 .float-right
 {
   float: right;
@@ -235,9 +379,110 @@ hr
 {
   clear: both;
 }
+.margin-left
+{
+  margin:0px 0px 0px 5px;        /*TOP RIGHT BOTTOM LEFT*/
+}
+.border-radius-0px
+{
+  border-radius: 0px;
+}
+.border-0px
+{
+  border: 0px;
+}
+.color_grey
+{
+  color: grey;
+}
+.width_100_percent
+{
+  width: 100%;
+}
+.form-control
+{
+  border-radius: 0px;
+}
 /*HELPER CLASSES*/
+/**********************************************************************************************************************/
+
+/**********************************************************************************************************************/
+/*LOG IN PAGE DESIGN*/
+.login-container
+{
+  padding: 0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
+  margin: 0px 0px 0px 0px ;  /*TOP RIGHT BOTTOM LEFT*/
+  width: 100%;
+}
+.login-panel
+{
+  width: 500px;
+  margin: 100px 0px 0px 250px; /*TOP RIGHT BOTTOM LEFT*/
+  padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+}
+.border-height
+{
+  border-radius: 0px;
+  height: 25px;
+}
+#brand
+{
+  width: 249px;
+  height: 500px;
+
+}
+#brand-name
+{
+  float: right;
+  margin: 0px 10px 0px 0px;      /*TOP RIGHT BOTTOM LEFT*/
+}
+#login-form
+{
+  width: 249px;
+  height: 500px;
+  border-left: 1px solid #A1A1A1;
+  padding: 0px 0px 0px 10px;   /*TOP RIGHT BOTTOM LEFT*/
+}
+.display-block
+{
+  display: block;
+}
+#color-grey
+{
+  color: grey;
+}
+/*LOG IN PAGE DESIGN*/
+/**********************************************************************************************************************/
 
 
+/**********************************************************************************************************************/
+
+/*TO DISPLAY THE SIDE BAR ON COLLAPSED VIEW*/
+.aside
+{
+  right: 11px;
+  background: #ffffff;
+  box-shadow: 0px 0px 15px #A1A1A1;
+  position: absolute;
+  z-index:1000;
+  padding:0px 0px 0px 0px;
+  width: 250px;
+  display: none;
+}
+/*TO DISPLAY THE SIDE BAR ON COLLAPSED VIEW*/
+
+
+
+/*RESETTLED*/
+.roles
+{
+  width: 150px;
+  background: #ffffff;
+}
+/*RESETTLED*/
+
+/**********************************************************************************************************************/
+/**********************************************************************************************************************/
 /*STYLES OVERRIDING AT <=768PX*/
 @media (max-width: 768px)
 {
@@ -245,13 +490,99 @@ hr
 /*CONTAINER GOES HERE*/
   #container
   {
+    #header
+    {
+      .col-lg-12
+      {
+        /*NAVIGATION GOES HERE*/
+        #navigation
+        {
+          .container-fluid
+          {
+            .navbar-header
+            {
+              display: inline-block;
+              position: absolute;
+              width: 45px;
+              right: 10px;
+              float:right;
+              top: 25px;
+
+              .navbar-toggle
+              {
+                margin: 0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
+              }
+            }
+            .navbar-brand
+            {
+              h3
+              {
+                margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+                padding: 0px 0px 0px 3px;    /*TOP RIGHT BOTTOM LEFT*/
+              }
+            }
+            div
+            {
+              ul
+              {
+                margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+                padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+                list-style: none;
+
+                li
+                {
+                  display: inline;
+                }
+              }
+            }
+
+            .navbar-collapse
+            {
+              margin: 0px 0px 0px 0px;   /*TOP RIGHT BOTTOM LEFT*/
+              padding: 0px;              /*TOP RIGHT BOTTOM LEFT*/
+
+            }
+            #nav-top-links
+            {
+              margin: 5px 10px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
+              padding: 0px;              /*TOP RIGHT BOTTOM LEFT*/
+            }
+            #bs-example-navbar-collapse-1
+            {
+              margin: 8px 0 0 0;         /*TOP RIGHT BOTTOM LEFT*/
+            }
+          }
+        }
+        /*NAVIGATION GOES HERE*/
+      }
+    }
     #content
     {
+      padding: 0px 0px 0px 0px;   /*TOP RIGHT BOTTOM LEFT*/
+
       .col-lg-8
       {
         margin: 0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
-        a
+
+        #page-container
         {
+          padding: 0px 0px 40px 0px;    /*TOP RIGHT BOTTOM LEFT*/
+          #record
+          {
+            padding: 5px 0px 5px 0px;   /*TOP RIGHT BOTTOM LEFT*/
+
+            p#title
+            {
+              margin: 0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
+              padding:0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
+
+              span#active
+              {
+                color: #696969;
+                padding: 2px 10px;
+              }
+            }
+          }
         }
       }
       .col-lg-3
@@ -263,250 +594,33 @@ hr
     {
 
     }
+
   }
 /*CONTAINER GOES HERE*/
 
-/*NAVIGATION GOES HERE*/
-  #navigation
-  {
-    .container-fluid
-    {
-      .navbar-header
-      {
-        display: inline-block;
-        position: absolute;
-        width: 45px;
-        right: 10px;
-        float:right;
-        top: 25px;
 
-        .navbar-toggle
-        {
-          margin: 0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
-        }
-      }
-      .navbar-brand
-      {
-        h3
-        {
-          margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-          padding: 0px 0px 0px 3px;    /*TOP RIGHT BOTTOM LEFT*/
-        }
-      }
-      div
-      {
-        ul
-        {
-          margin: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-          padding: 0px 0px 0px 0px;    /*TOP RIGHT BOTTOM LEFT*/
-          list-style: none;
-
-          li
-          {
-            display: inline;
-          }
-        }
-      }
-
-      .navbar-collapse
-      {
-        margin: 0px 0px 0px 0px;   /*TOP RIGHT BOTTOM LEFT*/
-        padding: 0px;              /*TOP RIGHT BOTTOM LEFT*/
-
-      }
-      #nav-top-links
-      {
-        margin: 5px 10px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
-        padding: 0px;              /*TOP RIGHT BOTTOM LEFT*/
-      }
-      #bs-example-navbar-collapse-1
-      {
-        margin: 8px 0 0 0;         /*TOP RIGHT BOTTOM LEFT*/
-      }
-    }
-  }
-/*NAVIGATION GOES HERE*/
   .navbar-nav > li > a
   {
     line-height:30px;
     padding: 0px 0px 0px 0px;     /*TOP RIGHT BOTTOM LEFT*/
   }
+  .col-lg-5-login
+  {
+    padding: 0px 0px 0px 0% /*TOP RIGHT BOTTOM LEFT*/
+  }
+/*LOG IN PAGE DESIGN*/
+  .login-panel
+  {
+    width: 400px;
+    margin: 50px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
+  }
+  #brand
+  {
+    width: 100px;
+  }
+/*LOG IN PAGE DESIGN*/
+
 }
 /*STYLES OVERRIDING AT <=768PX*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/***leads just for the sample **********/
-#leads-head
-{
-  margin: 0px 0px 70px 0px;
-}
-
-
-
-#edit-destroy-link
-{
-  margin: 0 0 0 0;      /*TOP RIGHT BOTTOM LEFT*/
-}
-.menu-position
-{
-  width: 100px;
-  display: none;
-  position: absolute;
-  right: 10px;
-}
-#lead-record
-{
-  padding: 0 50px 0 0;   /*TOP RIGHT BOTTOM LEFT*/
-}
-
-p#lead-client
-{
-  margin: 0px;
-  padding: 0px;
-}
-span#active
-{
-  color: #696969;
-  padding: 2px 10px;
-}
-p#description
-{
-  padding: 0px 0px 0px 60px;
-  margin: 0px ;
-  color: #696969;
-  font-size: 10px;
-}
-
-#leads
-{
-  padding: 5px 0px 5px 0px;
-}
-
-.edit-destroy-link
-{
-  margin: 0px 0px 0px 0px;
-}
-.edit-destroy-image
-{
-  display: none;
-}
-
-#page-container
-{
-  padding: 0px 0px 40px 0px;
-}
-.menu-position
-{
-  padding: 0px;
-  margin: 0px;
-}
-
-.color_grey
-{
-  color: grey;
-}
-
-.roles
-{
-  width: 150px;background: #ffffff;
-}
-
-
-
-
-
-
-
-
-/*login*/
-
-
-.container-login
-{
-  padding: 0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
-  margin: 50px 0px 0px 75px; /*TOP RIGHT BOTTOM LEFT*/
-}
-.row-login
-{
-
-  margin: 0px 0px 0px 0px;  /*TOP RIGHT BOTTOM LEFT*/
-  padding: 0px 0px 0px 0px; /*TOP RIGHT BOTTOM LEFT*/
-}
-.col-lg-5-login
-{
-  padding: 0px 0px 0px 33% /*TOP RIGHT BOTTOM LEFT*/
-}
-.login-form
-{
-  border-left: 1px solid #A1A1A1;
-  width: 50%;
-  height: 500px;
-  padding: 5px 5px 5px 5px;/*TOP RIGHT BOTTOM LEFT*/
-}
-.border-radius-0px
-{
-   border-radius: 0px;
-   height: 27px;
-}
-.width-login
-{
-   width: 55%;
-}
-.form-control-width
-{
-
-}
-.h2-login-form
-{
-  color: #A1A1A1;
-}
-
-
+/**********************************************************************************************************************/
 

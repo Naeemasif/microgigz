@@ -5,7 +5,8 @@ class ResourcesController < ApplicationController
 
   def index
     @resources = Resource.all
-        respond_to do |format|
+
+    respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @resources }
     end
@@ -14,7 +15,7 @@ class ResourcesController < ApplicationController
   # GET /resources/1
   # GET /resources/1.json
   def show
-    @resource = Resource.find(params[:id])
+    @resource = Resource.find_by_id(params[:id])
     @user  = @resource.user
     @notes = @resource.notes
     respond_to do |format|
@@ -27,6 +28,7 @@ class ResourcesController < ApplicationController
   # GET /resources/new.json
   def new
     @resource = Resource.new
+    @user = @resource.build_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,25 +38,25 @@ class ResourcesController < ApplicationController
 
   # GET /resources/1/edit
   def edit
-    @resource = Resource.find(params[:id])
-    @user = @resource.user.name
+    @resource = Resource.find_by_id(params[:id])
+    @user = @resource.user
   end
 
   # POST /resources
   # POST /resources.json
   def create
-    @resource = Resource.new(availability:'Available')
-   # @resource.nxb_id= session[:username]
+    @resource = Resource.new(availability:params[:resource][:availability])
+
     respond_to do |format|
       if @resource.save
-        @user = @resource.build_user( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
-        @user.save!
-        @resource.notes.create(:description => params[:note])
-        format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
-        format.json { render json: @resource, status: :created, location: @resource }
+         @user = @resource.build_user(params[:resource][:user])
+         @user.save
+         session[:current_resource_id] = @resource.id
+         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
+         format.json { render json: @resource, status: :created, location: @resource }
       else
-        format.html { render action: "new" }
-        format.json { render json: @resource.errors, status: :unprocessable_entity }
+         format.html { render action: "new" }
+         format.json { render json: @resource.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -77,7 +79,7 @@ class ResourcesController < ApplicationController
   # DELETE /resources/1
   # DELETE /resources/1.json
   def destroy
-    @resource = Resource.find(params[:id])
+    @resource = Resource.find_by_id(params[:id])
     @resource.destroy
 
     respond_to do |format|

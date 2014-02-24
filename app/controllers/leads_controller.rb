@@ -26,7 +26,6 @@ class LeadsController < ApplicationController
   def show
     @lead = Lead.find(params[:id])
 
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @lead }
@@ -37,8 +36,6 @@ class LeadsController < ApplicationController
   # GET /leads/new.json
   def new
     @lead = Lead.new
-    @clients = Client.where(:status=>true).all
-
 
     respond_to do |format|
       format.html # new.html.erb
@@ -48,24 +45,23 @@ class LeadsController < ApplicationController
 
   # GET /leads/1/edit
   def edit
-    @lead = Lead.find(params[:id])
+    @lead = Lead.find_by_id(params[:id])
   end
 
   # POST /leads
   # POST /leads.json
   def create
-    @lead = Lead.new(params[:lead])
+      @lead = Lead.new(params[:lead])
 
-    respond_to do |format|
-      if @lead.save
-        @lead.update_attributes(client_id:params[:names],status:"Active")
-        format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
-        format.json { render json: @lead, status: :created, location: @lead }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @lead.save
+          format.html { redirect_to @lead, notice: 'Lead was successfully created.' }
+          format.json { render json: @lead, status: :created, location: @lead }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @lead.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PUT /leads/1
@@ -96,22 +92,14 @@ class LeadsController < ApplicationController
     end
   end
 
-  def ajax_request
-    @lead = Lead.find_by_id(params[:lead_id])
-    @user = User.find_by_userable_id(@lead.client_id)
-
-  end
-
-  def convert_to_project
-   @project = Project.create(title:params[:title],start_date:params[:date],status:params[:status],lead_id:params[:lead_id],client_id:params[:client_id])
-   redirect_to  :controller=>"projects", :action=>"show",id:@project.id
-  end
-
-  def get_client_names
-   @user = User.find_by_sql("select c.id, u.name from clients c, users u where u.name like '#{params[:search]}%' and (c.id=u.userable_id and u.userable_type='Client')")
+  def convert_lead_to_project
+    @lead    = Lead.find_by_id(params[:lead_id])
+    @project = Project.create(title:@lead.title,start_date:DateTime.now.to_date,status:"Active",lead_id:@lead.id,client_id:@lead.client_id)
+    redirect_to  :controller=>"projects", :action=>"show",id:@project.id
   end
 
   def client_creation_form
-
+      @client = Client.new
+      @user = @client.build_user
   end
 end

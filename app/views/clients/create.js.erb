@@ -1,0 +1,4 @@
+<% if !params[:request_page].nil?%>
+    $("#lead_client_name").val("<%=@user.name%>");
+    $("#client_id").val("<%=@client.id%>");
+<%end%>

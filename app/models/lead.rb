@@ -11,6 +11,7 @@ class Lead < ActiveRecord::Base
   end
 
   belongs_to :client
+
   has_one :quote  ,:dependent => :destroy
   has_one :project , :dependent => :destroy
 

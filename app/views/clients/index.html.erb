@@ -1,40 +1,49 @@
 <%=pageHeader("Clients")%>
-
-
 <div id="page-container">
   <%i = 0%>
-  <%@clients.each do |user| %>
-      <div id="leads" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);" style="">
-        <section class="float-left">
-          <p id="lead-client">
+
+  <%@clients.each do |client| %>
+      <div id="record" lang="<%=i%>" class="row leads" onmouseover="dsiplay_circle(this);" onmouseout="hide_circle(this);" style="">
+        <section class="position_relative">
+          <p id="title">
             <span id="active">Active</span>
-            <%=link_to("#{user.name}",client_path(id:user.id))%>
+            <%=link_to("#{client.user.name}",client_path(id:client.id))%>
           </p>
           <p id="description">
-            <%=Client.find(user.id).company_name%>
+            <%=Client.find_by_id(client.id).company_name%>
           </p>
-        </section>
-        <section id="edit-destroy-link" class="float-right">
-          <section id="<%=i%>" class="edit-destroy-image">
-            <a href="#" onclick="return false;">
-              <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25"/>
-            </a>
-          </section>
-          <div id="menu<%=i%>" class="menu-position menu" onmouseover="display_block(this);" onmouseout="hide_block(this);">
-            <div class="list-group">
-              <%=link_to('Edit', edit_client_path(id:user.id),:class=>'list-group-item')%>
-              <%#=link_to('Destroy',client, method: :delete, data: { confirm: 'Are you sure?' })%>
-              <%#= link_to 'Destroy', user(user.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <section id="edit-destroy-link">
+            <div class="dropdown">
+              <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="#">
+                <img src="/images/settings.png" height="25" id="<%=i%>" onclick="show_menu(this);" width="25"/>
+              </a>
+              <ul class="dropdown-menu" onmouseout="hide_block(this);" onmouseover="display_block(this);" id="menu<%=i%>"  role="menu" aria-labelledby="dLabel">
+                <li><%=link_to('Edit', edit_client_path(id:client.id))%></li>
+                <li><%#=link_to('Destroy', client, method: :delete, data: { confirm: 'Are you sure?' })%></li>
+              </ul>
             </div>
-          </div>
+          </section>
         </section>
-        <div class="clear-both">
-        </div>
       </div>
       <hr/>
       <%i = i+1%>
   <%end%>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,59 +1,33 @@
-
-<br>
-<div class="row">
-  <div class="col-lg-12">
-    <%if !notice.blank?%>
-       <div class="alert alert-success"><p id="notice"><%= notice %></p></div>
-    <%end%>
-    <% notice = "" %>
-    <br>
-    <% #if can? %>
-    <div style="float: right ">
-      <form method="post" action="/leads/convert_to_project">
-        <input type="hidden" name="title" value="<%=@lead.title%>"/>
-        <input type="hidden" name="date" value="<%=DateTime.now%>"/>
-        <input type="hidden" name="status" value="<%=true%>"/>
-        <input type="hidden" name="lead_id" value="<%=@lead.id%>"/>
-        <input type="hidden" name="client_id" value="<%=@lead.client_id%>"/>
-       <input type="submit"  value="Convert To Project" class="form-control"/>
-      </form>
-    </div>
-        <%# end %>
-    <table class="table">
-      <tr>
-        <td>
-          <b>Title:</b>
-        </td>
-        <td>
-          <p><%= @lead.title %></p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <b>Description:</b>
-        </td>
-        <td>
-          <p><%= @lead.description %></p>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <b>Client:</b>
-        </td>
-
-        <td>
-          <p><%=link_to "#{@lead.client.user.name}", client_path(@lead.client.id) %></p>
-        </td>
-      </tr>
-    </table>
-   </div>
-</div>
+<%if !notice.blank?%>
+  <!--<div class="alert alert-success"><p id="notice"><%#= notice %></p></div> !-->
+<%end%>
+<% notice = "" %>
 <br/>
-<table class="table">
-  <tr>
-    <td>
-      <%= link_to 'Edit', edit_lead_path(@lead),:class=>"btn btn-default" %>
-      <%= link_to 'Back', leads_path,:class=>"btn btn-default" %>
-    </td>
-  </tr>
-</table>
+<div class="margin-right float-right">
+  <%= form_tag("/leads/convert_to_project", method: "post") do %>
+    <%=hidden_field_tag :lead_id,"#{@lead.id}"%>
+    <%= submit_tag "Convert To Project",:class=>"form-control convert-to-project"%>
+  <%end%>
+</div>
+
+<div class="clear-both">
+</div>
+
+<div class="list-group border-margin-client-show">
+  <li class="list-group-item border-none">
+    <h4 class="list-group-item-heading margin-title">Title</h4>
+    <p class="list-group-item-text"><%= @lead.title %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Description</h4>
+    <p class="list-group-item-text"><%= @lead.description %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Client</h4>
+    <p class="list-group-item-text">
+      <a href="<%="/clients/"%><%=@lead.client.id%>"><%=@lead.client.user.name%></a>
+    </p>
+  </li>
+</div>
+
+

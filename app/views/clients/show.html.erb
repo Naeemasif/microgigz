@@ -1,94 +1,50 @@
 <br/><br/>
-
-<div class="row">
-  <div class="col-lg-12">
-    <p id="notice"><%= notice %></p>
-  </div>
+<div class="list-group border-margin-client-show">
+  <li class="list-group-item border-none">
+    <h4 class="list-group-item-heading margin-title">Company name</h4>
+    <p class="list-group-item-text"><%= @client.company_name %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Name</h4>
+    <p class="list-group-item-text"><%= @user.name %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Login Id</h4>
+    <p class="list-group-item-text"><%=@user.login_id%></p>
+    <p class="list-group-item-text">
+      <a href="<%#="/clients/"%><%#=@lead.client.id%>"><%#=@lead.client.user.name%></a>
+    </p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Telephone</h4>
+    <p class="list-group-item-text"><%= @user.telephone %></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Email</h4>
+    <p class="list-group-item-text"><%= @user.email%></p>
+  </li>
+  <li class="list-group-item">
+    <h4 class="list-group-item-heading">Status</h4>
+    <p class="list-group-item-text"><%= @client.status%></p>
+  </li>
 </div>
-
-<div class="row">
-  <div class="col-lg-12">
-     <table class="table">
-        <tr>
-          <td class="align_right">
-            <b>company name:</b>
-          </td>
-          <td class="align_left">
-            <%= @client.company_name %>
-          </td>
-        </tr>
-       <tr>
-         <td class="align_right">
-           <b>email:</b>
-         </td>
-         <td class="align_left">
-           <%= @user.email %>
-         </td>
-       </tr>
-       <tr>
-         <td class="align_right">
-           <b>telephone:</b>
-         </td>
-         <td class="align_left">
-           <%= @user.telephone %>
-         </td>
-       </tr>
-       <tr>
-         <td class="align_right">
-           <b>login:</b>
-         </td>
-         <td class="align_left">
-           <%= @user.login_id %>
-         </td>
-       </tr>
-       <%if !@notes.nil? %>
-           <% @notes.each do |note| %>
-               <tr>
-                 <td>
-                   <%= note.description %>
-                 </td>
-               </tr>
-           <% end %>
-       <% end %>
-     </table>
-  </div>
-</div>
-
-
-<h3><b>Leads</b></h3>
-<br>
-
-<table class="table">
-  <tr>
-    <th>
-      <b>Title</b>
-    </th>
-  </tr>
-  <%for i in 0..@leads.length-1 %>
-      <tr>
-        <td>
-          <%=link_to @leads[i].title,lead_path(id:@leads[i].id)%>
-        </td>
-      </tr>
-  <%end%>
-  <tr><td></td></tr>
-</table>
-
-<br>
+<br/>
+<h2>Leads</h2>
+<br/>
+<%if @leads.length == 0%>
+    <div class="alert alert-info border-radius-0px">
+      <h4>There are no leads to display</h4>
+    </div>
+<%else%>
+    <div class="list-group border-margin-client-show">
+    <%@leads.each do |lead|%>
+      <li class="list-group-item">
+        <h4 class="list-group-item-heading margin-title"><%=link_to "#{lead.title}",lead_path(id:lead.id)%></h4>
+        <p class="list-group-item-text"><%= lead.description%></p>
+      </li>
+    <%end%>
+    </div>
+<%end%>
 
 
 
-<div class="row">
-  <div class="col-lg-12">
-   <table>
-     <tr>
-       <td>
-         <%= link_to 'Edit', edit_client_path(@client),:class=>"btn btn-default" %>
-       </td>
-       <td>
-         <%= link_to 'Back', clients_path,:class=>"btn btn-default" %>
-       </td>
-     </tr>
-   </table>
-  </div>
-</div>

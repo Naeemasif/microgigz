@@ -4,9 +4,7 @@ class ClientsController < ApplicationController
   load_and_authorize_resource :except => [:show, :edit, :update]
 
   def index
-
-    #@user = User.find_by_sql("select c.id,p.name from clients c,profiles p where c.id=p.profileable_id")
-    @clients = User.find_by_sql("select c.id,u.name from clients c , users u where c.id=u.userable_id and u.userable_type='Client'")
+    @clients = Client.where(status:"Active")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,6 +29,7 @@ class ClientsController < ApplicationController
   # GET /clients/new.json
   def new
     @client = Client.new
+    @user = @client.build_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -47,13 +46,14 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(:company_name => params[:company_name], :status =>"Active")
+    @client = Client.create(company_name:params[:client][:company_name],status:params[:client][:status])
+    @user = @client.build_user(params[:client][:user])
+    @user.save!
+    params[:request_page] = nil
 
     respond_to do |format|
       if @client.save
-        @user = @client.build_user( :email => params[:email],:name => params[:name], :login_id => params[:login_id], :telephone=> params[:telephone], :password=>"12345678", :password_confirmation=>"12345678")
-         @user.save!
-        @client.notes.create(:description => params[:note])
+        format.js
         format.html { redirect_to @client, notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }
       else
@@ -66,7 +66,7 @@ class ClientsController < ApplicationController
   # PUT /clients/1
   # PUT /clients/1.json
   def update
-    @client = Client.find(params[:id])
+    @client = Client.find_by_id(params[:id])
     respond_to do |format|
       if @client.update_attributes(:company_name => params[:company_name], :status => true)
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
@@ -81,7 +81,7 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   # DELETE /clients/1.json
   def destroy
-    @client = Client.find(params[:id])
+    @client = Client.find_by_id(params[:id])
     @client.destroy
 
     respond_to do |format|
@@ -89,4 +89,43 @@ class ClientsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def get_client_names
+    @search = params[:search]
+    @client = Client.where(status:"Active")
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#*********************************************************************************************************************************************
+#@user   = User.find_by_sql("select c.id, u.name from clients c, users u where u.name like '#{params[:search]}%' and (c.id=u.userable_id and u.userable_type='Client')")
+#@user = User.where("name like 'p%' and userable_type='Client'").select("name , userable_id as id")
+
+# Client.joins("INNER JOIN users ON users.userable_id = clients.id and users.userable_type='Client' and clients.status='Active' and users.name like '#{params[:search]}%'")
+# User.joins(:account).where("account_users.role = 1 AND accounts.subscription_end_date BETWEEN (NOW() - INTERVAL 8 DAY) AND (NOW() + INTERVAL 4 DAY)
+#            AND accounts.account_type = '#{Account::TYPE_FREE}' AND accounts.payment_method = '#{Account::PAYMENT_TRIAL}'")
+#@user=Client.joins(:user).where("clients.id=users.userable_id and users.userable_type='Client' and clients.status='Active' and users.name like '#{params[:search]}%'")
