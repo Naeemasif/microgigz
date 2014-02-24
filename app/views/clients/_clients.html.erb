@@ -1,7 +1,7 @@
 
-<%if @client.length != 0%>
+<%if @user.length != 0%>
     <datalist id="items">
-      <%@client.each do |client|%>
+      <%@user.each do |client|%>
           <option  value="<%=client.user.name%>"  label="<%=client.id%>"/>
       <%end%>
     </datalist>

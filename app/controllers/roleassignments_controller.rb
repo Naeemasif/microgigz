@@ -12,8 +12,7 @@ class RoleassignmentsController < ApplicationController
   end
 
   def delete_role
-     @user_role = UserRole.delete_all(user_id:params[:user_id],role_id:params[:role_id])
-
+     @user_role = UserRole.where(user_id:params[:user_id],role_id:params[:role_id]).delete_all
      @resources = Resource.all
      @roles = Role.all
 

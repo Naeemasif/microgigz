@@ -15,7 +15,7 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
-    @client = Client.find(params[:id])
+    @client = Client.find_by_id(params[:id])
     @user = @client.user
     @leads   =  @client.leads
     respond_to do |format|
@@ -38,7 +38,7 @@ class ClientsController < ApplicationController
 
   # GET /clients/1/edit
   def edit
-    @client = Client.find(params[:id])
+    @client = Client.find_by_id(params[:id])
     @user   = User.find_by_userable_id(@client)
   end
 
@@ -68,7 +68,8 @@ class ClientsController < ApplicationController
     @client = Client.find_by_id(params[:id])
 
     respond_to do |format|
-      if @client.update_attributes(:company_name => params[:company_name], :status => true)
+      if @client.update_attributes(:company_name => params[:client][:company_name])
+         @user = @client.user.update_attributes(params[:client][:user])
         format.html { redirect_to @client, notice: 'Client was successfully updated.' }
         format.json { head :no_content }
       else
@@ -81,7 +82,7 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   # DELETE /clients/1.json
   def destroy
-    @client = Client.find_by_id(params[:id])
+    @client = Client.find(params[:id])
     @client.destroy
 
     respond_to do |format|
@@ -92,7 +93,8 @@ class ClientsController < ApplicationController
 
   def get_client_names
     @search = params[:search]
-    @client = Client.where(status:"Active")
+    @user   = Client.select("clients.id").joins(:user).where("clients.id=users.userable_id and users.userable_type='Client' and clients.status='Active' and users.name like '#{params[:search]}%'")
+    #under cosideration
   end
 end
 

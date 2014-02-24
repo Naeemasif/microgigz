@@ -50,9 +50,6 @@ class ResourcesController < ApplicationController
     respond_to do |format|
       if @resource.save
          @user = @resource.build_user(params[:resource][:user])
-         logger.debug("******************")
-         logger.debug(@user.inspect)
-         logger.debug("******************")
          @user.save
          session[:current_resource_id] = @resource.id
          format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
@@ -69,7 +66,7 @@ class ResourcesController < ApplicationController
   def update
     @resource = Resource.find_by_id(params[:id])
     respond_to do |format|
-      if @resource.user.update_attributes(name:params[:name],login_id:params[:login_id],email:params[:email],telephone:params[:telephone])
+      if @resource.user.update_attributes(params[:resource][:user])
         format.html { redirect_to @resource, notice: 'Resource was successfully updated.' }
         format.json { head :no_content }
       else
