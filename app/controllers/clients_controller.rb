@@ -30,6 +30,7 @@ class ClientsController < ApplicationController
   # GET /clients/new.json
   def new
     @client = Client.new
+    @user = @client.build_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,7 +41,7 @@ class ClientsController < ApplicationController
   # GET /clients/1/edit
   def edit
     @client = Client.find(params[:id])
-    @user = User.find_all_by_userable_id(@client.id).first
+    @user   = User.find_by_userable_id(@client)
   end
 
   # POST /clients
@@ -48,7 +49,7 @@ class ClientsController < ApplicationController
   def create
 
       if !params[:request_page].nil?
-         @client = Client.create(company_name:params[:client][:company_name],status:params[:client][:status])
+         @client = Client.create(company_name:params[:client][:company_name],status:params[:client][:status]) #under cons
          @user = @client.build_user(params[:client][:user])
          @user.save!
       else

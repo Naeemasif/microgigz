@@ -1,56 +1,50 @@
-<%= form_for(@client) do   %>
-<table class="table">
-  <tr>
-    <td class="align_left">
-      name:
-    </td>
-    <td>
-      <%= text_field_tag :name, "#{@user.name}",:class=>"form-control" %>
-    </td>
-  </tr>
-  <tr>
-    <td class="align_left">
-      email:
-    </td>
-    <td>
-      <%= text_field_tag :email,"#{@user.email}",:class=>"form-control"  %>
-    </td>
-  </tr>
-  <tr>
-    <td class="align_left">
-      telephone:
-    </td>
-    <td>
-      <%= text_field_tag :telephone  ,"#{@user.telephone}",:class=>"form-control" %>
-    </td>
-  </tr>
-  <tr>
-    <td class="align_left">
-      company:
-    </td>
-    <td>
-      <%= text_field_tag :company_name  ,"#{@client.company_name}",:class=>"form-control" %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-    </td>
-    <td>
-     <table>
-       <tr>
-         <td>
-           <%=  submit_tag("Update", :class => 'btn btn-default') %>
-         </td>
-         <td>
-           <%= link_to 'Show', @client,:class=>"btn btn-default" %>
-         </td>
-         <td>
-           <%= link_to 'Back', clients_path,:class=>"btn btn-default" %>
-         </td>
-       </tr>
-     </table>
-    </td>
-  </tr>
+<%= form_for(@client) do |f| %>
+    <% if @client.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@client.errors.count, "error") %> prohibited this project from being saved:</h2>
+          <ul>
+            <% @client.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <%end %>
+    <div class="display-block">
+      <%= f.label :company_name %>
+      <%= f.text_field :company_name,:class=>"form-control"%>
+    </div>
+    <%= f.fields_for @user do |builder| %>
+      <div class="display-block">
+        <%= builder.label :name %>
+        <%= builder.text_field :name,:class=>"form-control"%>
+      </div>
+      <div class="display-block">
+        <%= builder.label :login_id %>
+        <%= builder.text_field :login_id,:class=>"form-control"%>
+      </div>
+      <div class="display-block">
+        <%= builder.label :email %>
+        <%= builder.text_field :email,:class=>"form-control"%>
+      </div>
+      <div class="display-block">
+        <%= builder.label :telephone %>
+        <%= builder.text_field :telephone,:class=>"form-control"%>
+      </div>
+      <div class="display-block">
+        <%= builder.label :password %>
+        <%= builder.password_field :password,:class=>"form-control"%>
+      </div>
+    <%end%>
+    <br/>
+    <div class="display-block">
+      <%=  submit_tag("Update", :class => 'btn btn-default') %>
+      <%= link_to 'Back', clients_path,:class=>"btn btn-default" %>
+    </div>
+    <br/>
+<%end%>
 
-</table>
-<% end %>
+
+
+
+
+
