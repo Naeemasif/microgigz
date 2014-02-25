@@ -550,7 +550,7 @@ table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .ta
             .navbar-collapse
             {
               margin: 0px 0px 0px 0px;   /*TOP RIGHT BOTTOM LEFT*/
-              padding: 0px;              /*TOP RIGHT BOTTOM LEFT*/
+              padding:0px 5px 0px 5px;  /*TOP RIGHT BOTTOM LEFT*/
 
             }
             #nav-top-links
