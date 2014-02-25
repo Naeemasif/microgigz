@@ -13,10 +13,17 @@
   </section>
   <section  id="search-link" class="float-right">
   <div class="float-left">
+
     <%= form_tag "#{ controller.controller_name}", :method => :get do %>
+      <div class="float-left">
       <%= submit_tag "Search", :name => nil,:style=>"display:inline;width:70px",:class=>"form-control" %>
       <%= text_field_tag :search, params[:search],:class=>"form-control",:style=>"width:150px;display:inline"%>
-          <a href="#" onclick="toggle_div();return false;"><span class="glyphicon glyphicon-chevron-down"></span></a>
+      </div>
+      <div class="float-right" style="background: #AAAAAA;border: 1px solid #AAAAAA">
+        <a href="#" onclick="toggle_div();return false;" style="padding: -5px 0px 0px 0px" >
+          <img src="/images/download.jpg" height="30" width="30"/>
+        </a>
+      </div>
     <% end %>
   </div>
   <div class="float-right">
