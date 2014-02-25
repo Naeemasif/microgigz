@@ -192,6 +192,17 @@ table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .ta
       {
         margin: 0px 0px 70px 0px; /*TOP RIGHT BOTTOM LEFT*/
       }
+
+      #search-date
+      {
+        position: absolute;
+        z-index:1000;
+        box-shadow: 10px 10px 5px #AAAAAA;
+        right: 0px;
+        border: 1px solid #AAAAAA;
+        background: #ffffff;
+        display: none;
+      }
       #page-container
       {
         padding: 0px 0px 40px 0px;    /*TOP RIGHT BOTTOM LEFT*/

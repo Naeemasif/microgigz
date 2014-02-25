@@ -1,8 +1,39 @@
-<%=pageHeader("Leads")%>
 
-<section  id='search-link' class='float-right'>
-    <%= render 'advance_datepicker/datepicker' %>
-</section>
+<script>
+  function toggle_div()
+  {
+     $("#search-date").toggle();
+  }
+</script>
+
+<%#=pageHeader("Leads")%>
+<header id="page-header">
+  <section id="page-title" class="float-left">
+   <h2><%=controller.controller_name%></h2>
+  </section>
+  <section  id="search-link" class="float-right">
+  <div class="float-left">
+    <%= form_tag "#{ controller.controller_name}", :method => :get do %>
+      <%= submit_tag "Search", :name => nil,:style=>"display:inline;width:70px",:class=>"form-control" %>
+      <%= text_field_tag :search, params[:search],:class=>"form-control",:style=>"width:150px;display:inline"%>
+          <a href="#" onclick="toggle_div();return false;"><span class="glyphicon glyphicon-chevron-down"></span></a>
+    <% end %>
+  </div>
+  <div class="float-right">
+    <button type='button' onclick='display_aside();' class='btn btn-default btn-sm margin-left hidden-lg'><span class='glyphicon glyphicon-align-justify'></span></button>
+  </div>
+  <div class="clear-both">
+  </div>
+  </section>
+</header>
+<div class="clear-both">
+</div>
+<br/>
+<hr class="margin-top-25px"/>
+
+<div id="search-date">
+ <%= render 'advance_datepicker/datepicker' %>
+</div>
 <div class='clear-both'>
 </div>
 <hr/>

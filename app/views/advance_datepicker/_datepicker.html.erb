@@ -1,19 +1,12 @@
-
-
-<div >
-<span style="float: left">
-   <%= form_tag "#{ controller.controller_name}", :method => :get do %>
-     <input type="date" name="start" style="height: 27px;  color: black; ">-<input type="date" style="height: 27px; color: black" name="end">
-      <%= submit_tag "Search", :name => nil ,:style => "color:black;" %>
-<% end %>
-
- </span>
-<span style="float: left">
-
-  <%= form_tag "#{ controller.controller_name}", :method => :get do %>
-   <%= text_field_tag :search, params[:search], :style => "color:black;  margin-left:40px"%>
-
-      <%= submit_tag "Search", :name => nil, :style => "color:black;" %>
-<% end %>
- </span>
+<%=form_tag "#{ controller.controller_name}", :method => :get do %>
+<div class="float-left">
+    <input type="date" name="start" />
 </div>
+<div class="float-left">
+    <input type="date" name="end">
+</div>
+<div class="float-left">
+  <%= submit_tag "Search", :name => nil ,:style => "width:100px;height:40px",:class=>"form-control" %>
+</div>
+<% end %>
+
